@@ -493,6 +493,24 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}[t]{4.2.1 练习 第1题 解答}
+	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解}]
+		指数函数 $y=a^{x}\ (a>0,a\ne 1)$ 必满足：
+		\begin{itemize}
+			\item 定义域为 $\mathbf{R}$，图象向左右两方无限延伸；
+			\item 图象恒过定点 $(0,1)$，即 $x=0$ 时 $y=1$；
+			\item 当 $a>1$ 时单调递增，当 $0<a<1$ 时单调递减；
+			\item 函数值恒为正，图象在 $x$ 轴上方。
+		\end{itemize}
+		
+		\vspace{0.4em}
+		(A) 是直线（一次函数）；(B) 是抛物线（二次函数）；
+		(D) 图象过原点 $(0,0)$，不满足过 $(0,1)$。只有 (C) 是递增且过 $(0,1)$ 的曲线。
+		
+		\vspace{0.4em}
+		\textbf{答案：C。}
+	\end{tcolorbox}
+\end{frame}
 
 
 % ============ 练习 ============
@@ -504,6 +522,47 @@
       $\dfrac{f(0.5n)}{f(0.5(n-1))}=2$，$n\in\mathbb{N}^*$，求函数 $y=f(x)$ 的一个解析式。
     \item 在某个时期，某湖泊中的蓝藻每天以 $6.25\%$ 的增长率呈指数增长，那么经过 30 天，该湖泊的蓝藻会变为原来的多少倍？（可以使用计算工具）
   \end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{4.2.1 练习 第2题 解答}
+	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解:}]
+		由题意，自变量每增加 $0.5$，函数值就变为原来的 $2$ 倍，即
+		\[
+		f(x+0.5)=2\,f(x).
+		\]
+		设 $f(x)=3a^{x}$（由 $f(0)=3$ 得系数为 $3$），则
+		\[
+		f(x+0.5)=3a^{x+0.5}=a^{0.5}\cdot 3a^{x}=a^{0.5}f(x)=2f(x),
+		\]
+		故 $a^{0.5}=2$，解得 $a=4$。
+		
+		\vspace{0.6em}
+		所以
+		\[
+		\alert{f(x)=3\cdot 4^{x}=3\cdot 2^{2x}}.
+		\]
+		
+		\vspace{0.4em}
+		\small（验证：$f(0)=3,\ f(0.5)=3\cdot 2=6,\ f(1)=12$，相邻两项之比均为 $2$，符合题意。）
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{4.2.1 练习 第3题 解答}\vspace{-1em}
+	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解}]
+		设原有蓝藻量为 $N_{0}$，经过 $x$ 天后蓝藻量为
+		\[
+		N(x)=N_{0}(1+6.25\%)^{x}=N_{0}\cdot 1.0625^{x}.
+		\]
+		当 $x=30$ 时，
+		\[
+		N(30)=N_{0}\cdot 1.0625^{30}.
+		\]
+		用计算工具：
+		\[
+		1.0625^{30}\approx 6.13.
+		\]
+		所以经过 $30$ 天，该湖泊的蓝藻约变为原来的 $\alert{6.13}$ 倍。
+	\end{tcolorbox}
 \end{frame}
 
 \end{document}
