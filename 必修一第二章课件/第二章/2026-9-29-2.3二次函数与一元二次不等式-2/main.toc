@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{前情回顾}{3}{0}{1}
+\beamer@sectionintoc {2}{一元二次不等式的应用}{5}{0}{2}

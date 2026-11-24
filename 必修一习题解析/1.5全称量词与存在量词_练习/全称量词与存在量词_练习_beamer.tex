@@ -1,0 +1,183 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[全称量词与存在量词练习]{全称量词与存在量词（练习）}
+\subtitle{1.5.1 全称量词与存在量词 \quad 1.5.2 全称量词命题和存在量词命题的否定}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 1.5.1 练习 第1题 ==========
+\begin{frame}[t]{1.5.1 练习 第1题：判断全称量词命题的真假}
+\textbf{1.} 判断下列全称量词命题的真假：
+
+\vspace{0.5em}
+(1) 每个四边形的内角和都是 $360^\circ$；
+
+\vspace{0.3em}
+(2) 任何实数都有算术平方根；
+
+\vspace{0.3em}
+(3) $\forall x \in \{y \mid y \text{ 是无理数}\}$，$x^3$ 是无理数。
+\end{frame}
+
+\begin{frame}[t]{1.5.1 练习 第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) \textbf{真命题。}
+
+\vspace{0.3em}
+任意四边形都可以分成两个三角形，每个三角形内角和为 $180^\circ$，所以四边形内角和为 $360^\circ$。
+
+\vspace{0.8em}
+(2) \textbf{假命题。}
+
+\vspace{0.3em}
+负数没有算术平方根。例如 $x = -1$ 是实数，但 $-1$ 没有算术平方根。
+
+\vspace{0.8em}
+(3) \textbf{假命题。}
+
+\vspace{0.3em}
+举反例：取 $x = \sqrt[3]{2}$，则 $x$ 是无理数，但 $x^3 = 2$ 是有理数。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 1.5.1 练习 第2题 ==========
+\begin{frame}[t]{1.5.1 练习 第2题：判断存在量词命题的真假}
+\textbf{2.} 判断下列存在量词命题的真假：
+
+\vspace{0.5em}
+(1) 存在一个四边形，它的两条对角线互相垂直；
+
+\vspace{0.3em}
+(2) 至少有一个整数 $n$，使得 $n^2 + n$ 为奇数；
+
+\vspace{0.3em}
+(3) $\exists x \in \{y \mid y \text{ 是无理数}\}$，$x^2$ 是无理数。
+\end{frame}
+
+\begin{frame}[t]{1.5.1 练习 第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) \textbf{真命题。}
+
+\vspace{0.3em}
+菱形（或正方形）的两条对角线互相垂直。
+
+\vspace{0.8em}
+(2) \textbf{假命题。}
+
+\vspace{0.3em}
+因为 $n^2 + n = n(n+1)$ 是两个连续整数的乘积，必为偶数。对任意整数 $n$，$n$ 与 $n+1$ 中必有一个偶数，所以 $n(n+1)$ 恒为偶数，不可能为奇数。
+
+\vspace{0.8em}
+(3) \textbf{真命题。}
+
+\vspace{0.3em}
+取 $x = \sqrt[3]{2}$，则 $x$ 是无理数，$x^2 = \sqrt[3]{4}$ 也是无理数。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 1.5.2 练习 第1题 ==========
+\begin{frame}[t]{1.5.2 练习 第1题：写全称量词命题的否定}
+\textbf{1.} 写出下列命题的否定：
+
+\vspace{0.5em}
+(1) $\forall n \in \mathbf{Z}$，$n \in \mathbf{Q}$；
+
+\vspace{0.3em}
+(2) 任意奇数的平方还是奇数；
+
+\vspace{0.3em}
+(3) 每个平行四边形都是中心对称图形。
+\end{frame}
+
+\begin{frame}[t]{1.5.2 练习 第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{规则：} 全称量词命题 $\forall x \in M,\ p(x)$ 的否定为 $\exists x \in M,\ \neg p(x)$。
+
+\vspace{0.8em}
+(1) 原命题的否定：
+\[
+\exists n \in \mathbf{Z},\ n \notin \mathbf{Q}.
+\]
+
+\vspace{0.5em}
+(2) 原命题的否定：
+存在一个奇数，它的平方不是奇数（即存在一个奇数，它的平方是偶数）。
+
+\vspace{0.5em}
+(3) 原命题的否定：
+存在一个平行四边形不是中心对称图形。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 1.5.2 练习 第2题 ==========
+\begin{frame}[t]{1.5.2 练习 第2题：写存在量词命题的否定}
+\textbf{2.} 写出下列命题的否定：
+
+\vspace{0.5em}
+(1) 有些三角形是直角三角形；
+
+\vspace{0.3em}
+(2) 有些梯形是等腰梯形；
+
+\vspace{0.3em}
+(3) 存在一个实数，它的绝对值不是正数。
+\end{frame}
+
+\begin{frame}[t]{1.5.2 练习 第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{规则：} 存在量词命题 $\exists x \in M,\ p(x)$ 的否定为 $\forall x \in M,\ \neg p(x)$。
+
+\vspace{0.8em}
+(1) 原命题的否定：
+所有三角形都不是直角三角形。
+
+\vspace{0.5em}
+(2) 原命题的否定：
+所有梯形都不是等腰梯形。
+
+\vspace{0.5em}
+(3) 原命题的否定：
+任意一个实数，它的绝对值都是正数。
+
+\vspace{0.3em}
+\small（注意：实数 $0$ 的绝对值是 $0$，不是正数，所以原命题为真，其否定为假。）
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

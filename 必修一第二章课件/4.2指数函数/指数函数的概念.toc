@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{问题一}{3}{0}{1}
+\beamer@sectionintoc {2}{问题二}{11}{0}{2}
+\beamer@sectionintoc {3}{指数函数的概念}{14}{0}{3}
+\beamer@sectionintoc {4}{例题分析}{16}{0}{4}

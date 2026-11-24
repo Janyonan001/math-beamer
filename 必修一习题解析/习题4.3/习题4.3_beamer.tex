@@ -1,0 +1,332 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题4.3]{习题4.3 对数}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 复习巩固 第1题 ==========
+\begin{frame}[t]{第1题：指数式与对数式互化}
+\textbf{1.} 把下列指数式写成对数式，对数式写成指数式：
+
+\vspace{0.3em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $3^x = 1$；
+  \item $4^x = \dfrac{1}{6}$；
+  \item $10^x = 6$；
+  \item $e^x = 25$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{4}
+  \item $x = \log_5 27$；
+  \item $x = \log_7\dfrac{1}{3}$；
+  \item $x = \lg 0.3$；
+  \item $x = \ln\sqrt{3}$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $x = \log_3 1$；\quad (2) $x = \log_4\dfrac{1}{6}$；\quad (3) $x = \lg 6$；\quad (4) $x = \ln 25$；
+
+(5) $5^x = 27$；\quad (6) $7^x = \dfrac{1}{3}$；\quad (7) $10^x = 0.3$；\quad (8) $e^x = \sqrt{3}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：选择题}
+\textbf{2.} 选择题：
+
+\vspace{0.5em}
+(1) 使式子 $\log_{(2x-1)}(2-x)$ 有意义的 $x$ 的取值范围是（\quad）。
+
+\vspace{0.3em}
+\hspace{2em}(A) $x>2$\hspace{2em}(B) $x<2$\hspace{2em}(C) $\dfrac{1}{2}<x<2$\hspace{2em}(D) $\dfrac{1}{2}<x<2$，且 $x\neq 1$
+
+\vspace{0.8em}
+(2) 若 $\lg a\,(a>0)$ 与 $\lg b\,(b>0)$ 互为相反数，则（\quad）。
+
+\vspace{0.3em}
+\hspace{2em}(A) $a+b=0$\hspace{2em}(B) $a-b=0$\hspace{2em}(C) $ab=1$\hspace{2em}(D) $\dfrac{a}{b}=1$
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 对数 $\log_{(2x-1)}(2-x)$ 有意义需满足：
+\[
+\begin{cases}
+2x-1 > 0,\\
+2x-1 \neq 1,\\
+2-x > 0.
+\end{cases}
+\;\Longrightarrow\;
+\begin{cases}
+x > \dfrac{1}{2},\\
+x \neq 1,\\
+x < 2.
+\end{cases}
+\]
+所以 $\alert{\dfrac{1}{2}<x<2}$，且 $x\neq 1$。选 \alert{D}。
+
+(2) $\lg a$ 与 $\lg b$ 互为相反数，即 $\lg a + \lg b = 0$，所以 $\lg(ab) = 0$，$ab = 1$。选 \alert{C}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：求下列各式的值}
+\textbf{3.} 求下列各式的值：
+
+\vspace{0.3em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\log_a 2 + \log_a\dfrac{1}{2}$；
+  \item $\log_3 18 - \log_3 2$；
+  \item $\lg\dfrac{1}{4} - \lg 25$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{3}
+  \item $2\log_5 25 - 3\log_2 64$；
+  \item $\log_2(\log_2 16)$；
+  \item $\log_2 25 \times \log_3 4 \times \log_5 9$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\log_a 2 + \log_a\dfrac{1}{2} = \log_a 1 = \alert{0}$。
+
+(2) $\log_3 18 - \log_3 2 = \log_3 9 = \alert{2}$。
+
+(3) $\lg\dfrac{1}{4} - \lg 25 = \lg\dfrac{1/4}{25} = \lg\dfrac{1}{100} = \alert{-2}$。
+
+(4) $2\log_5 25 - 3\log_2 64 = 2\times 2 - 3\times 6 = 4 - 18 = \alert{-14}$。
+
+(5) $\log_2(\log_2 16) = \log_2 4 = \alert{2}$。
+
+(6) 换底公式：原式 $= \dfrac{\lg 25}{\lg 2}\cdot\dfrac{\lg 4}{\lg 3}\cdot\dfrac{\lg 9}{\lg 5} = \dfrac{2\lg 5}{\lg 2}\cdot\dfrac{2\lg 2}{\lg 3}\cdot\dfrac{2\lg 3}{\lg 5} = \alert{8}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：求满足条件的 $x$}
+\textbf{4.} 求满足下列条件的 $x$ 的值：
+
+\vspace{0.5em}
+\begin{enumerate}
+  \item $\ln x = \ln a + \ln b$；
+  \item $\lg x = 3\lg n - \lg m$；
+  \item $\log_a x = \dfrac{1}{2}\log_a b - \log_a c$；
+  \item $\log_2[\log_3(\log_4 x)] = 0$。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\ln x = \ln a + \ln b = \ln(ab)$，所以 $\alert{x = ab}$。
+
+(2) $\lg x = 3\lg n - \lg m = \lg\dfrac{n^3}{m}$，所以 $\alert{x = \dfrac{n^3}{m}}$。
+
+(3) $\log_a x = \dfrac{1}{2}\log_a b - \log_a c = \log_a\dfrac{\sqrt{b}}{c}$，所以 $\alert{x = \dfrac{\sqrt{b}}{c}}$。
+
+(4) $\log_2[\log_3(\log_4 x)] = 0 \Rightarrow \log_3(\log_4 x) = 1 \Rightarrow \log_4 x = 3 \Rightarrow \alert{x = 64}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：用 $\lg 2=a, \lg 3=b$ 表示}
+\textbf{5.} 已知 $\lg 2 = a$，$\lg 3 = b$，求下列各式的值：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\lg 6$；
+  \item $\log_3 4$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{2}
+  \item $\log_2 12$；
+  \item $\lg\dfrac{3}{2}$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\lg 6 = \lg(2\times 3) = \lg 2 + \lg 3 = \alert{a+b}$。
+
+(2) $\log_3 4 = \dfrac{\lg 4}{\lg 3} = \dfrac{2\lg 2}{\lg 3} = \alert{\dfrac{2a}{b}}$。
+
+(3) $\log_2 12 = \dfrac{\lg 12}{\lg 2} = \dfrac{\lg(3\times 2^2)}{\lg 2} = \dfrac{b+2a}{a} = \alert{2+\dfrac{b}{a}}$。
+
+(4) $\lg\dfrac{3}{2} = \lg 3 - \lg 2 = \alert{b-a}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题：求各式的值}
+\textbf{6.} 求满足下列条件的各式的值：
+
+\vspace{0.8em}
+(1) 若 $x\log_3 4 = 1$，求 $4^x + 4^{-x}$ 的值；
+
+\vspace{0.8em}
+(2) 若 $f(x) = 3^x$，求 $f(\log_3 2)$ 的值。
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 由 $x\log_3 4 = 1$，得 $x = \log_4 3$。
+
+\hspace{2em}所以 $4^x = 4^{\log_4 3} = 3$，$4^{-x} = \dfrac{1}{3}$。
+
+\hspace{2em}故 $4^x + 4^{-x} = 3 + \dfrac{1}{3} = \alert{\dfrac{10}{3}}$。
+
+(2) $f(\log_3 2) = 3^{\log_3 2} = \alert{2}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第7题 ==========
+\begin{frame}[t]{第7题：证明对数恒等式}
+\textbf{7.} 证明：
+
+\vspace{0.8em}
+(1) $\log_a b \cdot \log_b c \cdot \log_c a = 1$；
+
+\vspace{0.8em}
+(2) $\log_{a^m} b^n = \dfrac{n}{m}\log_a b$。
+\end{frame}
+
+\begin{frame}[t]{第7题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+(1) 由换底公式（取常用对数）：
+\[
+\text{左边} = \frac{\lg b}{\lg a}\cdot\frac{\lg c}{\lg b}\cdot\frac{\lg a}{\lg c} = 1 = \text{右边}.
+\]
+
+(2) 由换底公式：
+\[
+\log_{a^m} b^n = \frac{\lg b^n}{\lg a^m} = \frac{n\lg b}{m\lg a} = \frac{n}{m}\cdot\frac{\lg b}{\lg a} = \frac{n}{m}\log_a b.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第8题 ==========
+\begin{frame}[t]{第8题：GDP翻两番}
+\textbf{8.} 某地GDP的年平均增长率为 $6.5\%$，按此增长率，多少年后该地GDP会翻两番？
+\end{frame}
+
+\begin{frame}[t]{第8题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设经过 $x$ 年后GDP翻两番（即变为原来的 $4$ 倍），则：
+\[
+(1+6.5\%)^x = 4.
+\]
+即 $1.065^x = 4$，两边取常用对数：
+\[
+x = \log_{1.065} 4 = \frac{\lg 4}{\lg 1.065} \approx \frac{0.60206}{0.02735} \approx 22.0.
+\]
+所以大约经过 $\alert{22}$ 年后，该地GDP会翻两番。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第9题 ==========
+\begin{frame}[t]{第9题：每天进步与落后}
+\textbf{9.} 把 $(1+1\%)^{365}$ 看作每天"进步"率 $1\%$，一年后是 $1.01^{365}$；把 $(1-1\%)^{365}$ 看作每天"落后"率 $1\%$，一年后是 $0.99^{365}$。
+
+\vspace{0.5em}
+(1) 一年后"进步"的是"落后"的多少倍？
+
+(2) 大约经过多少天后"进步"的分别是"落后"的 $10$ 倍、$100$ 倍、$1000$ 倍？
+\end{frame}
+
+\begin{frame}[t]{第9题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 一年后比值：
+\[
+\frac{1.01^{365}}{0.99^{365}} = \left(\frac{1.01}{0.99}\right)^{365} \approx (1.0202)^{365} \approx 1481.
+\]
+即"进步"的约是"落后"的 $\alert{1481}$ 倍。
+
+(2) 设经过 $x$ 天后，$\left(\dfrac{1.01}{0.99}\right)^x = k$，则：
+\[
+x = \frac{\lg k}{\lg(1.01/0.99)} \approx \frac{\lg k}{0.0086}.
+\]
+
+\vspace{0.3em}
+$k=10$ 时，$x\approx \dfrac{1}{0.0086}\approx 116$ 天；
+
+$k=100$ 时，$x\approx \dfrac{2}{0.0086}\approx 233$ 天；
+
+$k=1000$ 时，$x\approx \dfrac{3}{0.0086}\approx 349$ 天。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第10题 ==========
+\begin{frame}[t]{第10题：酒驾血液酒精含量}
+\textbf{10.} 100\,mL 血液中酒精含量达到 $20\sim 79$\,mg 为酒后驾车，$80$\,mg 及以上为醉酒驾车。某驾驶员血液中酒精含量上升到了 $1$\,mg/mL。停止喝酒后，血液中酒精含量以每小时 $30\%$ 的速度减少。问他至少经过几个小时才能驾驶？
+\end{frame}
+
+\begin{frame}[t]{第10题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+初始酒精含量：$1$\,mg/mL $= 100$\,mg/100\,mL。
+
+每小时减少 $30\%$，即每小时剩余 $70\%$。设经过 $x$ 小时后可驾驶（含量 $\leq 20$\,mg/100\,mL）：
+\[
+100 \times 0.7^x \leq 20.
+\]
+即 $0.7^x \leq 0.2$，两边取对数：
+\[
+x \geq \log_{0.7} 0.2 = \frac{\ln 0.2}{\ln 0.7} \approx \frac{-1.609}{-0.357} \approx 4.5.
+\]
+所以他至少经过 $\alert{5}$ 个小时（向上取整）才能驾驶。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

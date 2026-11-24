@@ -1,0 +1,28 @@
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shadings}
+\definecolor{mycolor1}{RGB}{255,78,2}
+\definecolor{mycolor2}{RGB}{255,179,120}
+\begin{document}
+	\begin{tikzpicture}[scale=1]
+		% 定义参数：中心小正方形半边长 s，直角三角形短直角边 a
+		\def\s{0.5}
+		\def\a{1.5}
+	
+		
+		% 四个直角三角形，使用红色渐变填充，模拟原图立体感
+		% 右上三角
+		\fill[left color=mycolor1,right color=mycolor2] (-\s,\s) -- (\s+\a,\s) -- (-\s,\s+\a) -- cycle;
+		% 右下三角
+		\fill[top color=mycolor1,bottom color=mycolor2] (\s,\s) -- (\s+\a,\s) -- (\s,-\s-\a) -- cycle;
+		% 左下三角
+		\fill[right color=mycolor1,left color=mycolor2] (\s,-\s) -- (-\s-\a,-\s) -- (\s,-\s-\a) -- cycle;
+		% 左上三角
+		\fill[bottom color=mycolor1,top color=mycolor2] (-\s,-\s) -- (-\s-\a,-\s) -- (-\s,\s+\a) -- cycle;
+		
+		% 中心白色小正方形
+		\fill[white] (-\s,-\s) rectangle (\s,\s);
+		
+		
+	\end{tikzpicture}
+\end{document}

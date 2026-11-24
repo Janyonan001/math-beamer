@@ -1,0 +1,149 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[函数的概念练习]{3.1.1 函数的概念（练习）}
+\subtitle{定义域 \& 函数值 \& 同一函数}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：求函数的定义域}
+\textbf{1.} 求下列函数的定义域：
+
+\vspace{1em}
+(1) $\displaystyle f(x)=\frac{1}{4x+7}$；
+
+\vspace{1.5em}
+(2) $\displaystyle f(x)=\sqrt{1-x}+\sqrt{x+3}-1$。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 要使分式 $\dfrac{1}{4x+7}$ 有意义，分母不能为零：
+\[
+4x+7 \neq 0 \quad\Longrightarrow\quad x \neq -\frac{7}{4}.
+\]
+\textbf{定义域：} $\left(-\infty,\,-\dfrac{7}{4}\right)\cup\left(-\dfrac{7}{4},\,+\infty\right)$。
+
+\vspace{1em}
+(2) 要使两个根式都有意义，需同时满足：
+\[
+\begin{cases}
+1-x \ge 0,\\
+x+3 \ge 0,
+\end{cases}
+\quad\Longrightarrow\quad
+\begin{cases}
+x \le 1,\\
+x \ge -3.
+\end{cases}
+\]
+取交集得 $-3 \le x \le 1$。
+
+\textbf{定义域：} $[-3,\,1]$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：求函数值}
+\textbf{2.} 已知函数 $f(x)=3x^3+2x$，
+
+\vspace{1em}
+(1) 求 $f(2)$，$f(-2)$，$f(2)+f(-2)$ 的值；
+
+\vspace{1em}
+(2) 求 $f(a)$，$f(-a)$，$f(a)+f(-a)$ 的值。
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 分别代入：
+\[
+f(2)=3\cdot 2^3+2\cdot 2=24+4=28,
+\]
+\[
+f(-2)=3\cdot(-2)^3+2\cdot(-2)=-24-4=-28,
+\]
+\[
+f(2)+f(-2)=28+(-28)=0.
+\]
+
+\vspace{0.5em}
+(2) 一般情形：
+\[
+f(a)=3a^3+2a,
+\]
+\[
+f(-a)=3(-a)^3+2(-a)=-3a^3-2a=-(3a^3+2a),
+\]
+\[
+f(a)+f(-a)=(3a^3+2a)+(-3a^3-2a)=0.
+\]
+
+\vspace{0.3em}
+\small（这说明 $f(x)=3x^3+2x$ 是一个奇函数。）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：判断是否为同一函数}
+\textbf{3.} 判断下列各组中的函数是否为同一个函数，并说明理由：
+
+\vspace{1em}
+(1) 表示炮弹飞行高度 $h$ 与时间 $t$ 关系的函数 $h=130t-5t^2$ 和二次函数 $y=130x-5x^2$；
+
+\vspace{1em}
+(2) $f(x)=1$ 和 $g(x)=x^0$。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+两个函数是同一个函数，当且仅当 \textbf{定义域相同} 且 \textbf{对应关系完全一致}。
+
+\vspace{0.5em}
+(1) \alert{不是}同一个函数。
+
+炮弹飞行高度 $h=130t-5t^2$ 中，时间 $t$ 受实际意义限制：从发射到落地，$0 \le t \le 26$（令 $h=0$ 得 $t=0$ 或 $26$），故定义域为 $[0,26]$；而二次函数 $y=130x-5x^2$ 的定义域为 $\mathbf{R}$。两者定义域不同，故不是同一函数。
+
+\vspace{0.5em}
+(2) \alert{不是}同一个函数。
+
+$f(x)=1$ 的定义域为 $\mathbf{R}$；而 $g(x)=x^0=1$ 要求 $x\neq 0$，定义域为 $(-\infty,0)\cup(0,+\infty)$。两者定义域不同，故不是同一函数。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

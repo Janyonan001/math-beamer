@@ -1,0 +1,222 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[2.3 练习]{2.3 二次函数与一元二次方程、不等式（练习）}
+\subtitle{课后练习}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 练习1 ==========
+\begin{frame}[t]{练习 1：求下列不等式的解集}
+\textbf{1.} 求下列不等式的解集：
+\begin{enumerate}
+  \item $(x+2)(x-3)>0$；\qquad (2) $3x^{2}-7x\le 10$；
+  \item $-x^{2}+4x-4<0$；\qquad (4) $x^{2}-x+\dfrac{1}{4}<0$；
+  \item $-2x^{2}+x\le -3$；\qquad (6) $x^{2}-3x+4>0$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{练习 1 解答：(1)(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 方程 $(x+2)(x-3)=0$ 的两根为 $x_{1}=-2,\ x_{2}=3$。
+$\because$ 二次项系数为正，开口向上，
+$\therefore$ 不等式 $(x+2)(x-3)>0$ 的解集为
+\[
+\{x\mid x<-2,\ \text{或}\ x>3\}.
+\]
+\vspace{0.5em}
+\textbf{(2)} 移项得 $3x^{2}-7x-10\le 0$。
+方程 $3x^{2}-7x-10=0$ 的两根为
+\[
+x=\frac{7\pm\sqrt{49+120}}{6}=\frac{7\pm 13}{6},
+\]
+即 $x_{1}=-1,\ x_{2}=\dfrac{10}{3}$。开口向上，
+\[
+\therefore\quad \left\{x\mid -1\le x\le \frac{10}{3}\right\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{练习 1 解答：(3)(4)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(3)} 原不等式化为 $x^{2}-4x+4>0$，即 $(x-2)^{2}>0$。
+$\therefore$ 解集为 $\{x\mid x\neq 2\}$。
+\vspace{0.5em}
+\textbf{(4)} $x^{2}-x+\dfrac{1}{4}=\left(x-\dfrac{1}{2}\right)^{2}<0$。
+$\because$ 平方数非负，不存在 $x$ 使上式成立，
+$\therefore$ 解集为 $\varnothing$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{练习 1 解答：(5)(6)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(5)} 原不等式化为 $2x^{2}-x-3\ge 0$。
+方程 $2x^{2}-x-3=0$ 的两根为
+\[
+x=\frac{1\pm\sqrt{1+24}}{4}=\frac{1\pm 5}{4},
+\]
+即 $x_{1}=-1,\ x_{2}=\dfrac{3}{2}$。开口向上，
+\[
+\therefore\quad \left\{x\mid x\le -1,\ \text{或}\ x\ge \frac{3}{2}\right\}.
+\]
+\vspace{0.5em}
+\textbf{(6)} $\Delta = (-3)^{2}-4\times 1\times 4 = -7<0$，
+抛物线 $y=x^{2}-3x+4$ 开口向上且与 $x$ 轴无交点，函数值恒正。
+$\therefore$ 解集为 $\mathbf{R}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习2 ==========
+\begin{frame}[t]{练习 2：函数值的正负}
+\textbf{2.} 当自变量 $x$ 在什么范围取值时，下列函数的值等于 $0$？大于 $0$？小于 $0$？
+\begin{enumerate}
+  \item $y=3x^{2}-6x+2$；\qquad (2) $y=25-x^{2}$；
+  \item $y=x^{2}+6x+10$；\qquad (4) $y=-3x^{2}+12x-12$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{练习 2 解答：(1)(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 方程 $3x^{2}-6x+2=0$ 的根为
+$x=\dfrac{6\pm\sqrt{36-24}}{6}=1\pm\dfrac{\sqrt{3}}{3}$。
+开口向上：
+$\cdot\ y=0$：$x=1\pm\dfrac{\sqrt{3}}{3}$；
+$\cdot\ y>0$：$x<1-\dfrac{\sqrt{3}}{3}$ 或 $x>1+\dfrac{\sqrt{3}}{3}$；
+$\cdot\ y<0$：$1-\dfrac{\sqrt{3}}{3}<x<1+\dfrac{\sqrt{3}}{3}$。
+\vspace{0.5em}
+\textbf{(2)} 方程 $25-x^{2}=0$ 的根为 $x=\pm 5$。开口向下：
+$\cdot\ y=0$：$x=\pm 5$；
+$\cdot\ y>0$：$-5<x<5$；
+$\cdot\ y<0$：$x<-5$ 或 $x>5$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{练习 2 解答：(3)(4)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(3)} $\Delta = 36-40=-4<0$，开口向上，抛物线与 $x$ 轴无交点，函数值恒正。
+$\therefore\ y=0$：无；$y>0$：$x\in\mathbf{R}$；$y<0$：无。
+\vspace{0.5em}
+\textbf{(4)} $y=-3x^{2}+12x-12=-3(x-2)^{2}\le 0$。
+$\cdot\ y=0$：$x=2$；
+$\cdot\ y>0$：无；
+$\cdot\ y<0$：$x\neq 2$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习（应用）1 ==========
+\begin{frame}[t]{练习（应用）1：二次根式有意义的条件}
+\textbf{1.} $x$ 是什么实数时，$\sqrt{x^{2}+x-12}$ 有意义？
+\end{frame}
+
+\begin{frame}[t]{练习（应用）1 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+要使 $\sqrt{x^{2}+x-12}$ 有意义，须
+\[
+x^{2}+x-12\ge 0.
+\]
+方程 $x^{2}+x-12=0$ 即 $(x+4)(x-3)=0$，两根为 $x_{1}=-4,\ x_{2}=3$。
+开口向上，
+\[
+\therefore\quad \{x\mid x\le -4,\ \text{或}\ x\ge 3\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习（应用）2 ==========
+\begin{frame}[t]{练习（应用）2：矩形花卉带}
+\textbf{2.} 如图，在长为 $8\,\text{m}$，宽为 $6\,\text{m}$ 的矩形地面的四周种植花卉，中间种植草坪。如果要求花卉带的宽度相同，且草坪的面积不超过总面积的一半，那么花卉带的宽度应为多少米？
+
+\vspace{1em}
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+  \draw[thick,fill=pink!40] (0,0) rectangle (8,6);
+  \draw[thick,fill=green!30] (1.5,1) rectangle (6.5,5);
+  \node at (4,3) {草坪};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{练习（应用）2 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设花卉带宽度为 $x\,\text{m}$，则中间草坪长 $(8-2x)\,\text{m}$，宽 $(6-2x)\,\text{m}$。
+总面积为 $8\times 6=48\,\text{m}^{2}$，由题意：
+\[
+(8-2x)(6-2x)\le \frac{1}{2}\times 48=24.
+\]
+展开整理：
+\[
+48-28x+4x^{2}\le 24
+\;\Longrightarrow\;
+x^{2}-7x+6\le 0
+\;\Longrightarrow\;
+(x-1)(x-6)\le 0.
+\]
+解得 $1\le x\le 6$。
+又由实际意义须 $6-2x>0$，即 $x<3$。
+\vspace{0.5em}
+$\therefore$ 花卉带宽度应满足 $\alert{1\,\text{m}\le x<3\,\text{m}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习（应用）3 ==========
+\begin{frame}[t]{练习（应用）3：削笔器定价}
+\textbf{3.} 某网店销售一批新款削笔器，每个削笔器的最低售价为 $15$ 元。若按最低售价销售，每天能卖出 $30$ 个；若一个削笔器的售价每提高 $1$ 元，日销售量将减少 $2$ 个。为了使这批削笔器每天获得 $400$ 元以上的销售收入，应怎样制定这批削笔器的销售价格？
+\end{frame}
+
+\begin{frame}[t]{练习（应用）3 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设售价比最低售价提高 $x$ 元（$x\ge 0$），则单价为 $(15+x)$ 元，日销售量为 $(30-2x)$ 个。
+由题意：
+\[
+(15+x)(30-2x)>400.
+\]
+展开：
+\[
+450-30x+30x-2x^{2}>400
+\;\Longrightarrow\;
+450-2x^{2}>400
+\;\Longrightarrow\;
+x^{2}<25.
+\]
+$\therefore\ -5<x<5$。又 $x\ge 0$，且 $30-2x>0$，故 $0\le x<5$。
+\vspace{0.5em}
+即售价 $p=15+x\in [15,20)$（元）。
+$\therefore$ 应将售价定在 \alert{$15$ 元到 $20$ 元之间（不含 $20$ 元）}。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

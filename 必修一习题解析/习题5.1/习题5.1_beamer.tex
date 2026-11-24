@@ -1,0 +1,381 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题5.1]{习题5.1 任意角和弧度制}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：找终边相同的角并判断象限}
+\textbf{1.} 在 $0^\circ\sim 360^\circ$ 范围内，找出与下列各角终边相同的角，并指出它们是哪个象限的角：
+\begin{enumerate}
+  \item $-265^\circ$；
+  \item $-1000^\circ$；
+  \item $-843^\circ 10'$；
+  \item $3900^\circ$。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $-265^\circ + 360^\circ = 95^\circ$，是\alert{第二象限角}。
+
+(2) $-1000^\circ + 3\times 360^\circ = 80^\circ$，是\alert{第一象限角}。
+
+(3) $-843^\circ 10' + 3\times 360^\circ = -843^\circ 10' + 1080^\circ = 236^\circ 50'$，是\alert{第三象限角}。
+
+(4) $3900^\circ - 10\times 360^\circ = 300^\circ$，是\alert{第四象限角}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：终边相同的角的集合}
+\textbf{2.} 写出与下列各角终边相同的角的集合，并找出集合中适合不等式 $-360^\circ\le\beta<360^\circ$ 的元素 $\beta$：
+\begin{multicols}{2}
+\begin{enumerate}
+  \item $60^\circ$；
+  \item $-75^\circ$；
+  \item $-824^\circ 30'$；
+  \item $475^\circ$；
+  \item $90^\circ$；
+  \item $270^\circ$；
+  \item $180^\circ$；
+  \item $0^\circ$。
+\end{enumerate}
+\end{multicols}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答：(1)(2)(3)(4)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\small
+(1) $S=\{\beta\mid\beta=60^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-300^\circ,60^\circ\}$。
+
+(2) $S=\{\beta\mid\beta=-75^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-75^\circ,285^\circ\}$。
+
+(3) $-824^\circ 30' + 3\times 360^\circ = 255^\circ 30'$，
+$S=\{\beta\mid\beta=255^\circ 30'+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-104^\circ 30',255^\circ 30'\}$。
+
+(4) $475^\circ - 360^\circ = 115^\circ$，
+$S=\{\beta\mid\beta=115^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-245^\circ,115^\circ\}$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答：(5)(6)(7)(8)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(5) $S=\{\beta\mid\beta=90^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-270^\circ,90^\circ\}$。
+
+(6) $S=\{\beta\mid\beta=270^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-90^\circ,270^\circ\}$。
+
+(7) $S=\{\beta\mid\beta=180^\circ+k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-180^\circ,180^\circ\}$。
+
+(8) $S=\{\beta\mid\beta=k\cdot 360^\circ,k\in\mathbf{Z}\}$；
+$\beta\in\{-360^\circ,0^\circ\}$（注意 $\beta<360^\circ$，故不含 $360^\circ$）。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：象限角的集合}
+\textbf{3.} 分别用角度和弧度写出第一、二、三、四象限角的集合。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\small
+\begin{tabular}{lll}
+\toprule
+象限 & 角度制 & 弧度制 \\
+\midrule
+第一象限 & $\{\alpha\mid k\cdot360^\circ<\alpha<90^\circ+k\cdot360^\circ\}$ & $\{\alpha\mid 2k\pi<\alpha<\frac{\pi}{2}+2k\pi\}$ \\
+第二象限 & $\{\alpha\mid 90^\circ+k\cdot360^\circ<\alpha<180^\circ+k\cdot360^\circ\}$ & $\{\alpha\mid \frac{\pi}{2}+2k\pi<\alpha<\pi+2k\pi\}$ \\
+第三象限 & $\{\alpha\mid 180^\circ+k\cdot360^\circ<\alpha<270^\circ+k\cdot360^\circ\}$ & $\{\alpha\mid \pi+2k\pi<\alpha<\frac{3\pi}{2}+2k\pi\}$ \\
+第四象限 & $\{\alpha\mid 270^\circ+k\cdot360^\circ<\alpha<360^\circ+k\cdot360^\circ\}$ & $\{\alpha\mid \frac{3\pi}{2}+2k\pi<\alpha<2\pi+2k\pi\}$ \\
+\bottomrule
+\end{tabular}
+\vspace{0.5em}
+其中 $k\in\mathbf{Z}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：弦与圆心角}
+\textbf{4.} 一条弦的长等于半径，这条弦所对的圆心角等于 $1$ 弧度吗？为什么？
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\alert{不等于} $1$ 弧度。
+
+\vspace{0.5em}
+设圆半径为 $R$，弦长也为 $R$，则由两条半径与弦构成一个\alert{等边三角形}，所以圆心角为 $60^\circ$，即 $\dfrac{\pi}{3}\approx 1.047$ rad，而不是 $1$ rad。
+
+\vspace{0.5em}
+\small（$1$ 弧度的圆心角所对的弧长等于半径，但所对的弦长略小于半径。）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：角度化弧度}
+\textbf{5.} 把下列角度化成弧度：
+\begin{enumerate}
+  \item $36^\circ$；
+  \item $-150^\circ$；
+  \item $1095^\circ$；
+  \item $1440^\circ$。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+由 $1^\circ=\dfrac{\pi}{180}$ rad：
+
+(1) $36^\circ = 36\times\dfrac{\pi}{180} = \alert{\dfrac{\pi}{5}}$ rad。
+
+(2) $-150^\circ = -150\times\dfrac{\pi}{180} = \alert{-\dfrac{5\pi}{6}}$ rad。
+
+(3) $1095^\circ = 1095\times\dfrac{\pi}{180} = \alert{\dfrac{73\pi}{12}}$ rad。
+
+(4) $1440^\circ = 1440\times\dfrac{\pi}{180} = \alert{8\pi}$ rad。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题：弧度化角度}
+\textbf{6.} 把下列弧度化成角度（第(3)(4)题精确到 $0.01^\circ$）：
+\begin{enumerate}
+  \item $-\dfrac{7\pi}{6}$；
+  \item $-\dfrac{10\pi}{3}$；
+  \item $1.4$；
+  \item $\dfrac{2}{3}$。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+由 $\pi$ rad $=180^\circ$，$1$ rad $=\left(\dfrac{180}{\pi}\right)^\circ$：
+
+(1) $-\dfrac{7\pi}{6} = -\dfrac{7}{6}\times 180^\circ = \alert{-210^\circ}$。
+
+(2) $-\dfrac{10\pi}{3} = -\dfrac{10}{3}\times 180^\circ = \alert{-600^\circ}$。
+
+(3) $1.4 = 1.4\times\dfrac{180^\circ}{\pi} \approx \alert{80.21^\circ}$。
+
+(4) $\dfrac{2}{3} = \dfrac{2}{3}\times\dfrac{180^\circ}{\pi} \approx \alert{38.20^\circ}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第7题 ==========
+\begin{frame}[t]{第7题：选择题}
+\textbf{7.} 选择题：
+
+(1) 已知 $\alpha$ 是锐角，那么 $2\alpha$ 是（\quad）。
+\begin{itemize}
+  \item[(A)] 第一象限角
+  \item[(B)] 第二象限角
+  \item[(C)] 小于 $180^\circ$ 的正角
+  \item[(D)] 第一或第二象限角
+\end{itemize}
+
+(2) 已知 $\alpha$ 是第一象限角，那么 $\dfrac{\alpha}{2}$ 是（\quad）。
+\begin{itemize}
+  \item[(A)] 第一象限角
+  \item[(B)] 第二象限角
+  \item[(C)] 第一或第二象限角
+  \item[(D)] 第一或第三象限角
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{第7题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\alpha$ 是锐角，即 $0^\circ<\alpha<90^\circ$，所以 $0^\circ<2\alpha<180^\circ$。
+当 $2\alpha=90^\circ$ 时它是直角（不属于任何象限），故排除 (A)(B)(D)。
+选 \alert{(C)}。
+
+\vspace{0.5em}
+(2) $\alpha$ 是第一象限角，即 $k\cdot 360^\circ<\alpha<90^\circ+k\cdot 360^\circ$，
+\[
+k\cdot 180^\circ<\frac{\alpha}{2}<45^\circ+k\cdot 180^\circ.
+\]
+当 $k$ 为偶数时，$\dfrac{\alpha}{2}$ 在第一象限；当 $k$ 为奇数时，$\dfrac{\alpha}{2}$ 在第三象限。
+选 \alert{(D)}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第8题 ==========
+\begin{frame}[t]{第8题：求扇形圆心角}
+\textbf{8.} 要在半径 $OA=100\,\text{cm}$ 的圆形金属板上截取一块扇形板，使其弧 $AB$ 的长为 $112\,\text{cm}$，那么圆心角 $\angle AOB$ 是多少度（可用计算工具，精确到 $1^\circ$）？
+\end{frame}
+
+\begin{frame}[t]{第8题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+由弧度制弧长公式 $l=\alpha R$：
+\[
+\alpha = \frac{l}{R} = \frac{112}{100} = 1.12\ \text{rad}.
+\]
+换算为角度：
+\[
+\alpha = 1.12\times\frac{180^\circ}{\pi}\approx 64.1^\circ.
+\]
+所以圆心角 $\angle AOB\approx\alert{64^\circ}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第9题 ==========
+\begin{frame}[t]{第9题：求圆的半径}
+\textbf{9.} 已知弧长 $50\,\text{cm}$ 的弧所对圆心角为 $200^\circ$，求这条弧所在的圆的半径（可用计算工具，精确到 $1\,\text{cm}$）。
+\end{frame}
+
+\begin{frame}[t]{第9题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+先把角度化为弧度：
+\[
+200^\circ = 200\times\frac{\pi}{180} = \frac{10\pi}{9}\ \text{rad}.
+\]
+由 $l=\alpha R$，得
+\[
+R = \frac{l}{\alpha} = \frac{50}{10\pi/9} = \frac{45}{\pi}\approx 14.3\ \text{cm}.
+\]
+所以圆的半径约为 $\alert{14\,\text{cm}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第10题 ==========
+\begin{frame}[t]{第10题：扇子的圆心角}
+\textbf{10.} 每人准备一把扇形的扇子，然后与本小组其他同学的对比，从中选出一把展开后看上去形状较为美观的扇子，并用计算工具算出它的面积 $S_1$。
+\begin{enumerate}
+  \item 假设这把扇子是从一个圆面中剪下的，而剩余部分的面积为 $S_2$，求 $S_1$ 与 $S_2$ 的比值；
+  \item 要使 $S_1$ 与 $S_2$ 的比值为 $0.618$，则扇子的圆心角应为几度（精确到 $1^\circ$）？
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第10题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设扇子所在圆半径为 $R$，圆心角为 $\theta$（弧度）。
+
+(1) 扇形面积 $S_1=\dfrac{1}{2}\theta R^2$，剩余部分圆心角为 $2\pi-\theta$，
+$S_2=\dfrac{1}{2}(2\pi-\theta)R^2$，所以
+\[
+\frac{S_1}{S_2} = \frac{\theta}{2\pi-\theta}.
+\]
+
+(2) 令 $\dfrac{\theta}{2\pi-\theta}=0.618$，解得
+\[
+\theta = \frac{0.618}{1+0.618}\cdot 2\pi = \frac{0.618}{1.618}\cdot 2\pi \approx 0.38197\times 2\pi \approx 2.4\ \text{rad}.
+\]
+换算为角度：$\theta\approx 2.4\times\dfrac{180^\circ}{\pi}\approx \alert{137^\circ}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第11题 ==========
+\begin{frame}[t]{第11题：钟表的时针与分针}
+\textbf{11.}
+\begin{enumerate}
+  \item 时间经过 $4\,\text{h}$（时），时针、分针各转了多少度？各等于多少弧度？
+  \item 有人说，钟的时针和分针一天内会重合 $24$ 次。你认为这种说法是否正确？请说明理由。（提示：从午夜零时算起，假设分针走了 $t$ min 会与时针重合，一天内分针和时针会重合 $n$ 次，利用分针与时针转动的速度，建立 $t$ 关于 $n$ 的函数解析式，并求解。）
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第11题 解答：(1)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(1)}]
+时针 $12$ 小时转 $-360^\circ$（顺时针），即每小时转 $-30^\circ$。
+$4$ 小时转：
+\[
+4\times(-30^\circ) = -120^\circ = -\frac{2\pi}{3}\ \text{rad}.
+\]
+
+分针 $1$ 小时转 $-360^\circ$，$4$ 小时转：
+\[
+4\times(-360^\circ) = -1440^\circ = -8\pi\ \text{rad}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第11题 解答：(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(2)}]
+这种说法\alert{不正确}。
+
+\vspace{0.3em}
+分针速度：$6^\circ/\text{min}$（即 $360^\circ/60$）；
+时针速度：$0.5^\circ/\text{min}$（即 $30^\circ/60$）。
+
+\vspace{0.3em}
+设第 $n$ 次重合（从 0:00 起算，$n=0,1,2,\dots$），分针比时针多转 $n$ 圈：
+\[
+6t - 0.5t = 360n \quad\Longrightarrow\quad t = \frac{720n}{11}\ \text{min}.
+\]
+一天共 $24\times 60=1440$ min，要求 $t<1440$：
+\[
+\frac{720n}{11}<1440 \quad\Longrightarrow\quad n<22.
+\]
+$n=0,1,\dots,21$ 共 $22$ 次（$n=0$ 为 0:00，$n=22$ 为次日 0:00，与 $n=0$ 重复）。
+故一天内重合 $\alert{22}$ 次，不是 $24$ 次。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第12题 ==========
+\begin{frame}[t]{第12题：相互啮合的齿轮}
+\textbf{12.} 已知相互啮合的两个齿轮，大轮有 $48$ 齿，小轮有 $20$ 齿。
+\begin{enumerate}
+  \item 当大轮转动一周时，求小轮转动的角度；
+  \item 如果大轮的转速为 $180\,\text{r/min}$（转/分），小轮的半径为 $10.5\,\text{cm}$，那么小轮周上一点每 $1\,\text{s}$ 转过的弧长是多少？
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第12题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 相互啮合的齿轮单位时间内转过的齿数相等。大轮转一周（$48$ 齿），小轮需转 $\dfrac{48}{20}=2.4$ 周：
+\[
+2.4\times 360^\circ = \alert{864^\circ}.
+\]
+
+(2) 大轮转速 $180\,\text{r/min}$，小轮转速为 $180\times\dfrac{48}{20}=432\,\text{r/min}$，
+即每秒转 $\dfrac{432}{60}=7.2$ 周。
+小轮周上一点每秒转过的弧长：
+\[
+l = 7.2\times 2\pi R = 7.2\times 2\pi\times 10.5 = 151.2\pi \approx \alert{475\,\text{cm}}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

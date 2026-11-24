@@ -1,0 +1,205 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题 2.3]{习题 2.3}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：解一元二次不等式}
+\textbf{1.} 求下列不等式的解集：
+\begin{enumerate}
+  \item $13-4x^{2}>0$；\qquad (2) $(x-3)(x-7)<0$；
+  \item $x^{2}-3x-10>0$；\qquad (4) $-3x^{2}+5x-4>0$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第1题 解答：(1)(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} $13-4x^{2}>0 \Longleftrightarrow x^{2}<\dfrac{13}{4}$，
+\[
+\therefore\quad \left\{x\mid -\frac{\sqrt{13}}{2}<x<\frac{\sqrt{13}}{2}\right\}.
+\]
+\vspace{0.5em}
+\textbf{(2)} 方程 $(x-3)(x-7)=0$ 的根为 $x_{1}=3,\ x_{2}=7$，开口向上，
+\[
+\therefore\quad \{x\mid 3<x<7\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第1题 解答：(3)(4)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(3)} $x^{2}-3x-10=(x-5)(x+2)>0$，两根为 $-2,\ 5$，开口向上，
+\[
+\therefore\quad \{x\mid x<-2,\ \text{或}\ x>5\}.
+\]
+\vspace{0.5em}
+\textbf{(4)} 化为 $3x^{2}-5x+4<0$。
+$\Delta=25-48=-23<0$，开口向上，抛物线与 $x$ 轴无交点，函数值恒正，
+$\therefore$ 解集为 $\varnothing$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：二次根式有意义}
+\textbf{2.} $x$ 是什么实数时，下列各式有意义？
+\begin{enumerate}
+  \item $\sqrt{x^{2}-4x+9}$；\qquad (2) $\sqrt{-2x^{2}+12x-18}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 须 $x^{2}-4x+9\ge 0$。
+$\Delta=16-36=-20<0$，开口向上，恒正，
+$\therefore\ x\in\mathbf{R}$。
+\vspace{0.5em}
+\textbf{(2)} 须 $-2x^{2}+12x-18\ge 0$，即
+\[
+2x^{2}-12x+18\le 0
+\Longleftrightarrow x^{2}-6x+9\le 0
+\Longleftrightarrow (x-3)^{2}\le 0.
+\]
+$\because$ 平方非负，仅当 $x=3$ 时成立。
+$\therefore\ x=3$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：集合运算}
+\textbf{3.} 已知 $M=\{x\mid 4x^{2}-4x-15>0\}$，$N=\{x\mid x^{2}-5x-6>0\}$，求 $M\cap N$，$M\cup N$。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+解 $4x^{2}-4x-15=0$：$x=\dfrac{4\pm\sqrt{16+240}}{8}=\dfrac{4\pm 16}{8}$，
+即 $x_{1}=-\dfrac{3}{2},\ x_{2}=\dfrac{5}{2}$。
+$\therefore\ M=\left\{x\mid x<-\dfrac{3}{2},\ \text{或}\ x>\dfrac{5}{2}\right\}$。
+\vspace{0.3em}
+解 $x^{2}-5x-6=(x-6)(x+1)>0$，得 $N=\{x\mid x<-1,\ \text{或}\ x>6\}$。
+\vspace{0.5em}
+\textbf{交集：}
+\[
+M\cap N=\left\{x\mid x<-\frac{3}{2},\ \text{或}\ x>6\right\}.
+\]
+\textbf{并集：}
+\[
+M\cup N=\left\{x\mid x<-1,\ \text{或}\ x>\frac{5}{2}\right\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：竖直上抛排球}
+\textbf{4.} 一名同学以初速度 $v_{0}=12\,\text{m/s}$ 竖直上抛一排球，排球能够在抛出点 $2\,\text{m}$ 以上的位置最多停留多长时间（精确到 $0.01\,\text{s}$）？
+
+\vspace{0.5em}
+\small（不计空气阻力，$h=v_{0}t-\dfrac{1}{2}gt^{2}$，$g\approx 10\,\text{m/s}^{2}$）
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+$h=12t-5t^{2}$。要求 $h\ge 2$：
+\[
+12t-5t^{2}\ge 2
+\Longleftrightarrow 5t^{2}-12t+2\le 0.
+\]
+方程 $5t^{2}-12t+2=0$ 的两根为
+\[
+t=\frac{12\pm\sqrt{144-40}}{10}=\frac{6\pm\sqrt{26}}{5}.
+\]
+排球在 $2\,\text{m}$ 以上停留的时间为两根之差：
+\[
+\Delta t=\frac{6+\sqrt{26}}{5}-\frac{6-\sqrt{26}}{5}
+=\frac{2\sqrt{26}}{5}\approx \frac{2\times 5.099}{5}\approx 2.04\,\text{s}.
+\]
+$\therefore$ 最多停留 \alert{$2.04\,\text{s}$}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：集合的并集}
+\textbf{5.} 已知集合 $A=\{x\mid x^{2}-16<0\}$，$B=\{x\mid x^{2}-4x+3>0\}$，求 $A\cup B$。
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+$x^{2}-16<0 \Longleftrightarrow -4<x<4$，$\therefore\ A=(-4,4)$。
+\vspace{0.3em}
+$x^{2}-4x+3=(x-1)(x-3)>0$，得 $x<1$ 或 $x>3$，
+$\therefore\ B=(-\infty,1)\cup(3,+\infty)$。
+\vspace{0.5em}
+在数轴上合并：$B$ 已覆盖 $x<1$ 与 $x>3$ 的全部区域，$A=(-4,4)$ 补全了 $[1,3]$ 这一段，而 $x\le -4$ 部分也由 $B$ 中 $x<1$ 覆盖。
+\[
+\therefore\quad A\cup B=\mathbf{R}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题：热带风暴影响}
+\textbf{6.} 如图，据气象部门预报，在距离某码头南偏东 $45^{\circ}$ 方向 $600\,\text{km}$ 处的热带风暴中心正以 $20\,\text{km/h}$ 的速度向正北方向移动，距风暴中心 $450\,\text{km}$ 以内的地区都将受到影响。据以上预报估计，从现在起多长时间后，该码头将受到热带风暴的影响，影响时间大约为多长（精确到 $0.1\,\text{h}$）？
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设码头为原点，东为 $x$ 轴正方向，北为 $y$ 轴正方向。
+风暴中心初始位置：东向 $600\sin45^{\circ}=300\sqrt{2}$，南向 $300\sqrt{2}$，即 $(300\sqrt{2},\,-300\sqrt{2})$。
+$t$ 小时后位置为 $(300\sqrt{2},\,-300\sqrt{2}+20t)$。
+码头受影响即中心距原点 $\le 450\,\text{km}$：
+\[
+(300\sqrt{2})^{2}+(20t-300\sqrt{2})^{2}\le 450^{2}.
+\]
+\[
+180000+(20t-300\sqrt{2})^{2}\le 202500
+\;\Longrightarrow\;
+(20t-300\sqrt{2})^{2}\le 22500.
+\]
+\[
+|20t-300\sqrt{2}|\le 150
+\;\Longrightarrow\;
+\frac{300\sqrt{2}-150}{20}\le t\le \frac{300\sqrt{2}+150}{20}.
+\]
+$300\sqrt{2}\approx 424.26$，得 $t_{1}\approx 13.7\,\text{h}$，$t_{2}\approx 28.7\,\text{h}$。
+\vspace{0.3em}
+$\therefore$ 约 \alert{$13.7\,\text{h}$} 后码头开始受影响，影响持续约 $t_{2}-t_{1}=15.0\,\text{h}$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

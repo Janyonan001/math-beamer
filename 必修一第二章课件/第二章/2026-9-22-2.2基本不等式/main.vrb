@@ -1,0 +1,10 @@
+\frametitle{Hello \LaTeX {} World!}
+\begin{columns}
+\begin{column}{5cm}
+\vspace{-2cm}
+\lstinputlisting{file1.tex}
+\end{column}
+\begin{column}{5cm}
+Hello \LaTeX{} World!
+\end{column}
+\end{columns}

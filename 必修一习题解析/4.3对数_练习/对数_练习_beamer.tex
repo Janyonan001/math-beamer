@@ -1,0 +1,259 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[对数练习]{4.3 对数（练习）}
+\subtitle{对数的概念 \& 对数的运算}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 4.3.1 练习 第1题 ==========
+\begin{frame}[t]{练习1：指数式与对数式互化}
+\textbf{1.} 把下列指数式写成对数式，对数式写成指数式：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $2^3 = 8$；
+  \item $e^{\sqrt{3}} = m$；
+  \item $27^{-\frac{1}{3}} = \dfrac{1}{3}$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{3}
+  \item $\log_3 9 = 2$；
+  \item $\lg n = 2.3$；
+  \item $\log_3 \dfrac{1}{81} = -4$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{练习1 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+根据对数定义：$a^x = N \iff x = \log_a N$（$a>0$，$a\neq 1$）。
+
+\vspace{0.3em}
+(1) $2^3 = 8 \;\Longrightarrow\; \log_2 8 = 3$；
+
+(2) $e^{\sqrt{3}} = m \;\Longrightarrow\; \ln m = \sqrt{3}$；
+
+(3) $27^{-\frac{1}{3}} = \dfrac{1}{3} \;\Longrightarrow\; \log_{27}\dfrac{1}{3} = -\dfrac{1}{3}$；
+
+(4) $\log_3 9 = 2 \;\Longrightarrow\; 3^2 = 9$；
+
+(5) $\lg n = 2.3 \;\Longrightarrow\; 10^{2.3} = n$；
+
+(6) $\log_3\dfrac{1}{81} = -4 \;\Longrightarrow\; 3^{-4} = \dfrac{1}{81}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习 第2题 ==========
+\begin{frame}[t]{练习2：求下列各式的值}
+\textbf{2.} 求下列各式的值：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\log_5 25$；
+  \item $\log_{0.4} 1$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{2}
+  \item $\ln \dfrac{1}{e}$；
+  \item $\lg 0.001$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{练习2 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 因为 $5^2 = 25$，所以 $\alert{\log_5 25 = 2}$。
+
+\vspace{0.3em}
+(2) 因为 $a^0 = 1$（$a>0$，$a\neq 1$），所以 $\alert{\log_{0.4} 1 = 0}$。
+
+\vspace{0.3em}
+(3) $\ln\dfrac{1}{e} = \ln e^{-1} = \alert{-1}$。
+
+\vspace{0.3em}
+(4) $\lg 0.001 = \lg 10^{-3} = \alert{-3}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习 第3题 ==========
+\begin{frame}[t]{练习3：求下列各式中 $x$ 的值}
+\textbf{3.} 求下列各式中 $x$ 的值：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\log_{\frac{1}{3}} x = -3$；
+  \item $\log_x 49 = 4$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{2}
+  \item $\lg 0.00001 = x$；
+  \item $\ln\sqrt{e} = -x$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{练习3 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 由 $\log_{\frac{1}{3}} x = -3$，得 $x = \left(\dfrac{1}{3}\right)^{-3} = 3^3 = \alert{27}$。
+
+(2) 由 $\log_x 49 = 4$，得 $x^4 = 49$，又 $x>0$，所以 $x = 49^{\frac{1}{4}} = (7^2)^{\frac{1}{4}} = \alert{\sqrt{7}}$。
+
+(3) 由 $\lg 0.00001 = x$，得 $10^x = 10^{-5}$，所以 $x = \alert{-5}$。
+
+(4) 由 $\ln\sqrt{e} = -x$，得 $\ln e^{\frac{1}{2}} = \dfrac{1}{2} = -x$，所以 $x = \alert{-\dfrac{1}{2}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 4.3.2 练习 第1题 ==========
+\begin{frame}[t]{运算练习1：求下列各式的值}
+\textbf{1.} 求下列各式的值：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\log_3(27 \times 9^2)$；
+  \item $\lg 5 + \lg 2$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{2}
+  \item $\ln 3 + \ln\dfrac{1}{3}$；
+  \item $\log_3 5 - \log_3 15$。
+\end{enumerate}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+\small\textbf{对数运算性质：}$\log_a(MN)=\log_a M+\log_a N$，$\log_a\dfrac{M}{N}=\log_a M-\log_a N$，$\log_a M^n=n\log_a M$。
+\end{frame}
+
+\begin{frame}[t]{运算练习1 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\log_3(27\times 9^2) = \log_3 27 + \log_3 9^2 = 3 + 2\times 2 = \alert{7}$。
+
+(2) $\lg 5 + \lg 2 = \lg(5\times 2) = \lg 10 = \alert{1}$。
+
+(3) $\ln 3 + \ln\dfrac{1}{3} = \ln\left(3\times\dfrac{1}{3}\right) = \ln 1 = \alert{0}$。
+
+(4) $\log_3 5 - \log_3 15 = \log_3\dfrac{5}{15} = \log_3\dfrac{1}{3} = \alert{-1}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 运算练习 第2题 ==========
+\begin{frame}[t]{运算练习2：用 $\lg x, \lg y, \lg z$ 表示}
+\textbf{2.} 用 $\lg x$，$\lg y$，$\lg z$ 表示下列各式：
+
+\vspace{0.5em}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+  \item $\lg(xyz)$；
+  \item $\lg\dfrac{xy^2}{z}$；
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}\setcounter{enumi}{2}
+  \item $\lg\dfrac{xy^3}{\sqrt{z}}$；
+  \item $\lg\dfrac{\sqrt{x}}{y^2 z}$。
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{运算练习2 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) $\lg(xyz) = \alert{\lg x + \lg y + \lg z}$。
+
+(2) $\lg\dfrac{xy^2}{z} = \lg x + \lg y^2 - \lg z = \alert{\lg x + 2\lg y - \lg z}$。
+
+(3) $\lg\dfrac{xy^3}{\sqrt{z}} = \lg x + \lg y^3 - \lg z^{\frac{1}{2}} = \alert{\lg x + 3\lg y - \dfrac{1}{2}\lg z}$。
+
+(4) $\lg\dfrac{\sqrt{x}}{y^2 z} = \lg x^{\frac{1}{2}} - \lg y^2 - \lg z = \alert{\dfrac{1}{2}\lg x - 2\lg y - \lg z}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 运算练习 第3题 ==========
+\begin{frame}[t]{运算练习3：化简下列各式}
+\textbf{3.} 化简下列各式：
+
+\vspace{0.5em}
+\begin{enumerate}
+  \item $\log_2 3 \times \log_3 4 \times \log_4 5 \times \log_5 2$；
+  \vspace{0.5em}
+  \item $2(\log_4 3 + \log_8 3)(\log_3 2 + \log_9 2)$。
+\end{enumerate}
+
+\vspace{1em}
+\small\textbf{换底公式：}$\log_a b = \dfrac{\log_c b}{\log_c a}$（$a>0,a\neq 1;b>0;c>0,c\neq 1$）。
+\end{frame}
+
+\begin{frame}[t]{运算练习3 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 由换底公式：
+\[
+\text{原式} = \frac{\lg 3}{\lg 2}\cdot\frac{\lg 4}{\lg 3}\cdot\frac{\lg 5}{\lg 4}\cdot\frac{\lg 2}{\lg 5} = \alert{1}.
+\]
+
+(2) $\log_4 3 = \dfrac{\lg 3}{2\lg 2} = \dfrac{1}{2}\log_2 3$，$\log_8 3 = \dfrac{1}{3}\log_2 3$；
+
+\hspace{2em}$\log_9 2 = \dfrac{1}{2}\log_3 2$。
+
+\[
+\text{原式} = 2\left(\frac{1}{2}\log_2 3 + \frac{1}{3}\log_2 3\right)\left(\log_3 2 + \frac{1}{2}\log_3 2\right)
+\]
+\[
+= 2\cdot\frac{5}{6}\log_2 3\cdot\frac{3}{2}\log_3 2 = 2\cdot\frac{5}{6}\cdot\frac{3}{2}\cdot 1 = \alert{\frac{5}{2}}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

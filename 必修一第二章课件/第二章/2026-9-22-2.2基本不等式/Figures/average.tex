@@ -1,0 +1,41 @@
+% !TeX TS-program = lualatex
+
+\documentclass[tikz]{standalone}
+\usepackage{tkz-euclide}
+\usepackage{tkz-elements}
+
+\begin{document}
+\directlua{
+z.A = point(0,0)
+z.B = point(3,0)
+z.O = tkz.midpoint(z.A,z.B)
+z.C = z.O:east(0.5)
+C.OA = circle(z.O,z.A)
+L.AB = line(z.A,z.B)
+z.C = L.AB:point(0.7)
+z.D = L.AB:orthogonal_at(z.C)
+L.CD = line(z.C,z.D)
+z.D ,z.E = intersection(L.CD,C.OA)
+
+}
+\begin{tikzpicture}[scale=1.35]
+	\tkzGetNodes
+	\tkzDrawCircle[thick,black](O,A)
+	\tkzDrawSegments[thick](A,B)
+	\tkzDrawSegments[thick,cyan](A,D B,D)
+	\tkzMarkRightAngle[size=0.05](B,C,D)
+	\tkzDrawSegments[thick,red](D,E)
+	\tkzLabelPoints[left](A)
+	\tkzLabelPoints[right](B)
+	\tkzLabelPoints[above](D)
+	\tkzLabelPoints[below](E)
+	\tkzLabelPoints[below left=-3pt](C)
+	\tkzLabelSegment[below](A,C){$a$}
+	\tkzLabelSegment[below](C,B){$b$}
+	\tkzDrawSegments[dashed](O,D)
+	\tkzLabelSegment[right](C,D){$\sqrt{ab}$}
+	\tkzLabelSegment[left](O,D){$\frac{a+b}{2}$}
+	
+\end{tikzpicture}
+\end{document}
+	

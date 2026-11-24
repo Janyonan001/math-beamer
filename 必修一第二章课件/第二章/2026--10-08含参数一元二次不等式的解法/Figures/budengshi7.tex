@@ -1,0 +1,109 @@
+\documentclass[tikz,10pt,border=2pt]{standalone}
+
+% ===== 中文支持 =====
+\usepackage[UTF8]{ctex}
+
+% ===== 页面设置 =====
+
+% ===== 绘图 =====
+\usepackage{tikz}
+\usetikzlibrary{trees,shapes,positioning,arrows.meta,calc}
+
+% ===== 数学公式 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 超链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\title{\bfseries 一元二次不等式求解流程图}
+\author{}
+\date{}
+
+\begin{document}
+	
+
+
+		\begin{tikzpicture}[
+			% 统一节点样式
+			every node/.style={
+				shape=rectangle,
+				rounded corners=2pt,
+				draw=blue!70,
+				thick,
+				fill=white,
+				inner sep=5pt,
+				align=center,
+				font=\small,
+			},
+			% 层次 1（最上层两步）
+			level 1/.style={
+				level distance=1.2cm,
+				sibling distance=6cm,
+			},
+			% 层次 2（三种情况）
+			level 2/.style={
+				level distance=2.4cm,
+				sibling distance=5.2cm,
+			},
+			% 层次 3（对应解集）
+			level 3/.style={
+				level distance=2.3cm,
+				sibling distance=4cm,
+			},
+			% 连线样式
+			edge from parent/.style={
+				draw=cyan!80!blue,
+				thick,
+				-{Stealth[length=2mm]},
+			},
+			edge from parent path={
+				(\tikzparentnode.south) -- +(0,-0.4) -|
+				 (\tikzchildnode.north)
+			},
+			]
+			
+			% ===== 根节点：将原不等式化成标准形式 =====
+			\node[text width=7.5cm]
+			{将原不等式化成 $ax^2+bx+c>0$（$a>0$）的形式}
+			% ===== 第二层：计算判别式 =====
+			child {
+				node[text width=5.5cm]
+				{计算 $\Delta = b^2 - 4ac$ 的值}
+				% ===== 第三层：Δ>0 =====
+				child {
+					{edge from parent node[draw=none,xshift=2em,yshift=-1em] {$\Delta>0$}}	node (d1) [text width=4.2cm]
+					{方程 $ax^2+bx+c=0$ 有两个不相等的实数根，解得 $x_1,\ x_2$（$x_1<x_2$）}
+					child {
+						node[text width=4.2cm]
+						{原不等式的解集为\\ $\{x \mid x<x_1,\ \text{或}\ x>x_2\}$}
+					}
+				}
+				% ===== 第三层：Δ=0 =====
+				child {
+				{edge from parent node[draw=none,xshift=-2em,yshift=-1em] {$\Delta=0$}}node (d2) [text width=4.2cm]
+					{方程 $ax^2+bx+c=0$ 有两个相等的实数根，解得 $x_1=x_2=-\dfrac{b}{2a}$\rule[15pt]{0pt}{1pt}}
+					child {
+						node[text width=4.2cm,inner sep = 4pt]
+						{原不等式的解集为\\ $\left\{x \mid x \ne -\dfrac{b}{2a}\right\}$\rule[18pt]{0pt}{1pt}}
+					}
+				}
+				% ===== 第三层：Δ<0 =====
+				child {
+				{edge from parent node[draw=none,xshift=-2em,yshift=-1em] {$\Delta<0$}}	node (d3) [text width=4.2cm,text depth=3em]
+					{方程 $ax^2+bx+c=0$ 没有实数根}
+					child {
+						node[text width=4.2cm,text depth = 2.0em]
+						{原不等式的解集为 $\mathbf{R}$}
+					}
+				}
+			};
+			
+			% ===== 在分支连线上标注 Δ>0、Δ=0、Δ<0 =====
+%			\node[draw=none, fill=none, font=\normalsize,right] at ($(d1.north)+(0,0.5)$) {$\Delta>0$};
+%			\node[draw=none, fill=none, font=\normalsize,right=-3pt] at ($(d2.north)+(0,0.3)$) {$\Delta=0$};
+%			\node[draw=none, fill=none, font=\normalsize,left] at ($(d3.north)+(0,0.5)$) {$\Delta<0$};
+			
+		\end{tikzpicture}
+
+	
+\end{document}

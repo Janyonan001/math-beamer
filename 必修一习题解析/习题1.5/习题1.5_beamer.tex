@@ -1,0 +1,315 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题1.5]{习题1.5}
+\subtitle{复习巩固 \quad 综合运用 \quad 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：判断全称量词命题的真假}
+\textbf{1.} 判断下列全称量词命题的真假：
+
+\vspace{0.5em}
+(1) 每一个末位是 $0$ 的整数都是 $5$ 的倍数；
+
+\vspace{0.3em}
+(2) 线段垂直平分线上的点到这条线段两个端点的距离相等；
+
+\vspace{0.3em}
+(3) 对任意负数 $x$，$x$ 的平方是正数；
+
+\vspace{0.3em}
+(4) 梯形的对角线相等。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) \textbf{真命题。} 末位是 $0$ 的整数可写成 $10k = 5 \times 2k$，必为 $5$ 的倍数。
+
+\vspace{0.5em}
+(2) \textbf{真命题。} 这是线段垂直平分线的性质定理。
+
+\vspace{0.5em}
+(3) \textbf{真命题。} 任意负数 $x < 0$，则 $x^2 > 0$。
+
+\vspace{0.5em}
+(4) \textbf{假命题。} 只有等腰梯形的对角线才相等，一般梯形的对角线不相等。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：判断存在量词命题的真假}
+\textbf{2.} 判断下列存在量词命题的真假：
+
+\vspace{0.5em}
+(1) 有些实数是无限不循环小数；
+
+\vspace{0.3em}
+(2) 存在一个三角形不是等腰三角形；
+
+\vspace{0.3em}
+(3) 有些菱形是正方形；
+
+\vspace{0.3em}
+(4) 至少有一个整数 $n$，$n^2 + 1$ 是 $4$ 的倍数。
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) \textbf{真命题。} 无理数（如 $\pi$、$\sqrt{2}$）就是无限不循环小数。
+
+\vspace{0.5em}
+(2) \textbf{真命题。} 任意不等边三角形都不是等腰三角形。
+
+\vspace{0.5em}
+(3) \textbf{真命题。} 正方形是特殊的菱形（邻边相等的矩形）。
+
+\vspace{0.5em}
+(4) \textbf{假命题。} 对任意整数 $n$：
+\begin{itemize}
+  \item 若 $n$ 为偶数，设 $n = 2k$，则 $n^2 + 1 = 4k^2 + 1$，除以 $4$ 余 $1$；
+  \item 若 $n$ 为奇数，设 $n = 2k+1$，则 $n^2 + 1 = 4k^2 + 4k + 2$，除以 $4$ 余 $2$。
+\end{itemize}
+所以 $n^2 + 1$ 不可能是 $4$ 的倍数。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：写出命题的否定}
+\textbf{3.} 写出下列命题的否定：
+
+\vspace{0.5em}
+(1) $\forall x \in \mathbf{Z}$，$|x| \in \mathbf{N}$；
+
+\vspace{0.3em}
+(2) 所有可以被 $5$ 整除的整数，末位数字都是 $0$；
+
+\vspace{0.3em}
+(3) $\exists x \in \mathbf{R}$，$x + 1 \ge 0$；
+
+\vspace{0.3em}
+(4) 存在一个四边形，它的对角线互相垂直。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 原命题是全称量词命题，其否定为：
+\[
+\exists x \in \mathbf{Z},\ |x| \notin \mathbf{N}.
+\]
+
+\vspace{0.5em}
+(2) 原命题是全称量词命题，其否定为：
+存在一个可以被 $5$ 整除的整数，它的末位数字不是 $0$。
+
+\vspace{0.5em}
+(3) 原命题是存在量词命题，其否定为：
+\[
+\forall x \in \mathbf{R},\ x + 1 < 0.
+\]
+
+\vspace{0.5em}
+(4) 原命题是存在量词命题，其否定为：
+任意一个四边形，它的对角线都不互相垂直。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：判断真假并写否定}
+\textbf{4.} 判断下列命题的真假，并写出这些命题的否定：
+
+\vspace{0.5em}
+(1) 平面直角坐标系下每条直线都与 $x$ 轴相交；
+
+\vspace{0.3em}
+(2) 每个二次函数的图象都是轴对称图形；
+
+\vspace{0.3em}
+(3) 存在一个三角形，它的内角和小于 $180^\circ$；
+
+\vspace{0.3em}
+(4) 存在一个四边形，它的四个顶点不在同一个圆上。
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) \textbf{假命题。} 平行于 $x$ 轴的直线（如 $y = 1$）不与 $x$ 轴相交。
+
+\vspace{0.3em}
+否定：存在一条直线不与 $x$ 轴相交。
+
+\vspace{0.6em}
+(2) \textbf{真命题。} 二次函数 $y = ax^2 + bx + c$ 的图象关于直线 $x = -\dfrac{b}{2a}$ 对称。
+
+\vspace{0.3em}
+否定：存在一个二次函数的图象不是轴对称图形。
+
+\vspace{0.6em}
+(3) \textbf{假命题。} 任意三角形的内角和都等于 $180^\circ$。
+
+\vspace{0.3em}
+否定：任意一个三角形，它的内角和都不小于 $180^\circ$（即都等于 $180^\circ$）。
+
+\vspace{0.6em}
+(4) \textbf{真命题。} 并非所有四边形都内接于圆（如一般的平行四边形）。
+
+\vspace{0.3em}
+否定：任意一个四边形，它的四个顶点都在同一个圆上。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：改写含量词的命题并写否定}
+\textbf{5.} 将下列命题改写成含有一个量词的全称量词命题或存在量词命题的形式，并写出它们的否定：
+
+\vspace{0.5em}
+(1) 平行四边形的对角线互相平分；
+
+\vspace{0.3em}
+(2) 三个连续整数的乘积是 $6$ 的倍数；
+
+\vspace{0.3em}
+(3) 三角形不都是中心对称图形；
+
+\vspace{0.3em}
+(4) 一元二次方程不总有实数根。
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 改写：$\forall$ 平行四边形，它的对角线互相平分。（全称量词命题）
+
+\vspace{0.3em}
+否定：存在一个平行四边形，它的对角线不互相平分。
+
+\vspace{0.6em}
+(2) 改写：$\forall$ 三个连续整数，它们的乘积是 $6$ 的倍数。（全称量词命题）
+
+\vspace{0.3em}
+否定：存在三个连续整数，它们的乘积不是 $6$ 的倍数。
+
+\vspace{0.6em}
+(3) 改写：$\exists$ 三角形，它不是中心对称图形。（存在量词命题）
+
+\vspace{0.3em}
+否定：所有三角形都是中心对称图形。
+
+\vspace{0.6em}
+(4) 改写：$\exists$ 一元二次方程，它没有实数根。（存在量词命题）
+
+\vspace{0.3em}
+否定：所有一元二次方程都有实数根。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题："若p则q"形式命题的否定}
+\textbf{6.} 在本节，我们介绍了命题的否定的概念，知道一个命题的否定仍是一个命题，它和原先的命题只能一真一假，不能同真或同假。
+
+在数学中，有很多"若 $p$，则 $q$"形式的命题，有的是真命题，有的是假命题。例如：
+
+\vspace{0.3em}
+① 若 $x > 1$，则 $2x + 1 > 5$；（假命题）
+
+\vspace{0.3em}
+② 若四边形为等腰梯形，则这个四边形的对角线相等。（真命题）
+
+\vspace{0.5em}
+这里，命题①②都是省略了量词的全称量词命题。
+
+\vspace{0.5em}
+(1) 有人认为，①的否定是"若 $x > 1$，则 $2x + 1 \le 5$"，②的否定是"若四边形为等腰梯形，则这个四边形的对角线不相等"。你认为对吗？如果不对，请你正确地写出命题①②的否定。
+
+\vspace{0.5em}
+(2) 请你列举几个"若 $p$，则 $q$"形式的省略了量词的全称量词命题，分别写出它们的否定，并判断真假。
+\end{frame}
+
+\begin{frame}[t]{第6题 解答：(1)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(1)}]
+\textbf{不对。}
+
+\vspace{0.5em}
+"若 $p$，则 $q$"形式的命题是省略了量词的全称量词命题，其完整形式为：
+\[
+\forall x \in M,\ \text{若 } p(x),\ \text{则 } q(x).
+\]
+
+它的否定应该是：
+\[
+\exists x \in M,\ p(x)\ \text{成立但}\ q(x)\ \text{不成立}.
+\]
+
+\vspace{0.8em}
+\textbf{命题①的否定：}
+存在一个实数 $x > 1$，使得 $2x + 1 \le 5$。
+
+\vspace{0.3em}
+\small（取 $x = 1.5$，则 $2 \times 1.5 + 1 = 4 \le 5$，所以这个否定是真命题，原命题是假命题。）
+
+\vspace{0.8em}
+\textbf{命题②的否定：}
+存在一个四边形是等腰梯形，但它的对角线不相等。
+
+\vspace{0.3em}
+\small（因为等腰梯形的对角线必相等，所以这个否定是假命题，原命题是真命题。）
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第6题 解答：(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(2)}]
+\textbf{举例1：} 若一个三角形的两个角相等，则这个三角形是等腰三角形。（真命题）
+
+\vspace{0.3em}
+否定：存在一个三角形有两个角相等，但它不是等腰三角形。（假命题）
+
+\vspace{0.8em}
+\textbf{举例2：} 若 $a > b$，则 $a^2 > b^2$。（假命题）
+
+\vspace{0.3em}
+否定：存在实数 $a > b$，使得 $a^2 \le b^2$。（真命题，如 $a = 1, b = -2$）
+
+\vspace{0.8em}
+\textbf{举例3：} 若 $x$ 是无理数，则 $x^2$ 是无理数。（假命题）
+
+\vspace{0.3em}
+否定：存在一个无理数 $x$，使得 $x^2$ 是有理数。（真命题，如 $x = \sqrt{2}$）
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

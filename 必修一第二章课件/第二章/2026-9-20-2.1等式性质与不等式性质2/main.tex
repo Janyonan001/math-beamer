@@ -1,0 +1,193 @@
+
+\documentclass[12pt,aspectratio=169,t,fleqn]{beamer}
+
+\usepackage[fontset=none,autoindent=true]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKmonofont{Songti SC}%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKmonofont{FandolFang-Regular}[Extension=.otf,BoldFont=FandolFang-Regular]%
+}
+\usepackage{hyperref}
+\setmainfont{XCharter} % Nicer fonts — the charter package is ignored under XeLaTeX, so use fontspec instead
+% 等宽字体：优先 Maple Mono NF（静态字族，真实粗/斜体），其次可变版，未安装则回退默认
+\IfFontExistsTF{Maple Mono NF}{%
+	\setmonofont{Maple Mono NF}[Scale=MatchLowercase,Ligatures=TeX]%
+}{%
+	\IfFontExistsTF{Maple Mono}{%
+		\setmonofont{Maple Mono}[Scale=MatchLowercase,Ligatures=TeX]%
+	}{}%
+}
+\usefonttheme{professionalfonts}%**强烈建议加上**，关闭 beamer 自带字体替换，防止字体冲突，数学公式字体正常渲染
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{invisible}
+ %   含义：**大括号内的代码，只在 presentation（幻灯片）模式下生效；
+ %   如果切换成 article 讲义模式，这一段直接忽略不执行。**
+ 
+% 控制**被覆盖（还没出现）的条目**样式： 
+% `transparent`：未出现的条目变浅、半透明（灰色淡化，占位还在页面上）
+% 可选：`invisible`（默认，没出现的内容直接隐藏，页面空白）
+% 对应你之前的 `<+->` 逐条动画：
+% `transparent`：后面还没出来的 \item 是淡淡的灰色，提前看到占位
+% `invisible`：没到显示时机的 item 完全看不见
+}
+
+
+\title[2.1等式性质与不等式性质] % (optional, use only with long paper titles)
+{2.1等式性质与不等式性质}
+
+\subtitle
+{等式性质与不等式性质}
+
+\author[好好学习，努力向上] % (optional, use only with lots of authors)
+{
+%	金永权\inst{1} \and 某某某\inst{2}
+	}
+
+\institute[夏邑一高] % (optional, but mostly needed)
+{
+%  \inst{1}%
+%  高一年级
+%  22 班
+%  \and
+%  \inst{2}%
+% 高一年级
+% 24班
+ }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[2026.9.19] % (optional, should be abbreviation of conference name)
+{2026.9.19}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{数学科}
+% This is only inserted into the PDF information catalog. Can be left out. 
+
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{主要内容}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded]
+  \end{frame}
+}
+%	作用：**每次开启一个 `\subsection` 小节时，自动执行大括号里面的代码**。
+%	`[]` 里面可以放 overlay 规范，空括号代表默认。
+%	含义：**这个目录帧只在 presentation（幻灯片模式）编译出来；
+%	如果切换成 article 讲义模式，这一帧直接忽略，不会生成**。
+%	等价写法：`\mode<presentation>{\begin{frame}...\end{frame}}`
+%	目录命令的选项：
+
+%	- `currentsection`：**只高亮当前所在的大 section，其他 section 变灰**
+%	- `currentsubsection`：**高亮当前 subsection，同 section 下其他小节变浅**
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{主要内容}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{等式的基本性质}
+
+\subsection{等式的基本性质}
+
+\begin{frame}{等式的基本性质}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{enumerate}
+  \item    如果 $a=b$，那么$b=a$；
+  \item    如果 $a=b$，$b=c$，那么 $a=c$；
+  \item  	如果$a=b$，那么 $a\pm c = b \pm c$；
+  \item  	如果 $a=b$，那么 $ac=bc$；
+  \item 	如果 $a=b,c\neq 0$，那么$\frac{a}{c} = \frac{b}{c}$。
+  \end{enumerate}
+  
+\end{frame}
+
+\section{不等式的基本性质}
+\subsection{不等式的基本性质}
+
+\begin{frame}{不等式的基本性质}
+
+  类比等式的性质1，2，可以猜想不等式有如下性质：
+  \begin{enumerate}[<+->]
+	\item 如果$a>b$，那么$b<a$；如果$b<a$，那么$a>b$。即
+	 		 \[a>b \iff b<a\]
+	    
+	\item 如果$a>b$，$b>c$，那么$a>c$，即
+	      \[ a>b,b>c \Rightarrow a>c\]
+
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{不等式的基本性质}
+类比等式的性质 3\textasciitilde 5，可以猜想不等式还有如下性质：
+	\begin{enumerate}[<+->]\addtocounter{enumi}{2}
+		
+	\item  如果$a>b$，那么$a+c>b+c$；	
+	\item 如果 $a>b,\ c>0$，那么 $ac>bc$；如果 $a>b,\ c<0$，那么 $ac<bc$.
+	
+	\item  如果 $a>b,\ c>d$，那么 $a+c>b+d$.
+
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{不等式的基本性质}
+	利用性质 4 和性质 2 可以推出：
+	\begin{enumerate}[<+->]\addtocounter{enumi}{5}
+		
+		\item 如果 $a>b>0$，$c>d>0$，那么 $ac>bd$。
+		
+		\item 如果 $a>b>0$，那么 $a^n>b^n\ (n\in\mathbf{N},\ n\ge 2)$。
+	\end{enumerate}
+\end{frame}
+
+\section{例题分析}
+\begin{frame}{}
+	\begin{example}
+		已知 $a>b>0$，$c<0$，求证 $\dfrac{c}{a}>\dfrac{c}{b}$。
+	\end{example}
+	
+	\pause
+
+	证明：	因为 $a>b>0$，所以 $ab>0$，$\dfrac{1}{ab}>0$。
+		
+		于是
+		\[
+		a\cdot \frac{1}{ab}>b\cdot \frac{1}{ab},
+		\]
+		即
+		\[
+		\frac{1}{b}>\frac{1}{a}.
+		\]
+		
+		由 $c<0$，得 $\dfrac{c}{a}>\dfrac{c}{b}$。
+
+\end{frame}
+\begin{frame}{布置作业}
+	P42 练习: 1、2
+	
+	P42 习题2.1: 5，6，7，8	
+\end{frame}
+
+
+\end{document}
+
+

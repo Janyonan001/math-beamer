@@ -1,0 +1,66 @@
+% !TEX TS-program = lualatex
+\documentclass[tikz]{standalone}
+%\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{tkz-elements}
+\usetikzlibrary{shadows}
+%\usepackage{geometry}
+
+\begin{document}
+	
+	\directlua{
+	init_elements()
+	z.A = point (0,0)
+	z.B = point (3.5,0)
+	z.C = point (3.5,0.9)
+	z.D = point (0,0.9)
+	R.ABCD = rectangle(z.A,z.B,z.C,z.D)
+	z.O = R.ABCD.center
+	R.FGHE = z.O:rotation(math.pi/2,R.ABCD)
+	z.F = R.FGHE.pa
+	z.G = R.FGHE.pb
+	z.H = R.FGHE.pc
+	z.E = R.FGHE.pd
+	z.M = intersection(R.ABCD.ab,R.FGHE.cd)
+	z.N = intersection(R.ABCD.ab,R.FGHE.ab)
+	z.P = intersection(R.ABCD.cd,R.FGHE.ab)
+	z.Q = intersection(R.ABCD.cd,R.FGHE.cd)
+	}
+	\begin{tikzpicture}
+		\tkzGetNodes
+		\tkzDrawPolygon[thick](A,E,F,B,C,G,H,D)
+		\tkzDrawSegments[thick](A,B C,D E,H F,G)
+		\tkzFillPolygon[darkgray!40](A,M,Q,D)
+		\tkzFillPolygon[darkgray!40](E,F,N,M)
+		\tkzFillPolygon[darkgray!40](B,C,P,N)
+		\tkzFillPolygon[darkgray!40](G,H,Q,P)
+		\tkzDrawPolygon[thick](A,E,F,B,C,G,H,D)
+		\tkzDrawSegments[thick](A,B C,D E,H F,G)
+		\tkzLabelPoints[left](A,D)
+		\tkzLabelPoints[right](B,C)
+		\tkzLabelPoints[above](H,G)
+		\tkzLabelPoints[below](E,F)
+		\tkzLabelPoints[above left=-3pt](Q)
+		\tkzLabelPoints[below left=-3pt](M)
+		\tkzLabelPoints[above right=-3pt](P)
+		\tkzLabelPoints[below right=-3pt](N)
+	\end{tikzpicture}
+	
+%	\def\rad{7pt}
+%	\def\Rad{3.5pt}
+%	\def\tlength{3.2cm}
+%	\def\theight{1cm}
+%		\begin{tikzpicture}[remember picture,overlay]
+%		\node[rectangle,fill=red!10,text=blue,font=\rmfamily\bfseries\Large,drop shadow={color=black!30!white,opacity=.3,shadow xshift=.05cm,shadow yshift=-.05cm},minimum width=\paperwidth,minimum height=1cm,text width=.9\linewidth,align=center] (sec) at (.5*\linewidth,0) {as};
+%		
+%		\fill[color=red!80!black] ([xshift=\tlength-\Rad,yshift=5pt]sec.north west) to[out=0,in=90,looseness=0.7] ([xshift=\tlength+0.5*\Rad]sec.north west) coordinate (NW)--([xshift=-2*\rad]NW)--cycle;
+%		
+%		\path[fill=red!90,drop shadow={opacity=0.3,shadow xshift=.05cm,shadow yshift=-.05cm}]
+%		([xshift=\rad,yshift=5pt]sec.north west) coordinate (topleft) to[out=180,in=0,looseness=1] ([xshift=-3*\rad,yshift=-\theight]sec.north west) --([xshift=\tlength-4*\rad,yshift=-\theight]sec.north west) coordinate (bottomright) to[out=0,in=180] ([xshift=\tlength,yshift=5pt]sec.north west) --cycle;
+%		
+%		\coordinate (SecName) at ($(topleft)!0.5!(bottomright)$);
+%		
+%		\node[text=white,font=\Large\bfseries] at (SecName) {1};
+%	\end{tikzpicture}
+
+\end{document}

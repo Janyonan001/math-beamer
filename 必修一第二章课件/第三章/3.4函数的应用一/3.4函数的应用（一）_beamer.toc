@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{个税问题}{3}{0}{1}
+\beamer@sectionintoc {2}{路程问题：分段函数模型}{10}{0}{2}
+\beamer@sectionintoc {3}{幂函数与二次函数模型}{17}{0}{3}
+\beamer@sectionintoc {4}{课堂练习与作业}{24}{0}{4}

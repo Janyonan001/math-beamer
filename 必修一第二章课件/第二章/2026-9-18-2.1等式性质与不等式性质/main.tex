@@ -1,0 +1,234 @@
+% 画幅切换：aspectratio=43（4:3,当前）↔ aspectratio=169（16:9）
+\documentclass[12pt,
+	aspectratio=169,%16:9页面比例
+	hyperref={colorlinks,
+		citecolor=peking_blue,
+		urlcolor=peking_blue,
+		linkcolor=},
+	t,%顶部对齐
+%	aspectratio=43,%4：3比例
+	]{beamer}
+\usepackage{PekingU}
+\usefonttheme{serif}
+\usepackage{lipsum}
+% 中文支持：需用 XeLaTeX 编译（latexmk -xelatex main.tex）
+% 中文衬线宋体：macOS 用 Songti SC；其他环境（Linux/Overleaf 等）自动回退到
+% TeX Live 自带的 FandolSong（按文件名经 kpathsea 加载，不依赖系统字体）
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+  \setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+  \setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+  \setCJKmonofont{Songti SC}%
+}{%
+  \setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+  \setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+  \setCJKmonofont{FandolFang-Regular}[Extension=.otf,BoldFont=FandolFang-Regular]%
+}
+\usepackage{hyperref}
+\setmainfont{XCharter} % Nicer fonts — the charter package is ignored under XeLaTeX, so use fontspec instead
+% 等宽字体：优先 Maple Mono NF（静态字族，真实粗/斜体），其次可变版，未安装则回退默认
+\IfFontExistsTF{Maple Mono NF}{%
+  \setmonofont{Maple Mono NF}[Scale=MatchLowercase,Ligatures=TeX]%
+}{%
+  \IfFontExistsTF{Maple Mono}{%
+    \setmonofont{Maple Mono}[Scale=MatchLowercase,Ligatures=TeX]%
+  }{}%
+}
+% other packages
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{natbib}
+\usepackage{wrapfig}
+\usepackage{amsfonts} 
+\usepackage{ragged2e}
+\usepackage{parskip}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usepackage{amsthm}
+%\newtheoremstyle{pero}   % 样式名
+%{}{}                      % 上下间距
+%{\upshape\bfseries}                % 正文字体：斜体
+%{}                        % 缩进
+%{\bfseries}               % 标题字体：粗体
+%{}{}                      % 标点与标题后间距
+%{}                        % 标题格式
+%\theoremstyle{pero}
+\newtheorem{peroration}{结论：}
+\BeforeBeginEnvironment{peroration}{%
+	\setbeamercolor{block title}{bg=peking_green,fg=white}
+	\setbeamercolor{block body}{bg=peking_green!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=peking_blue,fg=white}
+	\setbeamercolor{block body}{bg=peking_blue!10}
+}
+
+
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+
+\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
+
+%`\apptocmd{<命令名>}{<追加代码>}{<成功>}{<失败>}` 
+%> 含义：在 `<命令名>` **执行完毕之后**，自动插入 `<追加代码>`；
+
+% 引用整体着色为 peking_blue（与 definition block 标题蓝一致）：
+% natbib 的 \citep/\citet 括号不在 hyperref 链接内，仅靠 citecolor 只能染色链接部分，
+% 此处将整个引用（含括号）包进颜色组。
+
+
+% change for your title page information
+\author[好好学习，努力向上]{}%{金永权\\{\small\href{mailto:582703508@qq.com}%
+		%{\texttt{582703508@qq.com}}}}
+\title[2.1 等式性质与不等式性质]{第二章~~一元二次函数、方程和不等式}
+\subtitle{2.1 等式性质与不等式性质}
+\institute{}%{夏邑一高高一数学组}
+\date{}
+
+% 右上角校徽（与标题条同高、严格对齐）由 PekingU.sty 中的 frametitle 模板绘制
+% official colors match with the PKU red
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\begin{document}
+	
+{
+\setbeamertemplate{logo}{}%清空 Beamer 的 logo 模板，不再输出 `\logo{...}` 里定义的内容 模板为空 → 不渲染logo
+\begin{frame}
+    \titlepage
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.275\linewidth]{Figures/PKU-emblem-names.png}
+        \end{center}
+    \end{figure}
+\end{frame}
+}
+
+
+\section{问题情景}
+
+\subsection{问题1}
+
+% 中文排版示例（可删除）：中英文混排、粗体、斜体
+\begin{frame}{问题1:你能用不等式或不等式组表示下列问题中的不等关系吗？}
+
+
+\begin{enumerate}
+    \item 某路段限速40 km/h;
+    
+    \item 某品牌酸奶的质量检查规定，酸奶中脂肪的含量 f 应不少于 2.5\%，蛋白质的含量 p 应不少于 2.3\%；
+    \item 三角形两边之和大于第三边、两边之差小于第三边；
+    \item 连接直线外一点与直线上各点的所有线段中，垂线段最短.
+   
+\end{enumerate}
+
+
+\end{frame}
+
+
+\subsection{问题2}
+\begin{frame}{问题2}
+
+	
+
+\hspace{2em}某种杂志原以每本 2.5 元的价格销售，可以售出 8 万本。据市场调查，杂志的单价每提高 0.1 元，销售量就可能减少 2 000 本。如何定价才能使提价后的销售总收入不低于 20 万元？
+
+\end{frame}
+
+\section{实数大小比较的基本事实}
+
+\begin{frame}{实数大小比较的基本事实}
+	
+关于实数 $a$，$b$ 大小的比较，有以下基本事实：
+
+如果 $a-b$ 是正数，那么 $a>b$；
+
+如果 $a-b$ 等于 $0$，那么 $a=b$；
+
+如果 $a-b$ 是负数，那么 $a<b$。
+
+反过来也对。
+
+\pause
+	这个基本事实可以表示为：
+\alert{	\begin{align*}
+		a &> b \iff a - b > 0; \\
+		a &= b \iff a - b = 0; \\
+		a &< b \iff a - b < 0.
+	\end{align*}}
+	
+	\pause
+	
+	从上述基本事实可知，要比较两个实数的大小，可以转化为比较它们的差与 $0$ 的大小。
+
+\end{frame}
+
+\section{例题分析}
+
+\begin{frame}{例1 	比较 $(x+2)(x+3)$ 和 $(x+1)(x+4)$ 的大小.}
+
+\pause	
+\textbf{解}：因为
+\begin{align*}
+	&(x+2)(x+3)-(x+1)(x+4) \\
+	&=(x^2+5x+6)-(x^2+5x+4) \\
+	&=2>0,
+\end{align*}
+\pause
+所以，$(x +2)(x+3)>(x+1)(x+4)$。
+\end{frame}
+
+\section{探究}
+
+\begin{frame}{探究}
+	\begin{wrapfigure}{r}{3.5cm}
+		\begin{center}		
+		\includegraphics{Figures/zhaoshuangxiantu.pdf}
+		\caption{}
+		\label{fig:zhaoshuang}
+		\end{center}
+	\end{wrapfigure}
+\hspace{2em}图 \ref{fig:zhaoshuang} 是在北京召开的第 24 届国际数学家大会的会标，会标是根据中国古代数学家赵爽的弦图设计的，颜色的明暗使它看上去像一个风车，代表中国人民热情好客。你能在这个图中找出一些相等关系和不等关系吗？
+
+\pause
+
+\begin{columns}
+	
+\column{0.65\textwidth}
+\begin{peroration}<1->
+
+\hspace{2em} 一般地，$\forall \, a, b \in \mathbf{R}$，有
+\[
+\alert{ a^2+b^2 \geq 2ab},
+\]
+当且仅当 $a=b$ 时，等号成立.
+\end{peroration}
+\column{0.25\textwidth}
+
+\end{columns}
+
+\end{frame}
+
+\section{布置作业}
+
+\begin{frame}{练习与作业}
+	P39-40.练习1，2，3
+	
+	P42 习题2.1 1，2，3
+\end{frame}
+
+
+\begin{frame}[c]
+    \begin{center}
+        {\Huge\calligra Thanks!}
+    \end{center}
+\end{frame}
+
+\end{document}

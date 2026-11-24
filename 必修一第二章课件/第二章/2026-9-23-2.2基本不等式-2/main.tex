@@ -1,0 +1,210 @@
+\documentclass[aspectratio=169,13pt,fleqn] {beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+	\usetheme{Madrid}      % 整体主题
+	\usecolortheme{beaver} % 配色主题（棕红系）
+	\usefonttheme{serif}   % 全局衬线字体（正文宋体类）
+	\setbeamertemplate{items}[default] % 【items父模板】控制 itemize+enumerate 符号
+%	\setbeamertemplate{items}{\Large\beamertemplateballitem}
+	\setbeamertemplate{sections/subsections in toc}[ball] % 目录里章节用圆圈标记
+	
+	%  \setbeamertemplate{navigation symbols}{} % 取消注释可隐藏底部导航小图标
+	\setbeamertemplate{caption}[numbered] % 图/表标题带编号：图1、表1
+}
+
+\usepackage[,UTF8,linespread=1.2]{ctex}
+\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+
+
+\usepackage{xcolor}
+\definecolor{xy_blue}{cmyk}{0.6,0.35,0.0,0.4}
+\definecolor{xy_orange}{cmyk}{0.0,0.7,1.0,0.0}
+\definecolor{xy_green}{cmyk}{0.2,0.0,1.0,0.15}
+\xdefinecolor{xy_gold}{RGB}{135,103,79}
+\xdefinecolor{xy2_gold}{cmyk}{0,0.35,0.75,0.05}
+
+\setbeamercolor{section number projected}{fg=red,bg=red!20}%控制球的颜色
+\setbeamercolor{subsection number projected}{fg=blue,bg=blue!40}
+\setbeamercolor{item}{fg=xy_gold} %设置列表项颜色
+
+\usepackage{amsthm}
+\newtheorem{peroration}{结论：}
+\newtheorem*{exploration}{探究：}
+\newtheorem*{prooft}{证明：}
+\newtheorem*{solve}{解:} 
+\newtheorem{instance}{例}   % 解：独立计数器
+     
+
+% 配色（你前面需要的，每个环境单独颜色）
+\setbeamercolor{theorem}{fg=black,bg=blue!10}
+\setbeamercolor{solution}{fg=black,bg=green!10}
+
+\BeforeBeginEnvironment{peroration}{%结论： 
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{exploration}{%探究
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{solution}{%解
+	\begingroup
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{solution}{
+	\endgroup
+}
+\BeforeBeginEnvironment{prooft}{%证明
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{prooft}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{solve}{%解：
+	\setbeamercolor{block title}{bg=xy_orange!60,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{solve}{%解：
+	\setbeamercolor{block title}{bg=xy_orange!60,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+   
+\BeforeBeginEnvironment{instance}{% 例子
+	\begingroup
+   	\setbeamercolor{block title}{bg=xy_gold!40,fg=black}
+   	\setbeamercolor{block body}{bg=xy_gold!10}
+   }
+\AfterEndEnvironment{instance}{
+	\endgroup
+   }     
+   
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\title[2.2基本不等式]{2.2~~基本不等式(第2课时)}
+\author[好好学习，努力向上]{}
+\institute{}
+\date{2026.9.23}
+\setbeamertemplate{theorems}[numbered]
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{本节主要内容}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+\begin{frame}{}
+	\titlepage
+\end{frame}
+
+\begin{frame}{内容概览}
+	\tableofcontents
+\end{frame}
+
+\section{前情回顾}
+\begin{frame}{前情回顾}
+	
+	\begin{enumerate}[(1)]
+		\item 重要不等式：已知$a$、$b\in R$，则
+		\[
+		\alert{a^2 + b^2 \geqslant 2ab}
+		\]
+		当且仅当$a=b$时等号成立。
+		\item 基本不等式：已知$a$，$b\in R_{\;+}$，则
+		\[
+		\alert{\sqrt{ab} \leqslant \frac{a+b}{2}}
+		\]
+		当且仅当$a=b$时等号成立。
+	\end{enumerate}
+	
+\end{frame}
+
+\section{基本不等式的应用}
+\begin{frame}[t]{基本不等式的应用1}
+	\begin{instance}
+		已知 $x>1$，求 $x+\frac{1}{x-1}$的最小值。
+	\end{instance}
+	
+	
+\end{frame}
+
+\begin{frame}[t]{基本不等式的应用2}
+	\begin{instance}
+		求$\sqrt{x\;(10-x)}$的最大值。
+	\end{instance}
+	
+	
+\end{frame}
+
+\begin{frame}[t]{基本不等式的应用3}
+	\setbeamertemplate{enumerate items}[default]
+	\begin{instance}
+		
+
+	\begin{enumerate}[(1)]
+		\item 已知 $x>0$，$y>0$，$x+y=1$，求$\dfrac{1}{x}+\dfrac{2}{y}$的最小值；
+		\item 已知 $a>0$，$b>0$，且$\dfrac{1}{a}+\dfrac{9}{b} = 1$，求$a+b$的最小值。
+	\end{enumerate}	
+	\end{instance}
+\end{frame}
+
+
+\begin{frame}{答案与解析---}
+	
+	\begin{solve}[1]
+	因为$x>0$，$y>0$，且$x+y=1$，所以
+	\begin{align*}
+		&\frac{1}{x}+\frac{2}{y} = \left(\frac{1}{x} + \frac{2}{y} \right)(x+y)\\
+		&=1+\frac{2x}{y} + \frac{y}{x} +2\geqslant 3+2\sqrt{\frac{2x}{y}\cdot\frac{y}{x}}\\
+		&=3+2\sqrt{2}
+	\end{align*}
+	当且仅当$\frac{2x}{y} = \frac{x}{y}$，且$x+y=1$时取等号，解得$x=\sqrt{2}-1,y=2-\sqrt{2}$。
+	
+	所以当$x=\sqrt{2}-1,y=2-\sqrt{2}$时，原式有最小值$3+2\sqrt{2}$。
+	\end{solve}
+\end{frame}
+
+\begin{frame}{答案与解析---}
+	
+	\begin{solve}[2]
+		因为$a>0$，$b>0$，且$\frac{1}{a} + \frac{9}{b} =1$，所以
+		\begin{align*}
+			& a+b= \left(\frac{1}{a} + \frac{9}{b} \right)(a+b)\\
+			&=1+\frac{b}{a} + \frac{9a}{b} +9\geqslant 10+2\sqrt{\frac{b}{a}\cdot\frac{9a}{b}}\\
+			&=10+2\times 3 =16
+		\end{align*}
+		当且仅当$\frac{b}{a} = \frac{9a}{b}$，且$\frac{1}{a}+\frac{9}{b}=1$时取等号，解得$a=4,b=12$。
+		
+		所以当$a=4,b=12$时，原式有最小值$16$。
+	\end{solve}
+\end{frame}
+
+
+
+\begin{frame}{布置作业}
+
+\end{frame}
+
+\end{document}

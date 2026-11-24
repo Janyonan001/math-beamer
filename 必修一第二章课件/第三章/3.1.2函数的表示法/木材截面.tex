@@ -1,0 +1,28 @@
+% !TeX TS-program = lualatex
+
+\documentclass[tikz]{standalone}
+
+\usepackage{tkz-euclide}
+\usepackage{tkz-elements}
+
+\begin{document}
+	
+	\directlua{	
+	init_elements()
+	z.A = point(0,0)
+	z.B = point(3,0)
+	z.C = point(3,2)
+	z.D = point(0,2)
+	z.O = tkz.midpoint(z.A,z.C)	
+	}
+	\begin{tikzpicture}
+		\tkzGetNodes		
+		\tkzDrawCircle[thick,black,fill=orange!20](O,A)
+		\tkzDrawPolygons[thick,fill=orange!40!black!60](A,B,C,D)
+		\tkzDrawPoints[shape=circle,fill=black,size=0.2](O)	
+		\tkzDrawSegment[](O,C)
+		\tkzLabelSegment[sloped,above left=0pt](O,C){25cm}
+		\tkzLabelSegment(A,B){$x$}
+	\end{tikzpicture}
+
+\end{document}

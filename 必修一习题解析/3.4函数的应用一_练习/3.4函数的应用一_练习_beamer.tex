@@ -1,0 +1,138 @@
+\documentclass[10pt,aspectratio=169,serif,fleqn]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[函数的应用(一)练习]{3.4 函数的应用（一）（练习）}
+\subtitle{函数模型的实际应用}
+\author{}
+\institute{}
+\date{2026-10-30}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：汽车刹车距离}
+\textbf{1.} 若用模型 $y=ax^2$ 描述汽车紧急刹车后滑行的距离 $y$（单位：m）与刹车时的速率 $x$（单位：km/h）的关系，而某种型号的汽车在速率为 $60$ km/h 时，紧急刹车后滑行的距离为 $20$ m。在限速为 $100$ km/h 的高速公路上，一辆这种型号的车紧急刹车后滑行的距离为 $50$ m，那么这辆车是否超速行驶？
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+	\vspace{-2em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+将 $x=60$，$y=20$ 代入 $y=ax^2$：
+\[
+20=a\cdot 60^2=3600a,\quad a=\frac{20}{3600}=\frac1{180}.
+\]
+故模型为 $y=\dfrac{x^2}{180}$。
+
+\vspace{0.5em}
+当 $y=50$ 时：
+\[
+50=\frac{x^2}{180},\quad x^2=9000,\quad x=\sqrt{9000}\approx 94.9\ \text{km/h}.
+\]
+
+\vspace{0.5em}
+因为 $94.9<100$，所以这辆车 \alert{没有超速}行驶。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题： 某广告公司要为客户设计一幅周长为 $l$（单位：m）的矩形广告牌，如何设计这个广告牌可以使广告牌的面积最大？}
+
+
+\vspace{-1em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+	设矩形一边长为 $x$，则另一边长为 $\dfrac{l}{2}-x$，面积：
+	\[
+	S=x\left(\frac{l}{2}-x\right)=-x^2+\frac{l}{2}x=-\left(x-\frac{l}{4}\right)^2+\frac{l^2}{16}.
+	\]
+	当 $x=\dfrac{l}{4}$ 时，$S$ 取最大值 $\dfrac{l^2}{16}$。
+	
+	\vspace{0.5em}
+	此时矩形两边均为 $\dfrac{l}{4}$，即广告牌设计为 \alert{边长为 $\dfrac{l}{4}$ 的正方形}时面积最大。
+\end{tcolorbox}
+\end{frame}
+
+
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：产品成本与利润}
+\textbf{3.} 某公司生产某种产品的固定成本为 $150$ 万元，而每件产品的可变成本为 $2500$ 元，每件产品的售价为 $3500$ 元。若该公司所生产的产品全部销售出去，则
+
+(1) 设总成本为 $y_1$（单位：万元），单位成本为 $y_2$（单位：万元），销售总收入为 $y_3$（单位：万元），总利润为 $y_4$（单位：万元），分别求出它们关于总产量 $x$（单位：件）的函数解析式；
+
+(2) 根据所求函数的图象，对这个公司的经济效益做出简单分析。
+\end{frame}
+
+\begin{frame}[t]
+	\vspace{-2em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(1)}]
+$2500$ 元 $=0.25$ 万元，$3500$ 元 $=0.35$ 万元。
+
+\vspace{0.3em}
+总成本：
+\[
+y_1=150+0.25x\quad (\text{万元});
+\]
+单位成本：
+\[
+y_2=\frac{y_1}{x}=\frac{150}{x}+0.25\quad (\text{万元/件});
+\]
+销售收入：
+\[
+y_3=0.35x\quad (\text{万元});
+\]
+总利润：
+\[
+y_4=y_3-y_1=0.35x-(150+0.25x)=0.1x-150\quad (\text{万元}).
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第3题 解答：(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(2)}]
+令 $y_4=0$，得 $0.1x-150=0$，$x=1500$（件）。
+
+\vspace{0.5em}
+\textbf{盈亏分析：}
+\begin{itemize}
+  \item 当 $x<1500$ 件时，$y_4<0$，公司亏损；
+  \item 当 $x=1500$ 件时，$y_4=0$，盈亏平衡（保本点）；
+  \item 当 $x>1500$ 件时，$y_4>0$，公司盈利，且产量越大利润越高。
+\end{itemize}
+
+\vspace{0.5em}
+因此该公司应争取产量超过 $1500$ 件才能获利。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

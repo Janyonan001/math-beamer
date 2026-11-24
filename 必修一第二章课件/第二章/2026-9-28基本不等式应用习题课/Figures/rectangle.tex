@@ -1,0 +1,40 @@
+% !TeX TS-program = lualatex
+
+\documentclass[tikz]{standalone}
+\usepackage{tkz-euclide}
+\usepackage{tkz-elements}
+
+\tkzSetUpLabel[font=\small,cyan]
+\tkzSetUpLine[line width=1pt,color=cyan]
+\begin{document}
+\directlua{
+z.A = point(0,0)
+z.B = point(3,0)
+z.C = point(3,2)
+z.D = point(0,2)
+z.Bp = line(z.A,z.C):reflection(z.B)
+L.ABp = line (z.A,z.Bp)
+L.CD = line (z.D,z.C)
+z.P = intersection(L.ABp,L.CD)
+}
+\begin{tikzpicture}
+	\tkzGetNodes
+	\tkzFillPolygon[orange!20](A,P,D)
+	\tkzDrawPolygon[thick](A,B,C,D)
+	\tkzDrawSegments[thick](A,C C,B' A,B')
+	
+%	\tkzDrawSegments[dashed](B,B')
+	\tkzLabelPoints[left](A,D)
+	\tkzLabelPoints[right](B,C)
+	\tkzLabelPoints[above](B')
+	\tkzLabelPoints[below right=0pt and -3pt](P)
+	
+	\tkzLabelSegment[below](A,B){\small $x$}
+	\tkzLabelSegment[left](A,D){\small $12\!\!-\!\! x$}
+	\tkzLabelSegment[above](P,C){\small $a$}
+	\tkzLabelSegment[above](P,D){\small $x\!\! -\!\! a$}
+
+	
+\end{tikzpicture}
+\end{document}
+	

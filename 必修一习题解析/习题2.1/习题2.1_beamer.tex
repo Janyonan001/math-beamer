@@ -1,0 +1,376 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题2.1]{习题2.1 等式性质与不等式性质}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：生活中的不等关系}
+\textbf{1.} 举出几个现实生活中与不等式有关的例子。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{参考答案}]
+\textbf{举例：}
+\begin{itemize}
+  \item 限速 $v \le 120\ \mathrm{km/h}$；
+  \item 购票身高 $h \ge 1.5\,\mathrm{m}$ 需买全票；
+  \item 水在标准大气压下沸腾温度 $t = 100\,^\circ\mathrm{C}$，结冰时 $t \le 0\,^\circ\mathrm{C}$；
+  \item 身高：篮球运动员身高 $h > 1.9\,\mathrm{m}$；
+  \item 预算：本月支出 $x \le 5000$ 元；
+  \item 三角形两边之和大于第三边：$a+b>c$。
+\end{itemize}
+\small（答案不唯一，凡涉及大小、高低、长短、范围的实际关系均可）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：投资方案}
+\textbf{2.} 某市环保局为增加城市的绿地面积，提出两个投资方案：方案 A 为一次性投资 $500$ 万元；方案 B 为第一年投资 $100$ 万元，以后每年投资 $10$ 万元。列出不等式表示“经过 $n$ 年之后，方案 B 的投入不少于方案 A 的投入”。
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+方案 A 经过 $n$ 年的累计投入：
+\[
+S_A = 500\ \text{万元}.
+\]
+
+方案 B 第 $1$ 年投 $100$ 万元，第 $2$ 年起每年投 $10$ 万元，经过 $n$ 年的累计投入：
+\[
+S_B = 100 + 10(n-1)\ \text{万元}.
+\]
+
+“方案 B 的投入不少于方案 A” 即 $S_B \ge S_A$：
+\[
+\alert{100 + 10(n-1) \ge 500,\quad n\in \mathbf{N}^*}.
+\]
+\small（化简得 $n\ge 41$，即第 $41$ 年起方案 B 累计投入不少于方案 A）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：作差比较大小}
+\textbf{3.} 比较下列各组中两个代数式的大小：
+
+\vspace{0.5em}
+\begin{enumerate}[(1)]
+  \item $x^2+5x+6$ 与 $2x^2+5x+9$；
+  \item $(x-3)^2$ 与 $(x-2)(x-4)$；
+  \item 当 $x>1$ 时，$x^2$ 与 $x^2-x+1$；
+  \item $x^2+y^2+1$ 与 $2(x+y-1)$。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+(1) 作差：$(x^2+5x+6)-(2x^2+5x+9)=-x^2-3=-(x^2+3)<0$，故
+\[
+\alert{x^2+5x+6 < 2x^2+5x+9}.
+\]
+
+(2) 作差：$(x-3)^2-(x-2)(x-4)=(x^2-6x+9)-(x^2-6x+8)=1>0$，故
+\[
+\alert{(x-3)^2 > (x-2)(x-4)}.
+\]
+
+(3) 作差：$x^2-(x^2-x+1)=x-1$。因为 $x>1$，所以 $x-1>0$，故
+\[
+\alert{x^2 > x^2-x+1}.
+\]
+
+(4) 作差：$x^2+y^2+1-2(x+y-1)=x^2-2x+1+y^2-2y+1+1=(x-1)^2+(y-1)^2+1>0$，故
+\[
+\alert{x^2+y^2+1 > 2(x+y-1)}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：两位数问题}
+\textbf{4.} 一个大于 $50$ 且小于 $60$ 的两位数，其个位数字比十位数字大 $2$。试用不等式表示上述关系，并求出这个两位数（用 $a$ 和 $b$ 分别表示这个两位数的十位数字和个位数字）。
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+十位数字为 $a$，个位数字为 $b$，则这个两位数为 $10a+b$。由题意：
+\[
+\begin{cases}
+50 < 10a+b < 60,\\
+b = a+2,\\
+a\in\{1,2,\dots,9\},\ b\in\{0,1,\dots,9\}.
+\end{cases}
+\]
+
+把 $b=a+2$ 代入：
+\[
+50 < 10a+(a+2) < 60 \;\Longrightarrow\; 48 < 11a < 58.
+\]
+所以 $\dfrac{48}{11}<a<\dfrac{58}{11}$，即 $4.36<a<5.27$。又 $a\in\mathbf{N}^*$，故 $a=5$，$b=7$。
+
+\vspace{0.5em}
+所求两位数为 $\alert{57}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：求代数式的取值范围}
+\textbf{5.} 已知 $2<a<3$，$-2<b<-1$，求 $2a+b$ 的取值范围。
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+由 $2<a<3$，两边同乘 $2$（正数，不等号方向不变）：
+\[
+4 < 2a < 6.
+\]
+又已知
+\[
+-2 < b < -1.
+\]
+两个同向不等式相加（性质5）：
+\[
+4+(-2) < 2a+b < 6+(-1),
+\]
+即
+\[
+\alert{2 < 2a+b < 5}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题：证明传递性}
+\textbf{6.} 证明：$c<b$，$b<a \Rightarrow c<a$。
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+由 $c<b$，根据两实数大小关系的基本事实：
+\[
+c-b<0.
+\]
+由 $b<a$：
+\[
+b-a<0.
+\]
+作差比较 $c$ 与 $a$：
+\[
+c-a = (c-b)+(b-a).
+\]
+两个负数之和仍为负数，故 $c-a<0$，即 $c<a$。
+
+\vspace{0.5em}
+因此 $c<b$，$b<a \Rightarrow \alert{c<a}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第7题 ==========
+\begin{frame}[t]{第7题：综合证明}
+\textbf{7.} 已知 $a>b>0$，$c<d<0$，$e<0$，求证：
+\[
+\frac{e}{a-c} > \frac{e}{b-d}.
+\]
+\end{frame}
+
+\begin{frame}[t]{第7题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+\textbf{第一步：} 由 $c<d<0$，两边同乘 $-1$，不等号反向：
+\[
+-c > -d > 0.
+\]
+又 $a>b>0$，两式同向相加：
+\[
+a+(-c) > b+(-d) > 0 \;\Longrightarrow\; a-c > b-d > 0.
+\]
+
+\textbf{第二步：} 由 $a-c>b-d>0$，两边取倒数（正数，不等号反向）：
+\[
+\frac{1}{a-c} < \frac{1}{b-d}.
+\]
+
+\textbf{第三步：} 两边同乘负数 $e<0$，不等号反向：
+\[
+\alert{\frac{e}{a-c} > \frac{e}{b-d}}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第8题 ==========
+\begin{frame}[t]{第8题：选择题}
+\textbf{8.} 下列命题为真命题的是（\quad）。
+
+\vspace{0.5em}
+(A) 若 $a>b>0$，则 $ac^2>bc^2$；\hfill
+(B) 若 $a>b>0$，则 $a^2>b^2$；
+
+\vspace{0.3em}
+(C) 若 $a<b<0$，则 $a^2<ab<b^2$；\hfill
+(D) 若 $a<b<0$，则 $\dfrac{1}{a}<\dfrac{1}{b}$。
+\end{frame}
+
+\begin{frame}[t]{第8题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(A)} 当 $c=0$ 时，$ac^2=bc^2=0$，不成立。假命题。
+
+\textbf{(B)} 由 $a>b>0$，据性质7（乘方）：$a^2>b^2$。\alert{真命题}。
+
+\textbf{(C)} 由 $a<b<0$，两边乘 $a<0$（反向）：$a^2>ab$；两边乘 $b<0$（反向）：$ab>b^2$。故 $a^2>ab>b^2$。假命题。
+
+\textbf{(D)} 由 $a<b<0$，取倒数（负数，反向）：$\dfrac{1}{a}>\dfrac{1}{b}$（如 $-2<-1$，而 $-\tfrac12>-1$）。假命题。
+
+\vspace{0.5em}
+综上，选 \alert{(B)}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第9题 ==========
+\begin{frame}[t]{第9题：圆与正方形的面积}
+\textbf{9.} 证明：圆的面积大于与它具有相同周长的正方形的面积。并据此说明，人们通常把自来水管的横截面制成圆形，而不是正方形的原因。
+\end{frame}
+
+\begin{frame}[t]{第9题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+设周长均为 $C$。
+
+\textbf{圆：} 半径 $r=\dfrac{C}{2\pi}$，面积
+\[
+S_{\text{圆}}=\pi r^2=\pi\cdot\frac{C^2}{4\pi^2}=\frac{C^2}{4\pi}.
+\]
+
+\textbf{正方形：} 边长 $a=\dfrac{C}{4}$，面积
+\[
+S_{\text{正}}=a^2=\frac{C^2}{16}.
+\]
+
+因为 $4\pi\approx 12.57<16$，所以 $\dfrac{1}{4\pi}>\dfrac{1}{16}$，故
+\[
+\alert{S_{\text{圆}}=\frac{C^2}{4\pi} > \frac{C^2}{16}=S_{\text{正}}}.
+\]
+
+\vspace{0.3em}
+\small\textbf{实际意义：} 周长（材料用量）相同时，圆形截面面积最大，水的流量最大；或相同流量时圆形最省材料。故自来水管横截面制成圆形。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第10题 ==========
+\begin{frame}[t]{第10题：糖水不等式}
+\textbf{10.} 已知 $b$ 克糖水中含有 $a$ 克糖（$b>a>0$），再添加 $m$ 克糖（$m>0$）（假设全部溶解），糖水变甜了。请将这一事实表示为一个不等式，并证明这个不等式成立。
+\end{frame}
+
+\begin{frame}[t]{第10题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+原来糖水浓度为 $\dfrac{a}{b}$，加糖后浓度为 $\dfrac{a+m}{b+m}$。
+
+“糖水变甜” 即浓度变大：
+\[
+\frac{a+m}{b+m} > \frac{a}{b}.
+\]
+
+\textbf{证明（作差）：}
+\[
+\frac{a+m}{b+m}-\frac{a}{b}
+= \frac{b(a+m)-a(b+m)}{b(b+m)}
+= \frac{m(b-a)}{b(b+m)}.
+\]
+因为 $b>a>0$，$m>0$，所以分子 $m(b-a)>0$，分母 $b(b+m)>0$，故差 $>0$。
+
+\vspace{0.3em}
+即 \alert{$\dfrac{a+m}{b+m}>\dfrac{a}{b}$}。\small（糖水不等式）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第11题 ==========
+\begin{frame}[t]{第11题：证明算术根不等式}
+\textbf{11.} 已知 $a>b>0$，求证：$\sqrt{a}>\sqrt{b}$。
+\end{frame}
+
+\begin{frame}[t]{第11题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+\textbf{证法一（作差）：}
+\[
+\sqrt{a}-\sqrt{b}
+= \frac{(\sqrt{a}-\sqrt{b})(\sqrt{a}+\sqrt{b})}{\sqrt{a}+\sqrt{b}}
+= \frac{a-b}{\sqrt{a}+\sqrt{b}}.
+\]
+因为 $a>b>0$，所以 $a-b>0$，且 $\sqrt{a}+\sqrt{b}>0$，故 $\sqrt{a}-\sqrt{b}>0$，即 $\sqrt{a}>\sqrt{b}$。
+
+\vspace{0.5em}
+\textbf{证法二（反证/性质）：} 假设 $\sqrt{a}\le\sqrt{b}$。因两边非负，据性质7平方得 $a\le b$，与已知 $a>b$ 矛盾。故 $\sqrt{a}>\sqrt{b}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第12题 ==========
+\begin{frame}[t]{第12题：火车站运货方案}
+\textbf{12.} 火车站有某公司待运的甲种货物 $1530\,\mathrm{t}$，乙种货物 $1150\,\mathrm{t}$。现计划用 A、B 两种型号的货厢共 $50$ 节运送这批货物。已知 $35\,\mathrm{t}$ 甲种货物和 $15\,\mathrm{t}$ 乙种货物可装满一节 A 型货厢，$25\,\mathrm{t}$ 甲种货物和 $35\,\mathrm{t}$ 乙种货物可装满一节 B 型货厢，据此安排 A、B 两种货厢的节数，共有几种方案？若每节 A 型货厢的运费是 $0.5$ 万元，每节 B 型货厢的运费是 $0.8$ 万元，哪种方案的运费较少？
+\end{frame}
+
+\begin{frame}[t]{第12题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设安排 A 型货厢 $x$ 节，则 B 型货厢 $(50-x)$ 节。由题意：
+\[
+\begin{cases}
+35x+25(50-x) \ge 1530, & \text{（甲货物）}\\
+15x+35(50-x) \ge 1150. & \text{（乙货物）}
+\end{cases}
+\]
+
+化简：
+\[
+\begin{cases}
+10x \ge 280 \;\Rightarrow\; x\ge 28,\\
+-20x \ge -600 \;\Rightarrow\; x\le 30.
+\end{cases}
+\]
+又 $x\in\mathbf{N}^*$，故 $x=28,29,30$，共 \alert{3 种方案}：
+\begin{itemize}
+  \item A $28$ 节、B $22$ 节；
+  \item A $29$ 节、B $21$ 节；
+  \item A $30$ 节、B $20$ 节。
+\end{itemize}
+
+总运费 $y=0.5x+0.8(50-x)=40-0.3x$（万元）。$x$ 越大 $y$ 越小，故 $x=30$ 时运费最少：
+\[
+y_{\min}=40-0.3\times 30=\alert{31\ \text{万元}}.
+\]
+即安排 A 型 $30$ 节、B 型 $20$ 节时运费最少。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

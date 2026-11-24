@@ -1,0 +1,351 @@
+\documentclass[10pt,aspectratio=169,serif,fleqn]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题4.1]{习题4.1 指数}
+\subtitle{复习巩固 \,$\cdot$\, 综合运用 \,$\cdot$\, 拓广探索}
+\author{}
+\institute{}
+\date{2026-11-8}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\section{复习巩固}
+\begin{frame}[t]{第1题：求下列各式的值：}\vspace{-2em}
+\[
+(1)\ \sqrt[4]{100^{4}};\qquad
+(2)\ \sqrt[5]{(-0.1)^{5}};\qquad
+(3)\ \sqrt{(\pi-4)^{2}};\qquad
+(4)\ \sqrt[6]{(x-y)^{6}}.
+\]
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+	利用根式性质：当 $n$ 为奇数时 $\sqrt[n]{a^{n}}=a$；当 $n$ 为偶数时 $\sqrt[n]{a^{n}}=|a|$。
+	\[
+	(1)\ \sqrt[4]{100^{4}} = |100| = \alert{100}.
+	\]
+	\[
+	(2)\ \sqrt[5]{(-0.1)^{5}} = -0.1.
+	\]
+	\[
+	(3)\ \sqrt{(\pi-4)^{2}} = |\pi-4| = 4-\pi \quad(\because \pi<4).
+	\]
+	\[
+	(4)\ \sqrt[6]{(x-y)^{6}} = |x-y| =
+	\begin{cases}
+		x-y, & x\ge y,\\
+		y-x, & x<y.
+	\end{cases}
+	\]
+\end{tcolorbox}
+\end{frame}
+
+
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：选择题。}
+
+\begin{enumerate}
+	\item 设 $a>0$，则下列运算中正确的是（\quad）。\\[5pt]
+	
+	(A) $a^{\frac{4}{3}}a^{\frac{3}{4}}=a$\qquad
+	(B) $a\div a^{\frac{2}{3}}=a^{\frac{3}{2}}$\qquad
+	(C) $a^{\frac{2}{3}}a^{-\frac{2}{3}}=0$\qquad
+	(D) $(a^{\frac{1}{4}})^{4}=a$\\[10pt]
+	\item 设 $a>0$，$m,n$ 是正整数，且 $n>1$，则下列各式
+	\[
+	a^{\frac{m}{n}}=\sqrt[n]{a^{m}},\quad a^{0}=1,\quad a^{-\frac{m}{n}}=\frac{1}{\sqrt[n]{a^{m}}},
+	\]
+	正确的个数是（\quad）。\\[5pt]
+	
+	(A) $3$\qquad (B) $2$\qquad (C) $1$\qquad (D) $0$
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}\vspace{-1.5em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解:}]
+\textbf{(1)} 逐项检验：
+\begin{itemize}
+  \item (A) $a^{\frac{4}{3}}a^{\frac{3}{4}}=a^{\frac{4}{3}+\frac{3}{4}}=a^{\frac{25}{12}}\ne a$，错；
+  \item (B) $a\div a^{\frac{2}{3}}=a^{1-\frac{2}{3}}=a^{\frac{1}{3}}\ne a^{\frac{3}{2}}$，错；
+  \item (C) $a^{\frac{2}{3}}a^{-\frac{2}{3}}=a^{0}=1\ne 0$，错；
+  \item (D) $(a^{\frac{1}{4}})^{4}=a$，\alert{对}。
+\end{itemize}
+\textbf{答案：D。}
+
+\vspace{0.6em}
+\textbf{(2)} 三式分别是分数指数幂、零指数幂、负分数指数幂的定义，均正确，共 $3$ 个。
+
+\textbf{答案：A。}
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：填空题}
+(1) 在 $\left(-\dfrac{1}{2}\right)^{-1},\ 2^{-\frac{1}{2}},\ \left(\dfrac{1}{2}\right)^{-1},\ 2^{-1}$ 中，最大的数是\underline{\hspace{3em}}；\\[8pt]
+
+(2) 按从小到大的顺序，可将 $2^{\sqrt{3}},\ 3^{\sqrt{2}},\ \pi^{\sqrt{5}},\ 2^{\pi}$ 重新排列为\underline{\hspace{6em}}（可用计算工具）。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}\vspace{-1.5em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,sidebyside,title=\textbf{解:}]
+\textbf{(1)} 分别计算：
+\[\left(-\tfrac12\right)^{-1}=-2,\]
+\[2^{-\frac12}=\frac{1}{\sqrt2}\approx 0.707,\]
+\[\left(\tfrac12\right)^{-1}=2,\quad\]
+\[2^{-1}=\tfrac12.\]
+最大的数是 $\alert{\left(\dfrac{1}{2}\right)^{-1}=2}$。
+
+\tcblower
+\textbf{(2)} 用计算工具：
+\[
+2^{\sqrt3}\approx 3.32,\]
+\[3^{\sqrt2}\approx 4.73,\]
+\[ 2^{\pi}\approx 8.82,\]
+\[\pi^{\sqrt5}\approx 13.8.\]
+
+故从小到大：
+\[
+\alert{2^{\sqrt{3}}<3^{\sqrt{2}}<2^{\pi}<\pi^{\sqrt{5}}}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：用分数指数幂表示并计算下列各式（式中字母均为正数）}\vspace{-1.5em}
+\[
+(1)\ \sqrt{\frac{b^{3}}{a}\sqrt{\frac{a^{2}}{b^{6}}}};\qquad
+(2)\ \sqrt{a^{\frac{1}{2}}\sqrt{a^{\frac{1}{2}}\sqrt{a}}};\qquad
+(3)\ \frac{\sqrt{m}\sqrt[3]{m}\sqrt[4]{m}}{\bigl(\sqrt[6]{m}\bigr)^{5}\,m^{\frac{1}{4}}}.
+\]
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+
+	\[	\textbf{(1)}
+	\sqrt{\frac{b^{3}}{a}\sqrt{\frac{a^{2}}{b^{6}}}}=\left [b ^3 a^{-1}(a^2b^{-6})^{\frac{1}{2}}\right]^{\frac{1}{2}}
+	\]
+	\[
+	=(b^3a^{-1}ab^{-3})^{\frac{1}{2}}
+	=(b^{3-3}a^{-1+1})^{\frac{1}{2}}
+	\]
+	\[
+	=(b^0a^0)^{\frac{1}{2}}=1^{\frac12}=1
+	\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解(接上页)}]
+
+\[
+\textbf{(2)} \sqrt{a^{\frac{1}{2}}\sqrt{a^{\frac{1}{2}}\sqrt{a}}}
+=\left[a^{\frac{1}{2}}(a^{\frac{1}{2}}\cdot a^{\frac12})^{\frac12}\right]^{\frac12}
+=(a^{\frac12}a^{\frac12})^{\frac12}=a^{\frac12}=\sqrt{a}
+\]
+\[\textbf{(3)} 分子分母分别合并：
+\text{分子}=m^{\frac12+\frac13+\frac14}=m^{\frac{13}{12}},\qquad
+\text{分母}=m^{\frac56+\frac14}=m^{\frac{13}{12}},
+\]
+\[
+\therefore \text{原式}=m^{\frac{13}{12}-\frac{13}{12}}=\alert{1}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：计算下列各式（式中字母均为正数）}
+\vspace{-1.5em}
+\[
+(1)\ a^{\frac{1}{3}}a^{\frac{3}{4}}a^{\frac{7}{12}};\qquad
+(2)\ a^{\frac{2}{3}}a^{\frac{3}{4}}\div a^{\frac{5}{6}};
+\]
+\[
+(3)\ \left(x^{\frac{1}{3}}y^{-\frac{3}{4}}\right)^{12};\qquad
+(4)\ 4a^{\frac{2}{3}}b^{-\frac{1}{3}}\div\left(-\frac{2}{3}a^{-\frac{1}{3}}b^{-\frac{1}{3}}\right).
+\]
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\[
+(1)\ a^{\frac{1}{3}}a^{\frac{3}{4}}a^{\frac{7}{12}}=a^{\frac13+\frac34+\frac{7}{12}}=a^{\frac{4+9+7}{12}}=a^{\frac{20}{12}}=\alert{a^{\frac53}}.
+\]
+\[
+(2) a^{\frac{2}{3}}a^{\frac{3}{4}}\div a^{\frac{5}{6}}=\ a^{\frac23+\frac34-\frac56}=a^{\frac{8+9-10}{12}}=\alert{a^{\frac{7}{12}}}.
+\]
+\[
+(3)\ \left(x^{\frac{1}{3}}y^{-\frac{3}{4}}\right)^{12}=
+\bigl(x^{\frac13}\bigr)^{12}\bigl(y^{-\frac34}\bigr)^{12}=x^{4}\,y^{-9}=\alert{\dfrac{x^{4}}{y^{9}}}.
+\]
+\[
+(4)\ 4a^{\frac{2}{3}}b^{-\frac{1}{3}}\div\left(-\frac{2}{3}a^{-\frac{1}{3}}b^{-\frac{1}{3}}\right)
+=\left[4\div\!\left(-\tfrac23\right)\right]\cdot a^{\frac23+\frac13}b^{-\frac13+\frac13}
+= -6\cdot a^{1}\cdot b^{0}=\alert{-6a}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\section{综合运用}
+\begin{frame}[t]{第6题：细菌分裂}\vspace{-1.5em}
+ 如果在某种细菌培养过程中，细菌每 $10\,\text{min}$ 分裂 $1$ 次（$1$ 个分裂成 $2$ 个），那么经过 $1\,\text{h}$，$1$ 个这种细菌可以分裂成\underline{\hspace{2em}}个。
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+	$1\,\text{h}=60\,\text{min}$，每 $10\,\text{min}$ 分裂一次，共分裂
+	\[
+	60\div 10=6\ \text{次}.
+	\]
+	每次由 $1$ 个变 $2$ 个，$n$ 次分裂后的个数为 $2^{n}$：
+	\[
+	1\overset{10\text{min}}{\longrightarrow}2
+	\overset{20\text{min}}{\longrightarrow}4
+	\overset{30\text{min}}{\longrightarrow}8
+	\overset{40\text{min}}{\longrightarrow}16
+	\overset{50\text{min}}{\longrightarrow}32
+	\overset{60\text{min}}{\longrightarrow}64.
+	\]
+	故 $1$ 个细菌经过 $1\,\text{h}$ 可分裂成 $\alert{2^{6}=64}$ 个。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第7题 ==========
+\begin{frame}[t]{第7题：已知幂求幂}
+
+(1) 已知 $10^{m}=2,\ 10^{n}=3$，求 $10^{\frac{3m-2n}{2}}$ 的值；
+
+(2) 已知 $a^{2x}=3$，求 $\dfrac{a^{3x}+a^{-3x}}{a^{x}+a^{-x}}$ 的值。
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+	\textbf{(1)} 利用 $a^{rs}=(a^{r})^{s}$：
+	\[
+	10^{\frac{3m-2n}{2}}=10^{\frac{3m}{2}}\div 10^{n}=(10^{m})^{\frac32}\div 10^{n}=2^{\frac32}\div 3=\alert{\frac{2\sqrt2}{3}}.
+	\]
+	
+	\vspace{0.6em}
+	\textbf{(2)} 利用立方和公式
+	$a^{3x}+a^{-3x}=(a^{x}+a^{-x})(a^{2x}-1+a^{-2x})$，约去 $a^{x}+a^{-x}$：
+	\[
+	\text{原式}=a^{2x}-1+a^{-2x}=3-1+\frac{1}{3}=\alert{\frac{7}{3}}.
+	\]
+\end{tcolorbox}
+\end{frame}
+
+
+
+% ========== 第8题 ==========
+\begin{frame}[t]{第8题：已知 $a^{\frac{1}{2}}+a^{-\frac{1}{2}}=3$，求下列各式的值：
+\[
+(1)\ a+a^{-1};\qquad (2)\ a^{2}+a^{-2}.
+\]
+}
+\vspace{-2em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+	\textbf{(1)} 两边平方：
+	\[
+	\bigl(a^{\frac12}+a^{-\frac12}\bigr)^{2}=a+2\cdot a^{\frac12}\cdot a^{-\frac12}+a^{-1}=a+a^{-1}+2=9,
+	\]
+	\[
+	\therefore a+a^{-1}=\alert{7}.
+	\]
+	
+	\vspace{0.6em}
+	\textbf{(2)} 对 $a+a^{-1}=7$ 再平方：
+	\[
+	(a+a^{-1})^{2}=a^{2}+2+a^{-2}=49,
+	\]
+	\[
+	\therefore a^{2}+a^{-2}=\alert{47}.
+	\]
+\end{tcolorbox}
+\end{frame}
+
+
+
+% ========== 第9题 ==========
+\section{拓广探索}
+\begin{frame}[t]{第9题：倒酒精问题}
+\textbf{9.} 从盛有 $1\,\text{L}$ 纯酒精的容器中倒出 $\dfrac{1}{3}\,\text{L}$，然后用水填满；再倒出 $\dfrac{1}{3}\,\text{L}$，又用水填满……
+
+(1) 连续进行 $5$ 次，容器中的纯酒精还剩下多少？
+
+(2) 连续进行 $n$ 次，容器中的纯酒精还剩下多少？
+\end{frame}
+
+\begin{frame}[t]{第9题 解答}\vspace{-1.5em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+每次操作后，倒出的是混合液，但浓度是均匀的；倒出 $\frac13$ 后剩余混合液 $\frac23\,\text{L}$，其中纯酒精也剩上次的 $\frac23$。用水填满后体积回到 $1\,\text{L}$，但纯酒精量不变。
+
+\vspace{0.4em}
+\textbf{(1)} 每次操作后纯酒精为上次的 $\frac{2}{3}$，进行 $5$ 次后：
+\[
+1\cdot\left(\frac{2}{3}\right)^{5}=\frac{32}{243}\,\text{L}\approx 0.132\,\text{L}.
+\]
+
+\vspace{0.6em}
+\textbf{(2)} 同理，连续进行 $n$ 次后，容器中纯酒精为
+\[
+\alert{\left(\frac{2}{3}\right)^{n}\,\text{L}}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第10题 ==========
+\begin{frame}[t]{第10题：数列极限初探}
+\textbf{10.}
+(1) 当 $n=1,2,3,10,100,1000,10000,100000,\cdots$ 时，用计算工具计算 $\left(1+\dfrac{1}{n}\right)^{n}\ (n\in\mathbf{N}^{*})$ 的值；
+
+(2) 当 $n$ 越来越大时，$\left(1+\dfrac{1}{n}\right)^{n}$ 的底数越来越小，而指数越来越大，那么 $\left(1+\dfrac{1}{n}\right)^{n}$ 是否也会越来越大？有没有最大值？
+\end{frame}
+
+\begin{frame}[t]{第10题 解答}\vspace{-1.5em}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 列表：
+\[
+\begin{array}{c|cccccc}
+n & 1 & 2 & 3 & 10 & 100 & 1000\\ \hline
+(1+\frac1n)^{n}\rule[12pt]{0pt}{5pt} & 2 & 2.25 & \approx 2.370 & \approx 2.594 & \approx 2.705 & \approx 2.717
+\end{array}
+\]
+继续增大 $n$：$n=10^{4}$ 时约 $2.718$，$n=10^{5}$ 时约 $2.71827$……
+
+\vspace{0.6em}
+\textbf{(2)} 数列 $\left(1+\dfrac{1}{n}\right)^{n}$ 随 $n$ 增大而\alert{单调递增}，但始终小于 $3$，并无限趋近于一个确定的常数
+$e\approx 2.71828\cdots.$\rule[15pt]{0pt}{0pt}\rule[-10pt]{0pt}{0pt}
+
+因此它没有最大值（任意一项之后还有更大的项），但有上界.%这是高中阶段首次接触的重要极限。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

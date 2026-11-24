@@ -1,0 +1,337 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[2.2 基本不等式·练习]{2.2 基本不等式（练习）}
+\subtitle{基本不等式 \& 最值应用}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 基本不等式回顾 ==========
+\begin{frame}[t]{基本不等式回顾：一正·二定·三相等}
+\centering
+\textbf{基本不等式：} 若 $a>0,\ b>0$，则
+\[
+\sqrt{ab} \le \frac{a+b}{2},
+\]
+当且仅当 $a=b$ 时，等号成立。
+
+\vspace{1em}
+\begin{tcolorbox}[colback=blue!5,colframe=blue,title=\textbf{使用条件：一正、二定、三相等}]
+\begin{enumerate}
+  \item \alert{一正}：各项必须为正数；
+  \item \alert{二定}：求最值时，和或积必须有一个为定值；
+  \item \alert{三相等}：等号必须能取到（即 $a=b$ 有解）。
+\end{enumerate}
+\small
+\textbf{口诀：} 积定和最小，和定积最大。
+\end{tcolorbox}
+\end{frame}
+
+% ================= 练习一（教材P46） =================
+\begin{frame}[t]{练习一 第1题：证明 $ab\le\left(\frac{a+b}{2}\right)^2$}
+\textbf{1.} 已知 $a,\ b\in\mathbf{R}$，求证：
+\[
+ab \le \left(\frac{a+b}{2}\right)^2.
+\]
+\end{frame}
+
+\begin{frame}[t]{练习一 第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+作差：
+\begin{align*}
+\left(\frac{a+b}{2}\right)^2 - ab
+&= \frac{a^2+2ab+b^2}{4} - ab\\
+&= \frac{a^2 - 2ab + b^2}{4}\\
+&= \frac{(a-b)^2}{4} \ge 0.
+\end{align*}
+
+所以 $\left(\dfrac{a+b}{2}\right)^2 \ge ab$，即
+\[
+\alert{ab \le \left(\frac{a+b}{2}\right)^2}.
+\]
+当且仅当 $a=b$ 时，等号成立。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习一 第2题 ==========
+\begin{frame}[t]{练习一 第2题：两个不等式证明}
+\textbf{2.} 已知 $x,\ y$ 都是正数，且 $x\ne y$，求证：
+
+\vspace{0.5em}
+(1) $\dfrac{x}{y}+\dfrac{y}{x}>2$；\qquad
+(2) $\dfrac{2xy}{x+y}<\sqrt{xy}$。
+\end{frame}
+
+\begin{frame}[t]{练习一 第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+\textbf{(1)} 因为 $x>0,\ y>0$，所以 $\dfrac{x}{y}>0,\ \dfrac{y}{x}>0$。由基本不等式：
+\[
+\frac{x}{y}+\frac{y}{x} \ge 2\sqrt{\frac{x}{y}\cdot\frac{y}{x}}=2.
+\]
+等号成立当且仅当 $\dfrac{x}{y}=\dfrac{y}{x}$，即 $x=y$。但题设 $x\ne y$，故等号取不到：
+\[
+\alert{\frac{x}{y}+\frac{y}{x}>2}.
+\]
+
+\vspace{0.5em}
+\textbf{(2)} 因为 $x>0,\ y>0$，由基本不等式 $x+y\ge 2\sqrt{xy}$，且 $x\ne y$ 故严格：
+\[
+x+y > 2\sqrt{xy}.
+\]
+两边均为正，取倒数反向：$\dfrac{1}{x+y}<\dfrac{1}{2\sqrt{xy}}$，两边乘 $2xy>0$：
+\[
+\alert{\frac{2xy}{x+y}<\sqrt{xy}}.
+\]
+\small（注：$\dfrac{2xy}{x+y}$ 为调和平均数，不超过几何平均数 $\sqrt{xy}$）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习一 第3题 ==========
+\begin{frame}[t]{练习一 第3题：$x^2+\dfrac{1}{x^2}$ 的最小值}
+\textbf{3.} 当 $x$ 取什么值时，$x^2+\dfrac{1}{x^2}$ 取得最小值？最小值是多少？
+\end{frame}
+
+\begin{frame}[t]{练习一 第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{一正：} $x^2>0$，$\dfrac{1}{x^2}>0$（$x\ne 0$）。
+
+\textbf{二定：} $x^2\cdot\dfrac{1}{x^2}=1$ 为定值。
+
+由基本不等式：
+\[
+x^2+\frac{1}{x^2} \ge 2\sqrt{x^2\cdot\frac{1}{x^2}}=2.
+\]
+
+\textbf{三相等：} 等号成立当且仅当 $x^2=\dfrac{1}{x^2}$，即 $x^4=1$，$x=\pm 1$。
+
+\vspace{0.5em}
+所以当 $\alert{x=\pm 1}$ 时，$x^2+\dfrac{1}{x^2}$ 取得最小值 $\alert{2}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习一 第4题 ==========
+\begin{frame}[t]{练习一 第4题：$1-x^2$ 的最大值}
+\textbf{4.} 已知 $-1\le x\le 1$，求 $1-x^2$ 的最大值。
+\end{frame}
+
+\begin{frame}[t]{练习一 第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+因为 $-1\le x\le 1$，所以 $x^2\ge 0$，且 $x^2\le 1$。
+
+从而
+\[
+1-x^2 \le 1.
+\]
+当且仅当 $x^2=0$，即 $x=0$ 时，等号成立。
+
+\vspace{0.5em}
+所以 $1-x^2$ 的最大值为 $\alert{1}$（在 $x=0$ 时取得）。
+
+\vspace{0.5em}
+\small（也可理解为：$x^2$ 最小为 $0$ 时，$1-x^2$ 最大）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习一 第5题 ==========
+\begin{frame}[t]{练习一 第5题：直角两直角边之和最小}
+\textbf{5.} 已知直角三角形的面积等于 $50\ \mathrm{cm^2}$，当两条直角边的长度各为多少时，两条直角边的和最小？最小值是多少？
+\end{frame}
+
+\begin{frame}[t]{练习一 第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设两条直角边长分别为 $a,\ b$（单位：cm）。
+
+由面积为 $50$：$\dfrac{1}{2}ab=50$，即 $ab=100$（定值）。
+
+\textbf{一正：} $a>0,\ b>0$；\quad \textbf{二定：} $ab=100$。
+
+由基本不等式：
+\[
+a+b \ge 2\sqrt{ab}=2\sqrt{100}=20.
+\]
+
+\textbf{三相等：} 当且仅当 $a=b$ 时等号成立。由 $ab=100$ 得 $a=b=10$。
+
+\vspace{0.5em}
+所以当两条直角边均为 $\alert{10\ \mathrm{cm}}$（即等腰直角三角形）时，两直角边之和最小，最小值为 $\alert{20\ \mathrm{cm}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ================= 练习二（教材P48） =================
+\begin{frame}[t]{练习二 第1题：铁丝折矩形}
+\textbf{1.} 用 $20\ \mathrm{cm}$ 长的铁丝折成一个面积最大的矩形，应当怎样折？
+\end{frame}
+
+\begin{frame}[t]{练习二 第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设矩形长、宽分别为 $x,\ y$（单位：cm）。周长为 $20$：
+\[
+2(x+y)=20 \;\Longrightarrow\; x+y=10\ \text{（定值）}.
+\]
+
+面积 $S=xy$。由基本不等式（和定积最大）：
+\[
+xy \le \left(\frac{x+y}{2}\right)^2=\left(\frac{10}{2}\right)^2=25.
+\]
+
+当且仅当 $x=y=5$ 时等号成立。
+
+\vspace{0.5em}
+所以应当折成边长为 $\alert{5\ \mathrm{cm}}$ 的正方形，此时面积最大，为 $\alert{25\ \mathrm{cm^2}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习二 第2题 ==========
+\begin{frame}[t]{练习二 第2题：一边靠墙的菜园}
+\textbf{2.} 用一段长为 $30\ \mathrm{m}$ 的篱笆围成一个一边靠墙的矩形菜园，墙长 $18\ \mathrm{m}$。当这个矩形的边长为多少时，菜园的面积最大？最大面积是多少？
+\end{frame}
+
+\begin{frame}[t]{练习二 第2题 配图}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % 墙
+  \draw[thick] (-0.5,2) -- (8.5,2);
+  \node[above] at (4,2) {墙（长 18 m）};
+  % 矩形
+  \draw[thick] (0,0) rectangle (8,2);
+  % 篱笆标注
+  \draw[<->] (0,-0.3) -- (8,-0.3);
+  \node[below] at (4,-0.3) {平行墙边长 $x$};
+  \draw[<->] (-0.3,0) -- (-0.3,2);
+  \node[left] at (-0.3,1) {垂直边长 $y$};
+\end{tikzpicture}
+\end{center}
+\vspace{0.5em}
+{\small 篱笆只围三边：$x+2y=30$，且 $x\le 18$。}
+\end{frame}
+
+\begin{frame}[t]{练习二 第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设平行于墙的边长为 $x$，垂直于墙的边长为 $y$。篱笆总长：
+\[
+x+2y=30,\quad x\le 18.
+\]
+面积 $S=xy$。注意到 $x$ 与 $2y$ 的和为定值 $30$：
+\[
+x\cdot(2y)\le \left(\frac{x+2y}{2}\right)^2=\left(\frac{30}{2}\right)^2=225.
+\]
+所以 $2xy\le 225$，即 $S=xy\le 112.5$。
+
+等号成立当且仅当 $x=2y=15$，即 $x=15,\ y=7.5$。检验：$x=15\le 18$，符合墙长限制。
+
+\vspace{0.3em}
+所以当平行于墙的边长为 $\alert{15\ \mathrm{m}}$、垂直边长为 $\alert{7.5\ \mathrm{m}}$ 时，面积最大，最大面积为 $\alert{112.5\ \mathrm{m^2}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习二 第3题 ==========
+\begin{frame}[t]{练习二 第3题：长方体纸盒用料}
+\textbf{3.} 做一个体积为 $32\ \mathrm{m^3}$，高为 $2\ \mathrm{m}$ 的长方体纸盒，当底面的边长取什么值时，用纸最少？
+\end{frame}
+
+\begin{frame}[t]{练习二 第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设底面相邻两边长为 $x,\ y$（单位：m）。由体积 $V=2xy=32$，得底面积
+\[
+xy=16\ \text{（定值）}.
+\]
+
+纸盒（有盖）表面积：
+\[
+S=2xy+2\cdot 2x+2\cdot 2y=32+4(x+y).
+\]
+
+由基本不等式（积定和最小）：
+\[
+x+y\ge 2\sqrt{xy}=2\sqrt{16}=8.
+\]
+当且仅当 $x=y=4$ 时等号成立。
+
+此时 $S_{\min}=32+4\times 8=64\ \mathrm{m^2}$。
+
+\vspace{0.3em}
+所以当底面是边长为 $\alert{4\ \mathrm{m}}$ 的正方形时，用纸最少，最少用纸 $\alert{64\ \mathrm{m^2}}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 练习二 第4题 ==========
+\begin{frame}[t]{练习二 第4题：旋转圆柱侧面积}
+\textbf{4.} 已知一个矩形的周长为 $36\ \mathrm{cm}$，矩形绕它的一条边旋转形成一个圆柱。当矩形的边长为多少时，旋转形成的圆柱的侧面积最大？
+\end{frame}
+
+\begin{frame}[t]{练习二 第4题 配图}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % 矩形
+  \draw[thick,fill=blue!10] (0,0) rectangle (3,2);
+  \node[below] at (1.5,0) {$x$（旋转轴）};
+  \node[right] at (3,1) {$y$（旋转半径）};
+  % 旋转轴虚线
+  \draw[dashed] (0,-0.5) -- (0,2.5);
+  \node[left] at (0,2.3) {轴};
+\end{tikzpicture}
+\end{center}
+\vspace{0.3em}
+{\small 绕边长为 $x$ 的边旋转，则圆柱高为 $x$，底面半径为 $y$。}
+\end{frame}
+
+\begin{frame}[t]{练习二 第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+矩形相邻两边长为 $x,\ y$。周长 $2(x+y)=36$，即
+\[
+x+y=18\ \text{（定值）}.
+\]
+
+绕边长为 $x$ 的边旋转，圆柱高为 $x$，底面半径为 $y$。圆柱侧面积：
+\[
+S_{\text{侧}}=2\pi r h=2\pi y\cdot x=2\pi xy.
+\]
+
+由基本不等式（和定积最大）：
+\[
+xy\le \left(\frac{x+y}{2}\right)^2=\left(\frac{18}{2}\right)^2=81.
+\]
+当且仅当 $x=y=9$ 时等号成立。
+
+此时 $S_{\text{侧}\max}=2\pi\times 81=162\pi\ \mathrm{cm^2}$。
+
+\vspace{0.3em}
+所以当矩形为边长 $\alert{9\ \mathrm{cm}}$ 的正方形时，旋转体侧面积最大，最大值为 $\alert{162\pi\ \mathrm{cm^2}}$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

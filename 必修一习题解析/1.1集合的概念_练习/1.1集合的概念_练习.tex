@@ -1,0 +1,155 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[集合的概念练习]{集合的概念（练习）}
+\subtitle{集合的含义与表示}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：判断能否组成集合}
+\textbf{1.} 判断下列元素的全体是否组成集合，并说明理由：
+
+\vspace{0.5em}
+(1) $A$，$B$ 是平面 $\alpha$ 内的定点，在平面 $\alpha$ 内与 $A$，$B$ 等距离的点；
+
+\vspace{0.5em}
+(2) 高中学生中的游泳能手。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1) 能组成集合。}
+
+\vspace{0.3em}
+理由：平面 $\alpha$ 内到两个定点 $A$，$B$ 距离相等的点，构成线段 $AB$ 的垂直平分线，这些点是确定的、明确的，因此它们的全体可以组成一个集合。
+
+\vspace{0.8em}
+\textbf{(2) 不能组成集合。}
+
+\vspace{0.3em}
+理由：“游泳能手”没有明确的标准，什么样的学生才算“能手”是不确定的、模糊的，不满足集合元素的确定性，因此不能组成集合。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：用属于或不属于填空}
+\textbf{2.} 用符号“$\in$”或“$\notin$”填空：
+
+\vspace{1em}
+\begin{center}
+\begin{tabular}{llllll}
+$0$ \underline{\hspace{1.2em}} $\mathbf{N}$；
+& $-3$ \underline{\hspace{1.2em}} $\mathbf{N}$；
+& $0.5$ \underline{\hspace{1.2em}} $\mathbf{Z}$；
+\\[0.8em]
+$\sqrt{2}$ \underline{\hspace{1.2em}} $\mathbf{Z}$；
+& $\dfrac{1}{3}$ \underline{\hspace{1.2em}} $\mathbf{Q}$；
+& $\pi$ \underline{\hspace{1.2em}} $\mathbf{R}$。
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+{\small 其中 $\mathbf{N}$ 为自然数集，$\mathbf{Z}$ 为整数集，$\mathbf{Q}$ 为有理数集，$\mathbf{R}$ 为实数集。}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} $0 \in \mathbf{N}$（$0$ 是自然数）；
+
+\textbf{(2)} $-3 \notin \mathbf{N}$（负整数不是自然数）；
+
+\textbf{(3)} $0.5 \notin \mathbf{Z}$（$0.5$ 是分数，不是整数）；
+
+\textbf{(4)} $\sqrt{2} \notin \mathbf{Z}$（$\sqrt{2}$ 是无理数，不是整数）；
+
+\textbf{(5)} $\dfrac{1}{3} \in \mathbf{Q}$（$\dfrac{1}{3}$ 是有理数）；
+
+\textbf{(6)} $\pi \in \mathbf{R}$（$\pi$ 是实数）。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：用适当方法表示集合}
+\textbf{3.} 用适当的方法表示下列集合：
+
+\vspace{0.5em}
+(1) 由方程 $x^2 - 9 = 0$ 的所有实数根组成的集合；
+
+\vspace{0.5em}
+(2) 一次函数 $y = x + 3$ 与 $y = -2x + 6$ 图象的交点组成的集合；
+
+\vspace{0.5em}
+(3) 不等式 $4x - 5 < 3$ 的解集。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 解方程 $x^2 - 9 = 0$，得 $x = \pm 3$。
+
+用列举法表示为：
+\[
+\quad \{-3,\ 3\}.
+\]
+
+\vspace{0.5em}
+\textbf{(2)} 联立方程组：
+\[
+\begin{cases}
+y = x + 3,\\
+y = -2x + 6,
+\end{cases}
+\quad\Rightarrow\quad x + 3 = -2x + 6,\ \ 3x = 3,\ \ x = 1.
+\]
+代入得 $y = 4$，交点为 $(1, 4)$。
+
+用描述法表示为：$\ \{(x, y) \mid y = x + 3,\ \text{且}\ y = -2x + 6\}$；
+
+用列举法表示为：$\ \{(1,\ 4)\}$。
+
+\vspace{0.5em}
+\textbf{(3)} 解不等式 $4x - 5 < 3$，得 $4x < 8$，即 $x < 2$。
+
+用描述法表示为：
+\[
+\quad \{x \mid x < 2\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

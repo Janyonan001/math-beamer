@@ -1,0 +1,354 @@
+% !TeX TS-program = lualatex
+
+% 本文应用了laulatex的自动计算功能，因此要用lualatex编译。
+\documentclass[aspectratio=169,13pt,t,fleqn] {beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+%  \usetheme{Madrid}      % or try Darmstadt, Madrid, Warsaw, ...
+  \useoutertheme[subsection=false]{smoothbars}
+  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}  % or try serif, structurebold, ...
+%  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{items}[default]
+}
+
+\usepackage[,UTF8,linespread=1.2]{ctex}
+\usepackage[,most]{tcolorbox}
+
+\usepackage{xcolor}
+\definecolor{xy_blue}{cmyk}{0.6,0.35,0.0,0.4}
+\definecolor{xy_orange}{cmyk}{0.0,0.7,1.0,0.0}
+\definecolor{xy_green}{cmyk}{0.2,0.0,1.0,0.15}
+\xdefinecolor{xy_gold}{RGB}{135,103,79}
+\xdefinecolor{xy2_gold}{cmyk}{0,0.35,0.75,0.05}
+
+
+\setbeamercolor{section number projected}{fg=red,bg=red!20}%控制球的颜色
+\setbeamercolor{subsection number projected}{fg=blue,bg=blue!40}
+\setbeamercolor{item}{fg=xy_gold} %设置列表项颜色
+
+\usepackage{amsthm}
+\newtheorem{peroration}{结论：}
+\newtheorem{exploration}{探究：}
+\newtheorem{prooft}{证明：}
+\newtheorem{question}{问题}
+\newtheorem*{solve}{解:}
+\newtheorem{instance}{例}   % 解：独立计数器
+\BeforeBeginEnvironment{peroration}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{exploration}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{solution}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{solution}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{prooft}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{prooft}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{question}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{question}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{solve}{%解：
+	\begingroup
+	\setbeamercolor{block title}{bg=xy_orange!60,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{solve}{%解：
+	\endgroup
+}
+
+\setbeamercolor{prooft}{fg=red, bg=green!10}       % 标题颜色
+\setbeamercolor{prooft body}{fg=red, bg=red!5}  % 内容块背景
+\setbeamerfont{prooft head}{series=\bfseries}       % 标题字体
+\setbeamerfont{question body}{shape=\upshape}         % 内容字体
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\newtcolorbox{summarybox}[1][]{
+	colback=purple!10,
+	colframe=purple!70!black,
+	fonttitle=\bfseries,
+	title=#1,
+	arc=1mm,
+	boxrule=0pt,drop shadow,
+	left=2mm, right=2mm, top=2mm, bottom=2mm,
+}
+\newtcolorbox{summarybox-answer}{
+	width=0.9\textwidth,
+	colback=white,
+	blanker,
+	borderline west={2pt}{20pt}{cyan},
+	left=10mm, right=2mm, top=2mm, bottom=2mm,
+	}
+\title[4.1指数]{4.1\ 指数(第二课时)}
+\subtitle{n次方根与分数指数幂、无理数指数幂}
+\author[好好学习，努力向上]{}
+\institute{}
+\date{2026.11.5}
+%\setbeamertemplate{theorems}[numbered]
+\theoremstyle{definition}
+\newtheorem{exam}{例}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{本节主要内容}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{3pt}
+	\setlength{\belowdisplayskip}{3pt}
+	\setbeamertemplate{theorems}[numbered]
+}
+
+\usepackage{luacode} %此宏包提供\luadirect{} \luaexec{} 两个宏和luacode,luacode*两个环境。
+
+% 用lualatex计算，格式化输出数字，#1 代表小数位数，#2 表示要格式化输出的数。
+% \directlua{}无简便方法直接使用百分号，可以用”local pc = string.char(37)“代替百分号。
+% string.char(37)代表百分号，“%.5f"表示格式化输出的格式：保留5位小数
+% 在\luaexec{}命令下，可以直接使用"\%"输出百分号 
+\newcommand{\num}[2]{\directlua{local format = string.char(37) .. ".#1f" tex.print(string.format(format,#2))}}
+\newcommand{\numb}[2]{\luaexec{tex.print(string.format("\%.#1f",#2))}}
+
+\begin{document}
+\begin{frame}{}
+	\titlepage
+\end{frame}
+
+\begin{frame}{本节主要内容}
+	\tableofcontents
+\end{frame}
+
+\section{上节内容回顾}
+\subsection{n次方根}
+
+
+\begin{frame}{n次方根的定义}
+	\begin{summarybox}[n次方根]
+		一般地，如果 \(x^n=a\)，那么 \(x\) 叫做 \(a\) 的\textbf{\(n\) 次方根}，其中 \(n>1\)，且 \(n\in \mathbf{N}^{*}\).
+	\end{summarybox}
+	\vspace{1em}
+	\begin{columns}
+		\column{0.48\textwidth}
+		\begin{summarybox}[当根指数 n 是奇数时]
+			正数的 \(n\) 次方根是一个正数，负数的 \(n\) 次方根是一个负数. 这时，\(a\) 的 \(n\) 次方根用符号 \(\sqrt[n]{a}\) 表示.
+		\end{summarybox}
+		\column{0.48\textwidth}
+		\begin{summarybox}[当根指数 n 是偶数时]
+			正数的 \(n\) 次方根有两个，这两个数互为相反数. 正的 \(n\) 次方根用 \(\sqrt[n]{a}\) 表示，负的用 \(-\sqrt[n]{a}\) 表示，合并写成 \(\pm\sqrt[n]{a}\;(a>0)\).
+		\end{summarybox}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{几个约定与根式}
+	\begin{summarybox}[注意]
+		\begin{itemize}
+			\item 负数没有偶次方根.
+			\item \(0\) 的任何次方根都是 \(0\)，记作 \(\sqrt[n]{0}=0\).
+		\end{itemize}
+	\end{summarybox}
+
+	\begin{summarybox-answer}
+		式子 \(\sqrt[n]{a}\) 叫做\textbf{根式（radical）}，这里 \(n\) 叫做\textbf{根指数}，\(a\) 叫做\textbf{被开方数}.
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{根式的两个重要性质}
+	根据 \(n\) 次方根的意义，可得
+	\[
+		\left(\sqrt[n]{a}\right)^n=a.
+	\]
+	
+	\vspace{1em}
+
+	\begin{summarybox}[探究：根式开方规律]
+	\hspace{2em}	当 \(n\) 为奇数时，\(\sqrt[n]{a^n}=a\)；
+		\[
+		\text{当 } n \text{ 为偶数时，}\quad \sqrt[n]{a^n}=|a|=\begin{cases} a, & a\geqslant 0,\\ -a, & a<0.\end{cases}
+		\]
+	\end{summarybox}
+\end{frame}
+
+
+
+\subsection{分数指数幂}
+
+
+\begin{frame}{分数指数幂的规定}
+	\vspace{-1em}
+	\begin{summarybox}[正数的正分数指数幂]
+		\[
+			a^{\frac{m}{n}}=\sqrt[n]{a^m}\quad (a>0,\ m,n\in \mathbf{N}^{*},\ n>1).
+		\]
+	\end{summarybox}
+
+	\begin{summarybox}[正数的负分数指数幂]
+		\[
+			a^{-\frac{m}{n}}=\frac{1}{a^{\frac{m}{n}}}=\frac{1}{\sqrt[n]{a^m}}\quad (a>0,\ m,n\in \mathbf{N}^{*},\ n>1).
+		\]
+	\end{summarybox}
+	\vspace{1em}
+
+
+	\begin{summarybox-answer}
+		\(0\) 的正分数指数幂等于 \(0\)，\(0\) 的负分数指数幂\textbf{没有意义}.
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{有理数指数幂的运算性质}
+
+	\begin{summarybox}[运算性质（底数大于0）]
+		\begin{enumerate}[(1)]
+			\item \(a^r\cdot a^s=a^{r+s}\)；
+			\item \((a^r)^s=a^{rs}\)；
+			\item \((ab)^r=a^r b^r\quad (a>0,\ b>0,\ r\in \mathbf{Q})\).
+		\end{enumerate}
+	\end{summarybox}
+\end{frame}
+
+\begin{frame}{}
+	\setcounter{exam}{3}
+
+	{\bfseries 例4}	计算下列各式（式中字母均是正数）：
+		\begin{enumerate}[(1)]
+			\item \(\left(2a^{\frac{2}{3}}b^{\frac{1}{2}}\right)\left(-6a^{\frac{1}{2}}b^{\frac{1}{3}}\right)\div\left(-3a^{\frac{5}{6}}b^{\frac{1}{6}}\right)\)；
+			\item \(\left(m^{\frac{1}{4}}n^{-\frac{3}{8}}\right)^8\);
+			\item $(\sqrt[3]{a^2} - \sqrt{a^3}) \div \sqrt[4]{a^2}$.
+		\end{enumerate}
+
+	\pause
+	\begin{solve}
+		\begin{enumerate}[(1)]
+			\item 原式 \(=[2\times(-6)\div(-3)]\,a^{\frac{2}{3}+\frac{1}{2}-\frac{5}{6}}b^{\frac{1}{2}+\frac{1}{3}-\frac{1}{6}}=4ab^{0}=4a\)；
+			\item 原式 \(=(m^{\frac{1}{4}})^8(n^{-\frac{3}{8}})^8=m^2 n^{-3}=\dfrac{m^2}{n^3}\).
+			\item $(\sqrt[3]{a^2} - \sqrt{a^3}) \div \sqrt[4]{a^2}
+			=(a^{\frac{2}{3}} - a^{\frac{3}{2}}) \div a^{\frac{1}{2}} $\\[5pt]			
+		
+			$= a^{\frac{2}{3} -\frac{1}{2}} - a^{\frac{3}{2}-\frac{1}{2}} 
+			= a^{\frac{1}{6}} -a 
+			= \sqrt[6]{a} -a.$
+		\end{enumerate}
+	\end{solve}
+\end{frame}
+
+\section{无理数指数幂}
+
+\begin{frame}{无理数指数幂}
+	\vspace{-1.5em}
+	\begin{summarybox}[探究]
+		根据 \(\sqrt{2}\) 的不足近似值 \(x\) 和过剩近似值 \(y\)，利用计算工具计算相应的 \(5^x\)，\(5^y\) 的近似值并填入表中，观察它们的变化趋势.
+	\end{summarybox}
+	\vspace{-1em}
+	\begin{center}
+		\small
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\(\sqrt{2}\) 的不足近似值 \(x\) & \(5^x\) 的近似值 & \(\sqrt{2}\) 的过剩近似值 \(y\) & \(5^y\) 的近似值 \\ \hline
+			1.4 & \num{2}{5^1.4} & 1.5 & \num{2}{5^1.5} \\ \hline
+			1.41 &\num{3}{5^1.41} & 1.42 & \num{3}{5^1.42} \\ \hline
+			1.414 & \num{4}{5^1.414} & 1.415 & \num{4}{5^1.415} \\ \hline
+			1.4142 & \num{5}{5^1.4142}	& 1.4143 & \num{5}{5^1.4143} \\ \hline
+			1.41421 & \num{6}{5^1.41421} & 1.41422 & \num{6}{5^1.41422}	 \\ \hline
+			1.414213 & \numb{7}{5^1.414213}	& 1.414214 & \num{7}{5^1.414214} \\ \hline
+			\(\cdots\) & \(\cdots\) & \(\cdots\) & \(\cdots\) \\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{实数指数幂的运算性质}
+	可以发现，当 \(\sqrt{2}\) 的不足近似值 \(x\) 和过剩近似值 \(y\) 逐渐逼近 \(\sqrt{2}\) 时，\(5^x\) 和 \(5^y\) 都趋向于同一个数，这个数就是 \(5^{\sqrt{2}}\)，它是一个\textbf{确定的实数}.
+	\vspace{1em}
+	\pause
+	\begin{summarybox}[无理数指数幂]
+		一般地，无理数指数幂 \(a^{\alpha}\)（\(a>0\)，\(\alpha\) 为无理数）是一个\textbf{确定的实数}. 这样，我们就将指数幂 \(a^x\)（\(a>0\)）中指数 \(x\) 的取值范围从整数逐步拓展到了\textbf{实数}.
+	\end{summarybox}
+	\vspace{1em}
+	\pause
+	\begin{summarybox-answer}
+		整数指数幂的运算性质也适用于实数指数幂，即对任意实数 \(r,s\)，均有
+		\[
+			a^r a^s=a^{r+s},\quad (a^r)^s=a^{rs},\quad (ab)^r=a^r b^r\quad (a>0,b>0,r,s\in \mathbf{R}).
+		\]
+	\end{summarybox-answer}
+\end{frame}
+
+\section{课堂练习}
+
+\begin{frame}[t]{}
+	\textbf{练习1.} 计算下列各式：
+	\[
+	(1)\ \left(2^{\sqrt{3}}\sqrt{m^{\sqrt{3}}}\right)^{2\sqrt{3}};\qquad
+	(2)\ a^{\frac{\pi}{3}}a^{\frac{2\pi}{3}}a^{-\pi}.
+	\]
+	\pause
+	\vspace{-1em}
+	\begin{tcolorbox}[colback=orange!10,colframe=orange,sidebyside,title=\textbf{解:}]
+		
+		\[\textbf{(1)\quad} 
+		\left(2^{\sqrt{3}}\sqrt{m^{\sqrt{3}}}\right)^{2\sqrt{3}}
+		\]
+		\[
+		=\left(2^{\sqrt{3}}\,m^{\frac{\sqrt{3}}{2}}\right)^{2\sqrt{3}}\]
+		\[
+		= \bigl(2^{\sqrt{3}}\bigr)^{2\sqrt{3}}\cdot\bigl(m^{\frac{\sqrt{3}}{2}}\bigr)^{2\sqrt{3}}
+		\]
+		\[
+		= 2^{(\sqrt{3})(2\sqrt{3})}\cdot m^{\frac{\sqrt{3}}{2}\cdot 2\sqrt{3}}.
+		\]
+		\[
+		= 2^{6}\cdot m^{3} = 64\,m^{3}.\]
+		
+		\tcblower
+		\[\textbf{(2)\quad} 
+		a^{\frac{\pi}{3}}a^{\frac{2\pi}{3}}a^{-\pi}\]
+		\[=a^{\frac{\pi}{3}+\frac{2\pi}{3}-\pi} \]
+		\[= a^{\pi-\pi} \]
+		\[= a^{0} \]
+		\[= 1.
+		\]
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{布置作业}
+	\begin{summarybox}[课后作业]
+		\begin{enumerate}
+			\item 教材 P109 练习1、2
+			\item 教材 P109 习题 4.1：6---10
+		\end{enumerate}
+	\end{summarybox}
+\end{frame}
+
+\end{document}

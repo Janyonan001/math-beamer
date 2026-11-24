@@ -1,0 +1,53 @@
+\documentclass[tikz, border=1pt]{standalone}
+\usepackage{ctex} % 支持中文
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=14cm, height=6cm,
+        axis x line=none,
+        axis y line=none,
+        xmin=0, xmax=24,
+        ymin=0, ymax=150,
+        xtick=\empty, ytick=\empty,
+        clip=false,
+    ]
+    % ==== 1. 背景色带（axis 环境内裸坐标即数据坐标，不必写 axis cs:） ====
+    \fill[green!30!gray]   (0,0)   rectangle (24,50);   % 优
+    \fill[yellow!60!orange](0,50)  rectangle (24,100);  % 良
+    \fill[orange!80!yellow](0,100) rectangle (24,150);  % 轻度污染
+
+    % ==== 2. 折线 ====
+    \draw[line width=1.5pt, magenta!80!red]
+      plot[smooth, tension=0.8] coordinates {
+        (0,40)(1,40)(2,45)(3,28)(4,26)(5,38)(6,38)(7,40)
+        (8,52)(9,80)(10,125)(11,100)(12,85)(13,98)(14,55)(15,35)
+        (16,36)(17,35)(18,25)(19,15)(20,14)(21,22)(22,28)(23,30)(24,60)
+      };
+
+    % ==== 3. 坐标轴（粗线） ====
+    \draw[thick] (0,0) -- (24,0);   % x 轴
+    \draw[thick] (0,0) -- (0,150);  % y 轴
+
+    % X 轴刻度（手写：pgfplots 对 foreach 宏进坐标有解析 bug，数字直写最稳）
+    \draw[thick] (4,0) -- (4,-4);    \node[anchor=north, font=\bfseries\small] at (4,-4)  {04:00};
+    \draw[thick] (8,0) -- (8,-4);    \node[anchor=north, font=\bfseries\small] at (8,-4)  {08:00};
+    \draw[thick] (12,0) -- (12,-4);  \node[anchor=north, font=\bfseries\small] at (12,-4) {12:00};
+    \draw[thick] (16,0) -- (16,-4);  \node[anchor=north, font=\bfseries\small] at (16,-4) {16:00};
+    \draw[thick] (20,0) -- (20,-4);  \node[anchor=north, font=\bfseries\small] at (20,-4) {20:00};
+    \draw[thick] (24,0) -- (24,-4);  \node[anchor=north, font=\bfseries\small] at (24,-4) {24:00};
+    % Y 轴刻度
+    \draw[thick] (0,0) -- (-0.1,0);    \node[anchor=east, font=\bfseries\small] at (-0.2,0)   {0};
+    \draw[thick] (0,50) -- (-0.1,50);  \node[anchor=east, font=\bfseries\small] at (-0.2,50)  {50};
+    \draw[thick] (0,100) -- (-0.1,100);\node[anchor=east, font=\bfseries\small] at (-0.2,100) {100};
+    \draw[thick] (0,150) -- (-0.1,150);\node[anchor=east, font=\bfseries\small] at (-0.2,150) {150};
+
+    % ==== 4. 文字标签 ====
+    \node[rotate=90, font=\bfseries, anchor=south] at (-1.5, 75) {某市空气质量指数};
+    \node[anchor=west, font=\small] at (1.5, 25)  {优};
+    \node[anchor=west, font=\small] at (1.5, 75)  {良};
+    \node[anchor=west, font=\small] at (1.5, 125) {轻度污染};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

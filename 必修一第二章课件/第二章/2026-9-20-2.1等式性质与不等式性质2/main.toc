@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{等式的基本性质}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{等式的基本性质}{3}{0}{1}
+\beamer@sectionintoc {2}{不等式的基本性质}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{不等式的基本性质}{5}{0}{2}
+\beamer@sectionintoc {3}{例题分析}{13}{0}{3}

@@ -1,0 +1,149 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[集合间的基本关系练习]{集合间的基本关系（练习）}
+\subtitle{子集、真子集、集合相等}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：写出所有子集}
+\textbf{1.} 写出集合 $\{a,\ b,\ c\}$ 的所有子集。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+含有 $n$ 个元素的集合共有 $2^n$ 个子集。
+
+集合 $\{a, b, c\}$ 含 $3$ 个元素，故共有 $2^3 = 8$ 个子集，按元素个数列举如下：
+
+\vspace{0.5em}
+\begin{itemize}
+  \item 空集（$0$ 个元素）：$\varnothing$；
+  \item 单元素集（$1$ 个元素）：$\{a\}$，$\{b\}$，$\{c\}$；
+  \item 双元素集（$2$ 个元素）：$\{a,b\}$，$\{a,c\}$，$\{b,c\}$；
+  \item 三元素集（$3$ 个元素）：$\{a,b,c\}$。
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{综上：} $\varnothing$，$\{a\}$，$\{b\}$，$\{c\}$，$\{a,b\}$，$\{a,c\}$，$\{b,c\}$，$\{a,b,c\}$。
+
+\vspace{0.3em}
+{\small 其中除 $\{a,b,c\}$ 本身外，其余 $7$ 个均为它的真子集。}
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：用适当符号填空}
+\textbf{2.} 用适当的符号填空（$\in$，$\notin$，$=$，$\subseteq$，$\subsetneqq$ 等）：
+
+\vspace{0.8em}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+(1) $a$ \underline{\hspace{1em}} $\{a,\ b,\ c\}$；
+
+(3) $\varnothing$ \underline{\hspace{1em}} $\{x \in \mathbf{R} \mid x^2 + 1 = 0\}$；
+
+(5) $\{0\}$ \underline{\hspace{1em}} $\{x \mid x^2 = x\}$；
+\end{column}
+\begin{column}{0.45\textwidth}
+(2) $0$ \underline{\hspace{1em}} $\{x \mid x^2 = 0\}$；
+
+(4) $\{0,\ 1\}$ \underline{\hspace{1em}} $\mathbf{N}$；
+
+(6) $\{2,\ 1\}$ \underline{\hspace{1em}} $\{x \mid x^2 - 3x + 2 = 0\}$。
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} $a \in \{a,b,c\}$（$a$ 是集合中的元素，用属于号）。
+
+\vspace{0.3em}
+\textbf{(2)} $0 \in \{x \mid x^2 = 0\}$（方程 $x^2 = 0$ 的解为 $x=0$）。
+
+\vspace{0.3em}
+\textbf{(3)} $\varnothing = \{x \in \mathbf{R} \mid x^2 + 1 = 0\}$（方程 $x^2+1=0$ 无实根，该集合为空集）。
+
+\vspace{0.3em}
+\textbf{(4)} $\{0, 1\} \subsetneqq \mathbf{N}$（$0,1$ 都是自然数，但自然数还有 $2,3,\dots$）。
+
+\vspace{0.3em}
+\textbf{(5)} $\{0\} \subsetneqq \{x \mid x^2 = x\}$（$x^2=x$ 的解为 $x=0$ 或 $x=1$，右边为 $\{0,1\}$）。
+
+\vspace{0.3em}
+\textbf{(6)} $\{2, 1\} = \{x \mid x^2 - 3x + 2 = 0\}$（方程的解为 $x=1$ 或 $x=2$，两边元素相同）。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：判断集合间的关系}
+\textbf{3.} 判断下列两个集合之间的关系：
+
+\vspace{0.5em}
+(1) $A = \{x \mid x < 0\}$，$B = \{x \mid x < 1\}$；
+
+\vspace{0.5em}
+(2) $A = \{x \mid x = 3k,\ k \in \mathbf{N}\}$，$B = \{x \mid x = 6z,\ z \in \mathbf{N}\}$；
+
+\vspace{0.5em}
+(3) $A = \{x \in \mathbf{N}_+ \mid x \text{ 是 } 4 \text{ 与 } 10 \text{ 的公倍数}\}$，
+$B = \{x \mid x = 20m,\ m \in \mathbf{N}_+\}$。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 若 $x < 0$，则必有 $x < 1$，即 $A$ 中元素都在 $B$ 中；但 $0.5 \in B$ 而 $0.5 \notin A$。
+
+\alert{故 $A \subsetneqq B$。}
+
+\vspace{0.5em}
+\textbf{(2)} $A$ 是 $3$ 的倍数（$0,3,6,9,12,\dots$），$B$ 是 $6$ 的倍数（$0,6,12,18,\dots$）。$6$ 的倍数一定是 $3$ 的倍数，反之不成立（如 $3 \in A$ 但 $3 \notin B$）。
+
+\alert{故 $B \subsetneqq A$。}
+
+\vspace{0.5em}
+\textbf{(3)} $4$ 与 $10$ 的最小公倍数为 $20$，故 $A = \{20, 40, 60, \dots\}$；
+而 $B = \{20m \mid m \in \mathbf{N}_+\} = \{20, 40, 60, \dots\}$。两集合元素完全相同。
+
+\alert{故 $A = B$。}
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

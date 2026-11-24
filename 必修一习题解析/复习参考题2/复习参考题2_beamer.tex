@@ -1,0 +1,337 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[复习参考题 2]{第二章 复习参考题 2}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 第1题 ==========
+\begin{frame}[t]{第1题：帐篷问题（列不等式）}
+\textbf{1.} 某夏令营有 $48$ 人，出发前要从 A，B 两种型号的帐篷中选择一种。A 型号的帐篷比 B 型号的少 $5$ 顶。若只选 A 型号的，每顶帐篷住 $4$ 人，则帐篷不够；每顶帐篷住 $5$ 人，则有一顶帐篷没有住满。若只选 B 型号的，每顶帐篷住 $3$ 人，则帐篷不够；每顶帐篷住 $4$ 人，则有帐篷多余。设 A 型号的帐篷有 $x$ 顶，用不等式将题目中的不等关系表示出来。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+B 型号帐篷有 $(x+5)$ 顶。
+\vspace{0.3em}
+\textbf{只选 A 型号：}\\
+$\cdot$ 每顶住 $4$ 人不够：$4x<48$；\\
+$\cdot$ 每顶住 $5$ 人，有一顶没住满：
+\[
+5(x-1)<48<5x.
+\]
+\textbf{只选 B 型号：}\\
+$\cdot$ 每顶住 $3$ 人不够：$3(x+5)<48$；\\
+$\cdot$ 每顶住 $4$ 人有多余：$4(x+5)>48$。
+\vspace{0.5em}
+综上：
+\[
+\begin{cases}
+4x<48,\\
+5(x-1)<48<5x,\\
+3(x+5)<48,\\
+4(x+5)>48.
+\end{cases}
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第2题 ==========
+\begin{frame}[t]{第2题：比较大小}
+\textbf{2.} 用不等号“$>$”或“$<$”填空：
+\begin{enumerate}
+  \item 若 $a>b$，且 $\dfrac{1}{a}>\dfrac{1}{b}$，则 $ab$ \underline{\hspace{1.5em}} $0$；
+  \item 若 $c>a>b>0$，则 $\dfrac{a}{c-a}$ \underline{\hspace{1.5em}} $\dfrac{b}{c-b}$；
+  \item 若 $a>b>c>0$，则 $\dfrac{a}{b}$ \underline{\hspace{1.5em}} $\dfrac{a+c}{b+c}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} $\dfrac{1}{a}-\dfrac{1}{b}=\dfrac{b-a}{ab}>0$。
+$\because a>b,\ \therefore b-a<0$，故 $ab<0$。
+填 \alert{$<$}。
+\vspace{0.5em}
+\textbf{(2)} 作差：
+\[
+\frac{a}{c-a}-\frac{b}{c-b}=\frac{a(c-b)-b(c-a)}{(c-a)(c-b)}
+=\frac{ac-bc}{(c-a)(c-b)}=\frac{c(a-b)}{(c-a)(c-b)}>0.
+\]
+填 \alert{$>$}。
+\vspace{0.5em}
+\textbf{(3)} 作差：
+\[
+\frac{a}{b}-\frac{a+c}{b+c}=\frac{a(b+c)-b(a+c)}{b(b+c)}
+=\frac{ac-bc}{b(b+c)}=\frac{c(a-b)}{b(b+c)}>0.
+\]
+填 \alert{$>$}（“加糖不等式”：真分数加同正数变大，假分数加同正数变小）。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第3题 ==========
+\begin{frame}[t]{第3题：扇形最值}
+\textbf{3.}
+\begin{enumerate}
+  \item 在面积为定值 $S$ 的扇形中，半径是多少时扇形的周长最小？
+  \item 在周长为定值 $P$ 的扇形中，半径是多少时扇形的面积最大？
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设扇形半径 $r$，圆心角 $\theta$（弧度），面积 $S=\dfrac{1}{2}r^{2}\theta$，周长 $L=2r+r\theta$。
+\vspace{0.3em}
+\textbf{(1)} $S=\dfrac{1}{2}r^{2}\theta$ 为定值 $\Rightarrow \theta=\dfrac{2S}{r^{2}}$。
+\[
+L=2r+r\theta=2r+\frac{2S}{r}\ge 2\sqrt{2r\cdot\frac{2S}{r}}=4\sqrt{S}.
+\]
+等号当 $2r=\dfrac{2S}{r}$ 即 $r=\sqrt{S}$ 时成立。
+$\therefore$ 当 $r=\sqrt{S}$ 时周长最小。
+\vspace{0.5em}
+\textbf{(2)} $P=2r+r\theta\Rightarrow \theta=\dfrac{P-2r}{r}$。
+\[
+S=\frac{1}{2}r^{2}\theta=\frac{1}{2}r(P-2r)=\frac{1}{2}(Pr-2r^{2}).
+\]
+这是关于 $r$ 的二次函数，开口向下，在 $r=\dfrac{P}{4}$ 时取最大值 $S_{\max}=\dfrac{P^{2}}{16}$。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第4题 ==========
+\begin{frame}[t]{第4题：解一元二次不等式}
+\textbf{4.} 求下列不等式的解集：
+\begin{enumerate}
+  \item $14-4x^{2}\ge x$；\qquad (2) $x^{2}-14x+45\le 0$；
+  \item $x^{2}+6x+10>0$；\qquad (4) $x(x+2)>x(3-x)+1$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第4题 解答：(1)(2)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 移项：$4x^{2}+x-14\le 0$。
+方程 $4x^{2}+x-14=0$ 的根：
+\[
+x=\frac{-1\pm\sqrt{1+224}}{8}=\frac{-1\pm 15}{8},
+\]
+即 $x_{1}=-2,\ x_{2}=\dfrac{7}{4}$。开口向上，
+\[
+\therefore\quad \left\{x\mid -2\le x\le \frac{7}{4}\right\}.
+\]
+\vspace{0.5em}
+\textbf{(2)} $x^{2}-14x+45=(x-5)(x-9)\le 0$，
+\[
+\therefore\quad \{x\mid 5\le x\le 9\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第4题 解答：(3)(4)}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(3)} $\Delta=36-40=-4<0$，开口向上，与 $x$ 轴无交点，函数值恒正，
+$\therefore$ 解集为 $\mathbf{R}$。
+\vspace{0.5em}
+\textbf{(4)} 展开整理：
+\[
+x^{2}+2x>3x-x^{2}+1
+\Longleftrightarrow 2x^{2}-x-1>0
+\Longleftrightarrow (2x+1)(x-1)>0.
+\]
+两根为 $-\dfrac{1}{2},\ 1$，开口向上，
+\[
+\therefore\quad \left\{x\mid x<-\frac{1}{2},\ \text{或}\ x>1\right\}.
+\]
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第5题 ==========
+\begin{frame}[t]{第5题：求 $ab$ 的范围}
+\textbf{5.} 若 $a,\ b>0$，且 $ab=a+b+3$，求 $ab$ 的取值范围。
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+由基本不等式 $a+b\ge 2\sqrt{ab}$，代入 $ab=a+b+3$：
+\[
+ab=a+b+3\ge 2\sqrt{ab}+3.
+\]
+令 $t=\sqrt{ab}>0$，则
+\[
+t^{2}\ge 2t+3
+\Longleftrightarrow t^{2}-2t-3\ge 0
+\Longleftrightarrow (t-3)(t+1)\ge 0.
+\]
+$\because t>0$，$\therefore t\ge 3$，即 $\sqrt{ab}\ge 3$，故 $ab\ge 9$。
+等号当 $a=b=3$ 时成立。
+\vspace{0.5em}
+$\therefore$ $ab$ 的取值范围为 \alert{$[9,\ +\infty)$}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第6题 ==========
+\begin{frame}[t]{第6题：恒成立问题}
+\textbf{6.} 当 $k$ 取什么值时，一元二次不等式 $2kx^{2}+kx-\dfrac{3}{8}<0$ 对一切实数 $x$ 都成立？
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+要使 $2kx^{2}+kx-\dfrac{3}{8}<0$ 对一切 $x\in\mathbf{R}$ 成立，须：
+\vspace{0.3em}
+\textbf{①} 开口向下：$2k<0$，即 $k<0$；
+\vspace{0.3em}
+\textbf{②} 抛物线与 $x$ 轴无交点：
+\[
+\Delta=k^{2}-4\cdot 2k\cdot\left(-\frac{3}{8}\right)=k^{2}+3k<0.
+\]
+即 $k(k+3)<0$，解得 $-3<k<0$。
+\vspace{0.5em}
+同时满足 ① ②：\alert{$-3<k<0$}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第7题 ==========
+\begin{frame}[t]{第7题：窗户与地板面积}
+\textbf{7.} 一般认为，民用住宅的窗户面积必须小于地板面积，但窗户面积与地板面积的比应不小于 $10\%$，而且这个比值越大，采光效果越好。
+\begin{enumerate}
+  \item 若一所公寓窗户面积与地板面积的总和为 $220\,\text{m}^{2}$，则这所公寓的窗户面积至少为多少平方米？
+  \item 若同时增加相同的窗户面积和地板面积，公寓的采光效果是变好了还是变坏了？
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{第7题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设窗户面积 $x$，地板面积 $y$（$x<y$，$\dfrac{x}{y}\ge 0.1$）。
+\vspace{0.3em}
+\textbf{(1)} $x+y=220$，即 $y=220-x$。由 $\dfrac{x}{y}\ge 0.1$：
+\[
+x\ge 0.1(220-x)\;\Longrightarrow\;1.1x\ge 22\;\Longrightarrow\;x\ge 20.
+\]
+$\therefore$ 窗户面积至少为 \alert{$20\,\text{m}^{2}$}。
+\vspace{0.5em}
+\textbf{(2)} 设同时增加 $t>0$，新比值 $\dfrac{x+t}{y+t}$。
+$\because 0<\dfrac{x}{y}<1$，由“加糖不等式”：
+\[
+\frac{x+t}{y+t}-\frac{x}{y}=\frac{t(y-x)}{y(y+t)}>0.
+\]
+$\therefore$ 比值变大，\alert{采光效果变好了}。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第8题 ==========
+\begin{frame}[t]{第8题：相等关系与不等关系类比}
+\textbf{8.} 相等关系和不等关系之间具有对应关系：即只要将一个相等关系的命题中的等号改为不等号就可得到一个相应的不等关系的命题。请你用类比的方法探索相等关系和不等关系的对应性质，仿照下表列出尽可能多的有关对应关系的命题；指出所列的对应不等关系的命题是否正确，并说明理由。
+\end{frame}
+
+\begin{frame}[t]{第8题 解答（示例）}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{参考答案}]
+\begin{tabular}{p{4cm}|p{4.5cm}|p{2cm}}
+\textbf{相等关系的命题} & \textbf{不等关系的命题} & \textbf{判断正误}\\
+\hline
+若 $x=y$，则 $x^{3}=y^{3}$ & 若 $x>y$，则 $x^{3}>y^{3}$ & 正确 \\
+若 $x=y$，则 $|x|=|y|$ & 若 $x>y$，则 $|x|>|y|$ & 错误（如 $1>-2$，但 $|1|<|-2|$）\\
+若 $x=y$，则 $x^{2}=y^{2}$ & 若 $x>y$，则 $x^{2}>y^{2}$ & 错误（同上）\\
+若 $x=y$ 且 $a>0$，则 $ax=ay$ & 若 $x>y$ 且 $a>0$，则 $ax>ay$ & 正确 \\
+若 $x=y$ 且 $a<0$，则 $ax=ay$ & 若 $x>y$ 且 $a<0$，则 $ax<ay$ & 正确 \\
+若 $x=y$，则 $\sqrt{x^{2}}=\sqrt{y^{2}}$ & 若 $x>y\ge 0$，则 $\sqrt{x}>\sqrt{y}$ & 正确（$x,y\ge 0$ 时）\\
+\end{tabular}
+\vspace{0.5em}
+{\small 说明：乘除正数保持不等号方向，乘除负数改变方向；偶次幂、绝对值运算在不等关系下不保持方向性。}
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第9题 ==========
+\begin{frame}[t]{第9题：八边形休闲场所造价}
+\textbf{9.} 如图，居民小区要建一座八边形的休闲场所，它的主体造型平面图是由两个相同的矩形 $ABCD$ 和 $EFGH$ 构成的面积为 $200\,\text{m}^{2}$ 的十字形地域。计划在正方形 $MNPQ$ 上建一座花坛，造价为 $4200$ 元/$\text{m}^{2}$；在四个相同的矩形（图中阴影部分）上铺花岗岩石坪，造价为 $210$ 元/$\text{m}^{2}$；再在四个空角（图中四个三角形）上铺草坪，造价为 $80$ 元/$\text{m}^{2}$。设总造价为 $S$（单位：元），$AD$ 长为 $x$（单位：$\text{m}$）。当 $x$ 为何值时，$S$ 最小？并求出这个最小值。
+\end{frame}
+
+\begin{frame}[t]{第9题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设中央正方形 $MNPQ$ 边长为 $x$（即 $AD=x$ 为矩形截面边长），十字形外伸段长度为 $y$（即阴影矩形的长）。
+\vspace{0.3em}
+十字形面积：$x^{2}+4xy=200$，故 $y=\dfrac{200-x^{2}}{4x}$。
+\vspace{0.3em}
+总造价：
+\[
+S=\underbrace{4200x^{2}}_{\text{花坛}}+\underbrace{210\cdot 4xy}_{\text{四个阴影矩形}}+\underbrace{80\cdot 4\cdot\frac{1}{2}y^{2}}_{\text{四个三角形}}.
+\]
+代入 $xy=\dfrac{200-x^{2}}{4}$，$y^{2}=\dfrac{(200-x^{2})^{2}}{16x^{2}}$：
+\[
+S=4200x^{2}+210(200-x^{2})+20\cdot\frac{(200-x^{2})^{2}}{x^{2}}.
+\]
+令 $u=x^{2}$：
+\[
+S(u)=4200u+42000-210u+\frac{20(200-u)^{2}}{u}
+=4000u+38000+\frac{400000}{u}.
+\]
+由基本不等式：
+\[
+4000u+\frac{400000}{u}\ge 2\sqrt{4000u\cdot\frac{400000}{u}}=80000.
+\]
+等号当 $4000u=\dfrac{400000}{u}$ 即 $u=10$ 时成立。
+\vspace{0.3em}
+$\therefore x=\sqrt{10}\,\text{m}$ 时 $S_{\min}=80000+38000=\alert{118000}$ 元。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 第10题 ==========
+\begin{frame}[t]{第10题：两种购物策略}
+\textbf{10.} 购买同一种物品，可以用两种不同的策略，第一种是不考虑物品价格的升降，每次购买这种物品的数量一定；第二种是不考虑物品价格的升降，每次购买这种物品所花的钱数一定。哪种购物方式比较经济？你能把所得结论作一些推广吗？
+\end{frame}
+
+\begin{frame}[t]{第10题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+设两次价格分别为 $p_{1},\ p_{2}$（$p_{1}\neq p_{2}$）。
+\vspace{0.3em}
+\textbf{策略一（每次买固定数量 $a$）：}
+总花费 $a(p_{1}+p_{2})$，总数量 $2a$，平均单价
+\[
+\bar{p}_{1}=\frac{p_{1}+p_{2}}{2}\quad(\text{算术平均}).
+\]
+\textbf{策略二（每次花固定金额 $b$）：}
+总花费 $2b$，总数量 $\dfrac{b}{p_{1}}+\dfrac{b}{p_{2}}$，平均单价
+\[
+\bar{p}_{2}=\frac{2b}{\dfrac{b}{p_{1}}+\dfrac{b}{p_{2}}}=\frac{2p_{1}p_{2}}{p_{1}+p_{2}}\quad(\text{调和平均}).
+\]
+由基本不等式 $\dfrac{p_{1}+p_{2}}{2}\ge \dfrac{2p_{1}p_{2}}{p_{1}+p_{2}}$，等号当 $p_{1}=p_{2}$ 时成立。
+$\because p_{1}\neq p_{2}$，$\therefore \bar{p}_{1}>\bar{p}_{2}$。
+\vspace{0.5em}
+$\therefore$ \alert{策略二更经济}。
+\vspace{0.3em}
+{\small 推广：多次购买时，花钱固定的策略平均单价为各次价格的调和平均，恒小于等于数量固定策略的算术平均。}
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

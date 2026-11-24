@@ -1,0 +1,365 @@
+\documentclass[aspectratio=169,13pt,t] {beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{Madrid}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}  % or try serif, structurebold, ...
+%  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{items}[default]
+}
+
+\usepackage[,UTF8,linespread=1.2]{ctex}
+\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+\usepackage[,most]{tcolorbox}
+\usepackage{picinpar}
+
+
+\usepackage{xcolor}
+\definecolor{xy_blue}{cmyk}{0.6,0.35,0.0,0.4}
+\definecolor{xy_orange}{cmyk}{0.0,0.7,1.0,0.0}
+\definecolor{xy_green}{cmyk}{0.2,0.0,1.0,0.15}
+\xdefinecolor{xy_gold}{RGB}{135,103,79}
+\xdefinecolor{xy2_gold}{cmyk}{0,0.35,0.75,0.05}
+
+
+\setbeamercolor{section number projected}{fg=red,bg=red!20}%控制球的颜色
+\setbeamercolor{subsection number projected}{fg=blue,bg=blue!40}
+\setbeamercolor{item}{fg=xy_gold} %设置列表项颜色
+
+\usepackage{amsthm}
+\newtheorem{peroration}{结论：}
+\newtheorem{exploration}{探究：}
+\newtheorem*{prooft}{证明：}
+\newtheorem{question}{练习}
+\newtheorem*{solve}{解:}
+\newtheorem{instance}{例}   % 解：独立计数器
+\BeforeBeginEnvironment{peroration}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{exploration}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{solution}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{solution}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{prooft}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{prooft}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{question}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{question}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{solve}{%解：
+	\begingroup
+	\setbeamercolor{block title}{bg=xy_orange!60,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{solve}{%解：
+	\endgroup
+}
+
+\setbeamercolor{prooft}{fg=red, bg=green!10}       % 标题颜色
+\setbeamercolor{prooft body}{fg=red, bg=red!5}  % 内容块背景
+\setbeamerfont{prooft head}{series=\bfseries}       % 标题字体
+\setbeamerfont{question body}{shape=\upshape}         % 内容字体
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\newtcolorbox{summarybox}[1][]{
+	colback=purple!10,
+	colframe=purple!70!black,
+	fonttitle=\bfseries,
+	title=#1,
+	arc=1mm,
+	boxrule=0pt,drop shadow,
+	left=2mm, right=2mm, top=2mm, bottom=2mm,
+}
+\newtcolorbox{summarybox-answer}{
+	width=0.9\textwidth,
+	colback=white,
+	blanker,
+	borderline west={2pt}{20pt}{cyan},
+	left=10mm, right=2mm, top=2mm, bottom=2mm,
+	}
+\title[3.3幂函数]{3.3 幂函数}
+\subtitle{幂函数的概念、图象与性质}
+\author[好好学习，努力向上]{}
+\institute{}
+\date{2026.10.26}
+%\setbeamertemplate{theorems}[numbered]
+\theoremstyle{definition}
+\newtheorem{exam}{例}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{本节主要内容}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{3pt}
+	\setlength{\belowdisplayskip}{3pt}
+	\setbeamertemplate{theorems}[numbered]
+}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{frame}{}
+	\titlepage
+\end{frame}
+
+\begin{frame}{内容概览}
+	\tableofcontents
+\end{frame}
+
+\section{幂函数的概念}
+
+\begin{frame}{问题引入：五个实例}
+	观察下面几个函数：
+	\begin{enumerate}[(1)]
+		\item 张红以 $1$ 元/kg 买蔬菜 $w$ kg，需支付 $p=w$ 元；
+		\item 正方形边长为 $a$，面积 $S=a^{2}$；
+		\item 立方体棱长为 $b$，体积 $V=b^{3}$；
+		\item 正方形面积为 $S$，边长 $c=\sqrt{S}=S^{\frac12}$；
+		\item $t$ s 内骑车行进 $1$ km，平均速度 $v=\dfrac{1}{t}=t^{-1}$.
+	\end{enumerate}
+	\vspace{-1em}
+	\begin{summarybox}[观察]
+		这些解析式有什么共同特征？
+	\end{summarybox}
+\end{frame}
+
+\begin{frame}{共同特征与定义}
+	它们都具有幂的形式，且都以幂的\textbf{底数为自变量}、\textbf{指数为常数}，
+	指数分别为 $1,\,2,\,3,\,\dfrac12,\,-1$，都是形如 $y=x\,^{\alpha}$ 的函数.
+	\vspace{-1em}
+	\begin{summarybox}[幂函数的定义]
+		一般地，函数 \textbf{$y=x\,^{\alpha}$} 叫做\textbf{幂函数}（power function），
+		其中 $x$ 是自变量，$\alpha$ 是常数.
+	\end{summarybox}
+	\vspace{-1em}
+	\begin{summarybox-answer}
+		本节只研究 $\alpha=1,\,2,\,3,\,\dfrac12,\,-1$ 时的图象与性质.
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{如何研究一类函数？}
+	\begin{summarybox}[研究路径]
+		通常先根据解析式求出\textbf{定义域}、画出\textbf{图象}，
+		再利用图象和解析式讨论\textbf{值域、单调性、奇偶性}等问题.
+	\end{summarybox}
+	\vspace{1em}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{summarybox}[本节要研究]
+			$y=x,\ y=x^{2},\ y=x^{3},\ y=x^{\frac12},\ y=x^{-1}$
+		\end{summarybox}
+		\column{0.45\textwidth}\vspace{-1em}
+		\begin{summarybox-answer}
+			类比前面研究一次、二次函数的方法来研究幂函数.
+		\end{summarybox-answer}
+	\end{columns}
+\end{frame}
+
+\section{图象与性质}
+
+\begin{frame}{在同一坐标系中画五个幂函数的图象}
+	\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=6.6cm, height=6.6cm,
+			axis equal,
+			xmin=-3.2, xmax=3.2, ymin=-5.3, ymax=5.5,
+			axis lines=middle, axis line style={->},
+			xlabel={$x$}, ylabel={$y$},
+			xlabel style={below right}, ylabel style={above left},
+			xtick={1,3,5},
+			ytick={1,3,5},
+			extra x ticks={-2,-5},
+			extra y ticks= {-2,-4},
+			extra x tick style={x tick label style={above}},
+			extra y tick style={y tick label style={right}},
+			tick label style={font=\small},
+			legend pos=north west, 
+			legend style={font=\small,at={(axis cs:-2.5,5)},anchor=east},
+			>=stealth,
+		]
+		\addplot[domain=-4:4, samples=100, thick, xy_blue] {x};
+		\addplot[domain=-2.1:2.1, samples=100, thick, xy_orange] {x^2};
+		\addplot[domain=-1.65:1.65, samples=100, thick, xy_green!80!green] {x^3};
+		\addplot[domain=0:4.5, samples=100, thick, magenta!80!purple] {sqrt(x)};
+		\addplot[domain=-5:-0.2, samples=100, thick, xy_gold] {1/x};
+		\addplot[domain=0.2:5, samples=100, thick, xy_gold] {1/x};
+		\legend{$y=x$,$y=x^{2}$,$y=x^{3}$,$y=x^{\frac12}$,$y=x^{-1}$}
+		\draw[dashed] (0,1) -| (1,0);
+		\end{axis}
+	\end{tikzpicture}
+	\captionof{figure}{}
+	\end{center}
+\end{frame}
+
+\begin{frame}{探究：完成下表}
+	\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& $y=x$ & $y=x^{2}$ & $y=x^{3}$ & $y=x^{\frac12}$ & $y=x^{-1}$ \\ \hline
+		定义域 & $\mathbf{R}$ & $\mathbf{R}$ & $\mathbf{R}$ & $[0,+\infty)$ & $(-\infty,0)\cup(0,+\infty)$ \\ \hline
+		值域 & $\mathbf{R}$ & $[0,+\infty)$ & $\mathbf{R}$ & $[0,+\infty)$ & $(-\infty,0)\cup(0,+\infty)$ \\ \hline
+		奇偶性 & 奇 & 偶 & 奇 & 非奇非偶 & 奇 \\ \hline
+		单调性 & 增 & $[0,+\infty)$增；$(-\infty,0]$减 & 增 & 增 & $(0,+\infty)$减；$(-\infty,0)$减 \\ \hline
+	\end{tabular}
+	\end{center}
+	\vspace{0.8em}
+	\begin{summarybox-answer}
+		思考：这些函数图象有公共点吗？——都经过点 $(1,1)$.
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{由图象得到的结论}
+	\begin{peroration}
+	\begin{enumerate}[(1)]
+		\item $y=x,\ y=x^{2},\ y=x^{3},\ y=x^{\frac12},\ y=x^{-1}$ 的图象都通过点 \textbf{$(1,1)$}；
+		\item $y=x,\ y=x^{3},\ y=x^{-1}$ 是\textbf{奇函数}，$y=x^{2}$ 是\textbf{偶函数}；
+		\item 在区间 $(0,+\infty)$ 上，$y=x,\ y=x^{2},\ y=x^{3},\ y=x^{\frac12}$ 单调\textbf{递增}，
+		      而 $y=x^{-1}$ 单调\textbf{递减}；
+		\item 在第一象限内，$y=x^{-1}$ 的图象向上与 $y$ 轴无限接近，向右与 $x$ 轴无限接近.
+	\end{enumerate}
+	\end{peroration}
+\end{frame}
+
+\section{例题与证明}
+
+\begin{frame}{例：证明幂函数 $f(x)=\sqrt{x}$ 是增函数}
+	\begin{exam}
+		证明幂函数 $f(x)=\sqrt{x}$ 是增函数.
+	\end{exam}
+	\pause
+	\begin{prooft}
+		函数的定义域是 $[0,+\infty)$. 任取 $x_{1},x_{2}\in[0,+\infty)$，且 $x_{1}<x_{2}$，有
+		\[
+			f(x_{1})-f(x_{2})=\sqrt{x_{1}}-\sqrt{x_{2}}
+			=\frac{(\sqrt{x_{1}}-\sqrt{x_{2}})(\sqrt{x_{1}}+\sqrt{x_{2}})}{\sqrt{x_{1}}+\sqrt{x_{2}}}
+			=\frac{x_{1}-x_{2}}{\sqrt{x_{1}}+\sqrt{x_{2}}}.
+		\]
+	\end{prooft}
+\end{frame}
+
+\begin{frame}{例：$f(x)=\sqrt{x}$ 是增函数（续）}
+	\begin{prooft}
+		因为 $x_{1}-x_{2}<0$，且 $\sqrt{x_{1}}+\sqrt{x_{2}}>0$，所以
+		\[
+			f(x_{1})-f(x_{2})<0,\qquad f(x_{1})<f(x_{2}).
+		\]
+		即幂函数 $f(x)=\sqrt{x}$ 在 $[0,+\infty)$ 上是增函数.
+	\end{prooft}
+	\vspace{1em}
+	\begin{summarybox}[方法提炼]
+		\textbf{作差法}：判断 $f(x_{1})-f(x_{2})$ 的符号；遇到根式常先\textbf{分子有理化}.
+	\end{summarybox}
+\end{frame}
+
+\begin{frame}{例：已知幂函数图象过点，求解析式}
+	\begin{exam}
+		已知幂函数 $y=f(x)$ 的图象过点 $\left(2,\sqrt{2}\right)$，求这个函数的解析式.
+	\end{exam}
+	\pause
+	\begin{solve}
+		设幂函数为 $y=x^{\alpha}$. 因为图象过点 $(2,\sqrt{2})$，所以
+		\[
+			\sqrt{2}=2^{\alpha}\ \Longrightarrow\ 2^{\frac12}=2^{\alpha}\ \Longrightarrow\ \alpha=\frac12.
+		\]
+		故所求函数的解析式为 $y=x^{\frac12}=\sqrt{x}\ (x\ge 0)$.
+	\end{solve}
+\end{frame}
+
+\section{课堂练习与作业}
+
+\begin{frame}{课堂练习}
+	\begin{question}[利用幂函数的性质，比较大小]
+	\begin{enumerate}[(1)]
+		\item $(-1.5)^{3}$ 与 $(-1.4)^{3}$；
+		\item $\dfrac{1}{-1.5}$ 与 $\dfrac{1}{-1.4}$.
+	\end{enumerate}
+	\end{question}
+	\pause
+	\begin{solve}
+	\begin{enumerate}[(1)]
+		\item $y=x^{3}$ 是增函数，$-1.5<-1.4$，故 $(-1.5)^{3}<(-1.4)^{3}$.
+		\item $y=\dfrac{1}{x}$ 在 $(-\infty,0)$ 上递减，$-1.5<-1.4$，
+		      故 $\dfrac{1}{-1.5}>\dfrac{1}{-1.4}$.
+	\end{enumerate}
+	\end{solve}
+\end{frame}
+
+\begin{frame}{课堂练习：讨论 $f(x)=x^{3}$ 的性质}
+	\begin{question}
+		根据单调性和奇偶性的定义，讨论函数 $f(x)=x^{3}$ 的单调性，并判断其奇偶性.
+	\end{question}
+	\pause
+	\begin{solve}
+		\textbf{奇偶性}：定义域为 $\mathbf{R}$，关于原点对称，
+		$f(-x)=(-x)^{3}=-x^{3}=-f(x)$，故 $f(x)=x^{3}$ 是奇函数.\\[2pt]
+		\textbf{单调性}：任取 $x_{1}<x_{2}$，
+		$f(x_{1})-f(x_{2})=x_{1}^{3}-x_{2}^{3}=(x_{1}-x_{2})(x_{1}^{2}+x_{1}x_{2}+x_{2}^{2})<0$，
+		故 $f(x)=x^{3}$ 在 $\mathbf{R}$ 上单调递增.
+	\end{solve}
+\end{frame}
+
+\begin{frame}{课堂小结}
+	\begin{summarybox}[本节要点]
+	\begin{enumerate}
+		\item 幂函数定义：$y=x^{\alpha}$（$\alpha$ 为常数）；
+		\item 五个常见幂函数的图象与性质（都过 $(1,1)$）；
+		\item 第一象限内：$\alpha>0$ 递增，$\alpha<0$ 递减；
+		\item 证明单调性用\textbf{作差法}，比较大小可\textbf{借助幂函数单调性}.
+	\end{enumerate}
+	\end{summarybox}
+\end{frame}
+
+\begin{frame}{课后作业}
+	\begin{summarybox}[作业：]
+	\begin{enumerate}
+		\item P91练习 1、2、3
+		\item P91习题3.3：1、2、3
+	\end{enumerate}
+	\end{summarybox}
+\end{frame}
+
+\end{document}

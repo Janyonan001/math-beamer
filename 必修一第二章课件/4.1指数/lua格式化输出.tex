@@ -1,0 +1,13 @@
+% !TeX TS-program = lualatex
+
+
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{luacode}
+\begin{document}
+	5.12345 保留 2 位小数：%
+	\directlua{ 
+	local format = string.char(37) .. ".2f"
+	tex.print(string.format(format, 5.12345))
+	tex.print(string.format(string.char(37,46,50,66),45.2356)) }
+\end{document}

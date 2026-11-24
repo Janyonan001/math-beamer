@@ -1,0 +1,242 @@
+
+\documentclass[12pt,aspectratio=169,t,fleqn]{beamer}
+
+\usepackage[fontset=none,autoindent=true]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKmonofont{Songti SC}%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKmonofont{FandolFang-Regular}[Extension=.otf,BoldFont=FandolFang-Regular]%
+}
+\usepackage{hyperref}
+\setmainfont{XCharter} % Nicer fonts — the charter package is ignored under XeLaTeX, so use fontspec instead
+% 等宽字体：优先 Maple Mono NF（静态字族，真实粗/斜体），其次可变版，未安装则回退默认
+\IfFontExistsTF{Maple Mono NF}{%
+	\setmonofont{Maple Mono NF}[Scale=MatchLowercase,Ligatures=TeX]%
+}{%
+	\IfFontExistsTF{Maple Mono}{%
+		\setmonofont{Maple Mono}[Scale=MatchLowercase,Ligatures=TeX]%
+	}{}%
+}
+\usefonttheme{professionalfonts}%**强烈建议加上**，关闭 beamer 自带字体替换，防止字体冲突，数学公式字体正常渲染
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+
+  \setbeamercovered{invisible}
+ %   含义：**大括号内的代码，只在 presentation（幻灯片）模式下生效；
+ %   如果切换成 article 讲义模式，这一段直接忽略不执行。**
+ 
+% 控制**被覆盖（还没出现）的条目**样式： 
+% `transparent`：未出现的条目变浅、半透明（灰色淡化，占位还在页面上）
+% 可选：`invisible`（默认，没出现的内容直接隐藏，页面空白）
+% 对应你之前的 `<+->` 逐条动画：
+% `transparent`：后面还没出来的 \item 是淡淡的灰色，提前看到占位
+% `invisible`：没到显示时机的 item 完全看不见
+}
+
+
+\title[2.1等式性质与不等式性质(习题课)] % (optional, use only with long paper titles)
+{2.1等式性质与不等式性质(习题课)}
+
+\subtitle
+{}
+
+\author[好好学习，努力向上] % (optional, use only with lots of authors)
+{
+%	金永权\inst{1} \and 某某某\inst{2}
+	}
+
+\institute[夏邑一高] % (optional, but mostly needed)
+{
+%  \inst{1}%
+%  高一年级
+%  22 班
+%  \and
+%  \inst{2}%
+% 高一年级
+% 24班
+ }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[2026.9.19] % (optional, should be abbreviation of conference name)
+{2026.9.19}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{数学科}
+% This is only inserted into the PDF information catalog. Can be left out. 
+
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{主要内容}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded]
+  \end{frame}
+}
+%	作用：**每次开启一个 `\subsection` 小节时，自动执行大括号里面的代码**。
+%	`[]` 里面可以放 overlay 规范，空括号代表默认。
+%	含义：**这个目录帧只在 presentation（幻灯片模式）编译出来；
+%	如果切换成 article 讲义模式，这一帧直接忽略，不会生成**。
+%	等价写法：`\mode<presentation>{\begin{frame}...\end{frame}}`
+%	目录命令的选项：
+
+%	- `currentsection`：**只高亮当前所在的大 section，其他 section 变灰**
+%	- `currentsubsection`：**高亮当前 subsection，同 section 下其他小节变浅**
+%\beamerdefaultoverlayspecification{<+->}
+\setbeamerfont{itemize/enumerate body}{shape=\upshape}    % 正文直立
+\setbeamerfont{proof body}{shape=\upshape}
+\setbeamerfont{solution body}{shape=\upshape}
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{主要内容}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+\section{课本习题}
+
+\subsection{P43第5题}
+
+\begin{frame}{P43第5题}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{solution}
+  	$\because\;2<a<3,-2<b<-1$， 
+  	
+  	$\therefore\;4<2a<6,2<2a+b<5$。
+  \end{solution}
+  
+\end{frame}
+
+
+\subsection{P43第7题}
+
+\begin{frame}{P43第7题}
+
+  \begin{proof}
+  	$\because\;c<d<0$，
+  	
+  	$\therefore\;-c>-d>0$，
+  	
+  	$\because\;a>b>0$，
+  	
+  	$\therefore\;a-c>b-d>0$，$\frac{1}{a-c}<\frac{1}{b-d}$，
+  	
+  	$\because\;e<0$，
+  	
+  	$\therefore\;\frac{e}{a-c}>\frac{e}{b-d}$。
+  \end{proof}
+\end{frame}
+
+\subsection{P43第8题}
+\begin{frame}{P43第8题}
+\begin{solution}
+	\begin{enumerate}[(\Alph*)]
+		\item 若$c=0$，结论不成立；
+		\item 根据不等式性质6，结论成立；
+		\item 因为$a<b<0$，所以$a^2 > ab>0$，$ab>b^2>0$，因此$a^2>ab>b^2$。
+		\item 因为$a<b<0$，所以$ab>0,\frac{1}{ab}>0$，$a\cdot\frac{1}{ab}<b\cdot\frac{1}{ab}$，
+		即\[
+		\frac{1}{b} < \frac{1}{a},\text{或} \frac{1}{a} > \frac{1}{b}
+		\]
+	\end{enumerate}
+\end{solution}
+\end{frame}
+
+\subsection{P43第9题}
+\begin{frame}{P43第9题}
+	\begin{solution}
+		设圆的半径为$r$，正方形的边长为$a$，由$2\pi r = 4a$，得$r=\frac{2a}{\pi}$，所以$\pi r^2 -a^2 = \frac{(4-\pi)a^2}{\pi}>0$。所以周长相等的圆和正方形，圆的面积大于正方形的面积。
+	\end{solution}
+\end{frame}
+
+\subsection{P43第10题}
+\begin{frame}{P43第10题}
+	\begin{solution}
+	\upshape	所列不等式为\[
+		\frac{a}{b}<\frac{m+a}{m+b}
+		\]
+		因为$b>a$，所以$\frac{a}{b} - \frac{m+a}{m+b} = \frac{(a-b)m}{(m+b)b} < 0$，
+		
+		于是，$\frac{a}{b} < \frac{m+a}{m+b}$。
+	\end{solution}
+\end{frame}
+
+\section{课本习题--拓广探索}
+
+\subsection{P43第11题}
+\begin{frame}{P43第11题}
+	\begin{proof}
+		因为$a>b>0$，所以$\sqrt{a} - \sqrt{b} = \frac{a-b}{\sqrt{a} + \sqrt{b}} >0$，
+		
+		于是，$\sqrt{a} > \sqrt{b}$。
+	\end{proof}
+\end{frame}
+
+\subsection{P43第12题}
+\begin{frame}{P43第12题}
+	\begin{solution}
+		\upshape
+		设安排甲种货箱 $x$ 节，乙种货箱 $y$ 节，总运费为 $z$。根据题意，得
+	
+		\begin{align}
+			35x+25y &\ge 1530, \tag{1}\\
+			15x+35y &\ge 1150, \tag{2}\\
+			x+y &= 50. \tag{3}
+		\end{align}
+		
+		
+		
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{P43第12题}
+	\begin{solution}[接上页]
+		\upshape
+		把(3)代入(1)，并解得 $x\ge 28$；把(3)代入(2)，并解得 $x\le 30$。于是
+		\[
+		\begin{cases}
+			x=28,\\
+			y=22.
+		\end{cases}
+		\quad\text{或}\quad
+		\begin{cases}
+			x=29,\\
+			y=21.
+		\end{cases}
+		\quad\text{或}\quad
+		\begin{cases}
+			x=30,\\
+			y=20.
+		\end{cases}
+		\]
+		
+		因此，共有三种方案：方案一，安排甲种货箱28节，乙种货箱22节；
+		
+		方案二，安排甲种货箱29节，乙种货箱21节；
+		
+		方案三，安排甲种货箱30节，乙种货箱20节。
+		
+		当甲货箱30节，乙货箱20节时，总运费最少，运费为 $0.5\times 30+0.8\times 20=31$（万元）。
+	\end{solution}
+\end{frame}
+
+\begin{frame}{}
+	
+\end{frame}
+\end{document}
+
+

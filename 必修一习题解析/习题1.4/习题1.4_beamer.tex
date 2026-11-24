@@ -1,0 +1,212 @@
+\documentclass[10pt,aspectratio=169,serif]{beamer}
+
+\usepackage[fontset=none, scheme=plain]{ctex}
+\IfFontExistsTF{Songti SC}{%
+	\setCJKmainfont{Songti SC}[AutoFakeSlant=0.2]%
+	\setCJKsansfont{Songti SC}[AutoFakeSlant=0.2]%
+}{%
+	\setCJKmainfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold,AutoFakeSlant=0.2]%
+	\setCJKsansfont{FandolSong-Regular}[Extension=.otf,BoldFont=FandolSong-Bold]%
+}
+\usepackage{amsmath,amssymb,graphicx,tikz,booktabs,multicol,calligra}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{XyygU}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period}
+
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+% 公式间距
+\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{0pt plus 2pt minus 2pt}
+
+\title[习题1.4]{习题 1.4 充分条件与必要条件}
+\subtitle{复习巩固 \& 综合运用 \& 拓广探索}
+\author{}
+\institute{}
+\date{2026-10-16}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========== 复习巩固 ==========
+\begin{frame}[t]{A组：复习巩固}
+\end{frame}
+
+% ===== 第1题 =====
+\begin{frame}[t]{第1题：举例说明三种条件关系}
+\textbf{1.} 举例说明：\\
+(1) $p$ 是 $q$ 的充分不必要条件；\\
+(2) $p$ 是 $q$ 的必要不充分条件；\\
+(3) $p$ 是 $q$ 的充要条件。
+\end{frame}
+
+\begin{frame}[t]{第1题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{参考答案}]
+\textbf{(1) 充分不必要：} $p$：$x>2$；$q$：$x>0$。\\
+（$x>2\Rightarrow x>0$，但 $x>0\nRightarrow x>2$）
+
+\vspace{0.5em}
+\textbf{(2) 必要不充分：} $p$：$x$ 是偶数；$q$：$x$ 能被4整除。\\
+（$q\Rightarrow p$，但 $p\nRightarrow q$；即 $p$ 是 $q$ 的必要不充分条件）
+
+\vspace{0.5em}
+\textbf{(3) 充要：} $p$：三角形三边相等；$q$：三角形三角相等。\\
+（等边三角形必等角，等角三角形必等边，即 $p\Leftrightarrow q$）
+\end{tcolorbox}
+\end{frame}
+
+% ===== 第2题 =====
+\begin{frame}[t]{第2题：判断条件类型}
+\textbf{2.} 在下列各题中，判断 $p$ 是 $q$ 的什么条件（请用"充分不必要条件""必要不充分条件""充要条件""既不充分也不必要条件"回答）：\\
+(1) $p$：三角形是等腰三角形，$q$：三角形是等边三角形；\\
+(2) $p$：一元二次方程 $ax^2+bx+c=0$ 有实数根，$q$：$b^2-4ac\ge 0\ (a\neq 0)$；\\
+(3) $p$：$a\in P\cap Q$，$q$：$a\in P$；\\
+(4) $p$：$a\in P\cup Q$，$q$：$a\in P$；\\
+(5) $p$：$x>y$，$q$：$x^2>y^2$。
+\end{frame}
+
+\begin{frame}[t]{第2题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1)} 等腰$\nRightarrow$等边，等边$\Rightarrow$等腰。故 $p$ 是 $q$ 的\alert{必要不充分条件}。
+
+\textbf{(2)} 一元二次方程有实根 $\Longleftrightarrow$ $\Delta=b^2-4ac\ge 0$。故为\alert{充要条件}。
+
+\textbf{(3)} $a\in P\cap Q\Rightarrow a\in P$，但 $a\in P\nRightarrow a\in P\cap Q$。故为\alert{充分不必要条件}。
+
+\textbf{(4)} $a\in P\Rightarrow a\in P\cup Q$，但 $a\in P\cup Q\nRightarrow a\in P$。故 $p$ 是 $q$ 的\alert{必要不充分条件}。
+
+\textbf{(5)} 反例：$x=1,y=-2$ 时 $x>y$ 但 $x^2<y^2$；$x=-2,y=1$ 时 $x^2>y^2$ 但 $x<y$。故为\alert{既不充分也不必要条件}。
+\end{tcolorbox}
+\end{frame}
+
+% ===== 第3题 =====
+\begin{frame}[t]{第3题：判断命题真假}
+\textbf{3.} 判断下列命题的真假：\\
+(1) 点 $P$ 到圆心 $O$ 的距离大于圆的半径是点 $P$ 在 $\odot O$ 外的充要条件；\\
+(2) 两个三角形的面积相等是这两个三角形全等的充分不必要条件；\\
+(3) $A\cup B=A$ 是 $B\subseteq A$ 的必要不充分条件；\\
+(4) $x$ 或 $y$ 为有理数是 $xy$ 为有理数的既不充分也不必要条件。
+\end{frame}
+
+\begin{frame}[t]{第3题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\textbf{(1) 真命题}。点在圆外 $\Longleftrightarrow$ 到圆心距离 $>$ 半径，互为充要条件。
+
+\textbf{(2) 假命题}。面积相等 $\nRightarrow$ 全等（等底等高的三角形面积相等但不一定全等）；而全等 $\Rightarrow$ 面积相等。故"面积相等"是"全等"的\alert{必要不充分}条件，不是充分不必要。
+
+\textbf{(3) 假命题}。$A\cup B=A \Longleftrightarrow B\subseteq A$，二者是\alert{充要}条件，不是必要不充分。
+
+\textbf{(4) 真命题}。反例：$x=\sqrt{2}, y=0$，$x$ 无理 $y$ 有理，但 $xy=0$ 是有理数（充分性不成立）；$x=2,y=3$ 都是有理数，$xy=6$ 有理数，但反过来 $xy$ 为有理数推不出 $x$ 或 $y$ 有理（如 $x=\sqrt{2},y=\sqrt{2}$，$xy=2$ 有理但 $x,y$ 都无理）。故既不充分也不必要。
+\end{tcolorbox}
+\end{frame}
+
+% ========== 综合运用 ==========
+\begin{frame}[t]{B组：综合运用}
+\end{frame}
+
+% ===== 第4题 =====
+\begin{frame}[t]{第4题：集合包含与条件关系}
+\textbf{4.} 已知 $A = \{x \mid x \text{ 满足条件 } p\}$，$B = \{x \mid x \text{ 满足条件 } q\}$，\\
+(1) 如果 $A \subseteq B$，那么 $p$ 是 $q$ 的什么条件？\\
+(2) 如果 $B \subseteq A$，那么 $p$ 是 $q$ 的什么条件？\\
+(3) 如果 $A = B$，那么 $p$ 是 $q$ 的什么条件？
+\end{frame}
+
+\begin{frame}[t]{第4题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+集合是条件的"载体"：满足 $p$ 的元素构成 $A$，满足 $q$ 的元素构成 $B$。
+
+\textbf{(1) $A\subseteq B$：} 满足 $p$ 的元素都满足 $q$，即 $p\Rightarrow q$，故 $p$ 是 $q$ 的\alert{充分条件}（若 $A\subsetneqq B$ 则为充分不必要）。
+
+\textbf{(2) $B\subseteq A$：} 满足 $q$ 的元素都满足 $p$，即 $q\Rightarrow p$，故 $p$ 是 $q$ 的\alert{必要条件}（若 $B\subsetneqq A$ 则为必要不充分）。
+
+\textbf{(3) $A=B$：} $A\subseteq B$ 且 $B\subseteq A$，即 $p\Leftrightarrow q$，故 $p$ 是 $q$ 的\alert{充要条件}。
+\end{tcolorbox}
+\end{frame}
+
+% ===== 第5题 =====
+\begin{frame}[t]{第5题：代数恒等式的充要条件}
+\textbf{5.} 设 $a,b,c\in\mathbf{R}$。证明：$a^2+b^2+c^2=ab+ac+bc$ 的充要条件是 $a=b=c$。
+\end{frame}
+
+\begin{frame}[t]{第5题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明}]
+\textbf{变形：}
+\[
+a^2+b^2+c^2-ab-ac-bc = \frac{1}{2}\left[(a-b)^2+(b-c)^2+(c-a)^2\right].
+\]
+
+\textbf{必要性（$\Rightarrow$）：} 若 $a^2+b^2+c^2=ab+ac+bc$，则
+\[
+(a-b)^2+(b-c)^2+(c-a)^2 = 0.
+\]
+三个平方和为0，故 $a-b=0$，$b-c=0$，$c-a=0$，即 $a=b=c$。
+
+\textbf{充分性（$\Leftarrow$）：} 若 $a=b=c$，则
+\[
+\text{左边}=3a^2,\qquad \text{右边}=a^2+a^2+a^2=3a^2,
+\]
+等式成立。
+
+\vspace{0.3em}
+\small（综上，$a^2+b^2+c^2=ab+ac+bc \Longleftrightarrow a=b=c$）
+\end{tcolorbox}
+\end{frame}
+
+% ========== 拓广探索 ==========
+\begin{frame}[t]{C组：拓广探索}
+\end{frame}
+
+% ===== 第6题 =====
+\begin{frame}[t]{第6题：锐角与钝角三角形的充要条件}
+\textbf{6.} 设 $a,b,c$ 分别是 $\triangle ABC$ 的三条边，且 $a\le b\le c$。我们知道，如果 $\triangle ABC$ 为直角三角形，那么 $a^2+b^2=c^2$（勾股定理）。反过来，如果 $a^2+b^2=c^2$，那么 $\triangle ABC$ 为直角三角形（勾股定理的逆定理）。由此可知，$\triangle ABC$ 为直角三角形的充要条件是 $a^2+b^2=c^2$。
+
+\vspace{0.5em}
+请利用边长 $a,b,c$ 分别给出 $\triangle ABC$ 为锐角三角形和钝角三角形的一个充要条件，并证明。
+\end{frame}
+
+\begin{frame}[t]{第6题 解答}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{结论}]
+因为 $a\le b\le c$，所以最大边为 $c$，最大角为 $C$。三角形为锐角或钝角，完全由最大角 $C$ 决定。
+
+\vspace{0.5em}
+\textbf{锐角三角形的充要条件：} $a^2+b^2 > c^2$。
+
+\vspace{0.5em}
+\textbf{钝角三角形的充要条件：} $a^2+b^2 < c^2$。
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[t]{第6题 证明}
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{证明（余弦定理）}]
+由余弦定理，最大角 $C$ 满足
+\[
+\cos C = \frac{a^2+b^2-c^2}{2ab}.
+\]
+因 $a,b>0$，故 $2ab>0$，$\cos C$ 的符号由 $a^2+b^2-c^2$ 决定。
+
+\vspace{0.5em}
+\textbf{锐角三角形} $\Longleftrightarrow$ 最大角 $C$ 为锐角 $\Longleftrightarrow$ $\cos C>0$ $\Longleftrightarrow$ $a^2+b^2-c^2>0$，即 $a^2+b^2>c^2$。
+
+\vspace{0.5em}
+\textbf{钝角三角形} $\Longleftrightarrow$ 最大角 $C$ 为钝角 $\Longleftrightarrow$ $\cos C<0$ $\Longleftrightarrow$ $a^2+b^2-c^2<0$，即 $a^2+b^2<c^2$。
+
+\vspace{0.5em}
+\small（注：因 $c$ 是最大边，只要 $C$ 为锐角/钝角，其余两角必为锐角，故只需考察 $c$ 所对角）
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}[c]
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}

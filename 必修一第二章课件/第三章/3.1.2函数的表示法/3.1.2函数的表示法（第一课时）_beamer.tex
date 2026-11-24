@@ -1,0 +1,635 @@
+% !TeX TS-program = lualatex
+
+\documentclass[aspectratio=169,13pt,t] {beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{Madrid}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{beaver} % or try albatross, beaver, crane, ...
+  \usefonttheme{serif}  % or try serif, structurebold, ...
+%  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamertemplate{items}[default]
+} 
+
+\usepackage[,UTF8,linespread=1.2]{ctex}
+\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup[figure]{name=图,labelsep=period,}
+
+\usepackage[,most]{tcolorbox}
+
+\usepackage{picinpar}
+\usepackage{pgfplots}
+\pgfplotsset{
+	compat=1.18,
+	every axis legend/.append style={
+		at={(0.8,0.6)},
+		anchor=north west,
+		legend cell align=left,
+		draw = red!75!black,
+	},
+}
+
+\usepackage{tkz-euclide}
+\usepackage{tkz-elements}
+\usepackage{xcolor}
+\definecolor{xy_blue}{cmyk}{0.6,0.35,0.0,0.4}
+\definecolor{xy_orange}{cmyk}{0.0,0.7,1.0,0.0}
+\definecolor{xy_green}{cmyk}{0.2,0.0,1.0,0.15}
+\xdefinecolor{xy_gold}{RGB}{135,103,79}
+\xdefinecolor{xy2_gold}{cmyk}{0,0.35,0.75,0.05}
+
+
+\setbeamercolor{section number projected}{fg=red,bg=red!20}%控制球的颜色
+\setbeamercolor{subsection number projected}{fg=blue,bg=blue!40}
+\setbeamercolor{item}{fg=xy_gold} %设置列表项颜色
+
+\usepackage{amsthm}
+\newtheorem{peroration}{结论：}
+\newtheorem{exploration}{探究：}
+\newtheorem{prooft}{证明：}
+\newtheorem{question}{问题}
+\newtheorem*{solve}{解:} 
+\newtheorem{instance}{例}   % 解：独立计数器
+\newtheorem{exercise}{练习}
+\BeforeBeginEnvironment{peroration}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{exploration}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{peroration}{
+	\setbeamercolor{block title}{bg=xy_blue,fg=white}
+	\setbeamercolor{block body}{bg=xy_blue!10}
+}
+\BeforeBeginEnvironment{solution}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{solution}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{prooft}{%
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{prooft}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{question}{%
+	\setbeamercolor{block title}{bg=xy_orange,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{question}{
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{exercise}{%练习
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\AfterEndEnvironment{exercise}{%练习
+	\setbeamercolor{block title}{bg=xy_green,fg=white}
+	\setbeamercolor{block body}{bg=xy_green!10}
+}
+\BeforeBeginEnvironment{solve}{%解：
+	\begingroup
+	\setbeamercolor{block title}{bg=xy_orange!60,fg=white}
+	\setbeamercolor{block body}{bg=xy_orange!10}
+}
+\AfterEndEnvironment{solve}{%解：
+	\endgroup
+}
+
+\setbeamercolor{prooft}{fg=red, bg=green!10}       % 标题颜色
+\setbeamercolor{prooft body}{fg=red, bg=red!5}  % 内容块背景
+\setbeamerfont{prooft head}{series=\bfseries}       % 标题字体
+\setbeamerfont{question body}{shape=\upshape}         % 内容字体
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\newtcolorbox{summarybox}[1][]{
+	colback=purple!10,
+	colframe=purple!70!black,
+	fonttitle=\bfseries,
+	title=#1,
+	arc=1mm,
+	boxrule=0pt,drop shadow,
+	left=2mm, right=2mm, top=2mm, bottom=2mm,
+}
+\newtcolorbox{summarybox-answer}{
+	width=0.9\textwidth,
+	colback=white,
+	blanker,
+	borderline west={2pt}{20pt}{cyan},
+	left=10mm, right=2mm, top=2mm, bottom=2mm,
+	}
+\title[3.1.2函数的表示法]{3.1.2函数的表示法}
+\subtitle{解析法、列表法、图象法}
+\author[好好学习，努力向上]{}
+\institute{}
+\date{2026.10.12}
+%\setbeamertemplate{theorems}[numbered]
+\theoremstyle{definition}
+\newtheorem{exam}{例}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{本节主要内容}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{3pt}
+	\setlength{\belowdisplayskip}{3pt}
+	\setbeamertemplate{theorems}[numbered]
+}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+\tikzset{>=Stealth}
+
+\begin{document}
+\begin{frame}{}
+	\titlepage
+\end{frame}
+
+\begin{frame}{内容概览}
+	\tableofcontents
+\end{frame}
+
+\section{函数的三种表示法}
+
+\begin{frame}{函数的三种表示法}
+	我们在初中已经接触过函数的三种表示法：
+	\begin{columns}
+		\column{0.32\textwidth}
+		\begin{summarybox}[解析法]
+			用解析式表示两个变量之间的对应关系.
+		\end{summarybox}
+		\column{0.32\textwidth}
+		\begin{summarybox}[列表法]
+			列出表格来表示两个变量之间的对应关系.
+		\end{summarybox}
+		\column{0.32\textwidth}
+		\begin{summarybox}[图象法]
+			用图象表示两个变量之间的对应关系.
+		\end{summarybox}
+	\end{columns}
+	\vspace{1em}
+	\begin{summarybox-answer}
+		这三种方法是常用的函数表示法.
+	\end{summarybox-answer}
+\end{frame}
+
+\section{例4：三种表示法}
+
+\begin{frame}%{例4：笔记本问题}
+	\setcounter{exam}{3}
+	
+	\begin{exam}
+	某种笔记本的单价是 5 元，买 \(x\)（\(x \in \{1, 2, 3, 4, 5\}\)）个笔记本需要 \(y\) 元. 试用函数的三种表示法表示函数 \(y = f(x)\).
+	\end{exam}
+	\pause
+	\begin{solve}
+		这个函数的定义域是数集 \(\{1, 2, 3, 4, 5\}\).
+	\end{solve}
+\end{frame}
+
+\begin{frame}%{例4（1）解析法}
+	\begin{solve}
+		用解析法可将函数 \(y = f(x)\) 表示为
+		\[
+			y = 5x,\quad x \in \{1, 2, 3, 4, 5\}.
+		\]
+	\end{solve}
+	\vspace{-1em}
+	\begin{summarybox}%[列表法]
+		用列表法可将函数 \(y = f(x)\) 表示为：
+	\end{summarybox}
+	\begin{center}
+		\renewcommand{\arraystretch}{1.4}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			笔记本数 \(x\) & 1 & 2 & 3 & 4 & 5 \\ \hline
+			钱数 \(y\) & 5 & 10 & 15 & 20 & 25 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}%{例4（2）图象法}
+	用图象法可将函数 \(y = f(x)\) 表示为图 \ref{fig:img1}.
+	
+	\vspace{1em}
+	\begin{columns}[t]
+		\column{0.5\textwidth}
+		\begin{tikzpicture}[baseline={(0,5)}]
+			\begin{axis}[
+				width=7cm, height=6cm,
+				xmin=0, xmax=5.5,
+				ymin=0, ymax=27,
+				xtick={1,2,3,4,5},
+				ytick={5,10,15,20,25},
+				axis lines=middle,
+				axis line style={->},
+				xlabel={$x$}, ylabel={$y$},
+				xlabel style={below right},
+				ylabel style={above left},
+				tick label style={font=\small},
+			]
+			\addplot[only marks, mark=*, mark size=3pt, color=magenta!70!purple] coordinates {
+				(1,5) (2,10) (3,15) (4,20) (5,25)
+			};
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{}
+		\label{fig:img1}
+		
+		\column{0.45\textwidth}
+%		\vspace{-2em}
+		\begin{summarybox-answer}
+			函数图象既可以是连续的曲线，也可以是直线、折线、离散的点等.
+			
+			~
+			
+			\textbf{思考：}判断一个图形是不是函数图象的依据是什么？
+		\end{summarybox-answer}
+	\end{columns}
+\end{frame}
+
+\begin{frame}%{思考}
+	\begin{summarybox}[思考]
+		\begin{enumerate}[(1)]
+			\item 比较函数的三种表示法，它们各自的特点是什么？
+			\item 所有函数都能用解析法表示吗？请你举出实例加以说明.
+		\end{enumerate}
+	\end{summarybox}
+	\vspace{1em}
+	\pause
+	\begin{summarybox-answer}
+		\textbf{解析法}：精确、简洁，便于研究性质；\\
+		\textbf{列表法}：直观，直接看出对应值；\\
+		\textbf{图象法}：形象，直观看出变化趋势.
+	\end{summarybox-answer}
+\end{frame}
+
+\section{例5：分段函数}
+
+\begin{frame}{例5：画出函数 \(y = |x|\) 的图象}
+%	\begin{exam}
+%	画出函数 \(y = |x|\) 的图象.
+%	\end{exam}
+%	\pause
+	\begin{solve}
+		由绝对值的概念，我们有
+		\[
+			y = \begin{cases} -x, & x < 0, \\ x, & x \geqslant 0. \end{cases}
+		\]
+		所以，函数 \(y = |x|\) 的图象如图 \ref{fig:img2} 所示.
+	\end{solve}
+\end{frame}
+
+\begin{frame}{图 \ref{fig:img2}：\(y = |x|\) 的图象}
+	\begin{columns}[t]
+		\column{0.55\textwidth}
+		\begin{tikzpicture}[baseline=5cm]
+			\begin{axis}[
+				width=8cm, height=6cm,
+				xmin=-3.5, xmax=3.5,
+				ymin=-0.5, ymax=5.5,
+				xtick={-3,-2,-1,0,1,2,3},
+				ytick={1,2,3,4,5},
+				axis lines=middle,
+				axis line style={->},
+				xlabel={$x$}, ylabel={$y$},
+				xlabel style={below right},
+				ylabel style={above left},
+				tick label style={font=\small},
+				tick align=inside,% 刻度线位置：xtick align= ,ytick align= ,inside,outside,center,默认为center.
+				tick style={line width=.4pt,},	%刻度线样式，线宽，颜色等
+				major tick length=2pt, %主刻度线长度 minor tick length={⟨dimension⟩}次刻度线长度
+			]
+			\addplot[color=pink!80!purple, line width=1.5pt, domain=-3:0] {abs(x)};
+			\addplot[color=pink!80!purple, line width=1.5pt, domain=0:3] {x};
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{}
+		\label{fig:img2}
+		
+		\column{0.4\textwidth}
+%		\vspace{3em}
+		\begin{summarybox}%[分段函数]
+			像例 5 中 \(y = \begin{cases} -x, & x < 0, \\ x, & x \geqslant 0 \end{cases}\) 这样的函数称为\textbf{分段函数}.
+		\end{summarybox}
+%		\vspace{1em}
+		\begin{summarybox-answer}
+			生活中，有很多可以用分段函数描述的实际问题，如出租车的计费、个人所得税纳税额等.
+		\end{summarybox-answer}
+	\end{columns}
+\end{frame}
+
+\section{例6：max函数}
+
+\begin{frame}%{例6：求 \(M(x) = \max\{f(x), g(x)\}\)}
+	\setcounter{exam}{5}
+	\begin{exam}
+	给定函数 \(f(x) = x + 1\)，\(g(x) = (x + 1)^2\)，\(x \in \mathbf{R}\)，
+	\begin{enumerate}[(1)]
+		\item 在同一直角坐标系中画出函数 \(f(x)\)，\(g(x)\) 的图象；
+		\item \(\forall x \in \mathbf{R}\)，用 \(M(x)\) 表示 \(f(x)\)，\(g(x)\) 中的最大者，记为
+		\[
+			M(x) = \max\{f(x),\, g(x)\}.
+		\]
+		例如，当 \(x = 2\) 时，\(M(2) = \max\{f(2),\, g(2)\} = \max\{3,\, 9\} = 9\).
+		
+		请分别用图象法和解析法表示函数 \(M(x)\).
+	\end{enumerate}
+	\end{exam}
+\end{frame}
+
+\begin{frame}%{例6（1）：\(f(x)\) 和 \(g(x)\) 的图象}
+	\vspace{-1em}
+	\begin{solve}
+	(1)	在同一直角坐标系中画出函数 \(f(x)\)，\(g(x)\) 的图象（图 \ref{fig:img3}）.
+	\end{solve}
+\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=8cm, height=6cm,
+				xmin=-5.5, xmax=5.5,
+				ymin=-2.5, ymax=5.5,
+				xtick={-5,-4,-3,-2,-1,0,1,2,3,4,5},
+				ytick={-2,-1,0,1,2,3,4,5},
+				axis lines=middle,
+				axis line style={->},
+				xlabel={$x$}, ylabel={$y$},
+				xlabel style={below right},
+				ylabel style={above left},
+				tick label style={font=\tiny},
+			]
+			% g(x) = (x+1)^2
+			\addplot[color=pink!80!purple, line width=1.5pt, domain=-3.2:2] {(x+1)^2};
+			\node[above , pink!30!black] at (-3, 4.5) {$g(x)=(x+1)^2$};
+			% f(x) = x+1
+			\addplot[color=cyan!70!blue, line width=1.5pt, domain=-3.5:3] {x+1};
+			\node[below right, cyan!70!blue] at (2.5, 4) {$f(x)\!=\!x\!+\!1$};
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{}
+		\label{fig:img3}
+		\end{center}
+		
+	
+\end{frame}
+
+\begin{frame}%{例6（2）：\(M(x)\) 的图象}
+	\vspace{-1em}
+	\begin{solve}
+		由图 \ref{fig:img3} 中函数取值的情况，结合函数 \(M(x)\) 的定义，可得函数 \(M(x)\) 的图象（图 \ref{fig:img4}）.
+		\end{solve}
+\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=7.5cm, height=6cm,
+				xmin=-5.5, xmax=5.5,
+				ymin=-2.5, ymax=5.5,
+				xtick={-5,-4,-3,-2,-1,0,1,2,3,4,5},
+				ytick={-2,-1,0,1,2,3,4,5},
+				axis lines=middle,
+				axis line style={->},
+				xlabel={$x$}, ylabel={$y$},
+				xlabel style={below right},
+				ylabel style={above left},
+				tick label style={font=\tiny},
+			]
+			% M(x) = max of (x+1)^2 and x+1
+			% 交点：(x+1)^2 = x+1 → (x+1)x = 0 → x = -1 or x = 0
+			% x <= -1: g(x) = (x+1)^2 (抛物线在上)
+			% -1 < x <= 0: f(x) = x+1 (直线在上)
+			% x > 0: g(x) = (x+1)^2 (抛物线在上)
+			\addplot[color=magenta!80!purple, line width=1pt, domain=-4:-1] {(x+1)^2};
+			\addplot[color=green!50!black, line width=1pt, domain=-1:0] {x+1};
+			\addplot[color=magenta!80!purple, line width=1pt, domain=0:2] {(x+1)^2};
+			\node[above right, magenta!80!purple] at (1.5, 4.5) {$M(x)$};
+			\end{axis}
+		\end{tikzpicture}
+		\captionof{figure}{}
+		\label{fig:img4}
+		\end{center}
+		
+
+\end{frame}
+
+\begin{frame}%{例6（2）：\(M(x)\) 的解析式}
+	\begin{solve}
+		由 \((x+1)^2 = x + 1\)，得 \(x(x+1) = 0\).
+		
+		解得 \(x = -1\)，或 \(x = 0\).
+	\end{solve}
+	\vspace{1em}
+	\pause
+	结合图 \ref{fig:img3}，得出函数 \(M(x)\) 的解析式为：
+	\[
+		M(x) = \begin{cases}
+			(x+1)^2, & x \leqslant -1, \\
+			x+1, & -1 < x \leqslant 0, \\
+			(x+1)^2, & x > 0.
+		\end{cases}
+	\]
+	\vspace{1em}
+	\pause
+	\begin{summarybox-answer}
+		\textbf{思考：}你能用其他方法求出 \(M(x)\) 的解析式吗？
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{课堂小结}
+	
+	本节课学习的内容：
+	
+	\begin{enumerate}[(1)]
+		\item 函数的3种表示法
+		\item 分段函数
+	\end{enumerate}
+	
+\end{frame}
+
+\begin{frame}{布置作业}
+	\begin{summarybox}[课后作业]
+		\begin{enumerate}
+			\item 教材 P69 练习 1、2、3
+			\item P72 习题3.1\quad 3、4
+		\end{enumerate}
+	\end{summarybox}
+\end{frame}
+
+\section{课堂练习}
+
+\begin{frame}{练习 1：圆内接矩形}
+	\begin{exercise}
+	如图，把直截面半径为 25\,cm 的圆柱形木头锯成直截面为矩形的木料，如果矩形的一边长为 \(x\)（单位：cm），面积为 \(y\)（单位：\(\text{cm}^2\)），把 \(y\) 表示为 \(x\) 的函数.
+	\end{exercise}
+	\pause
+	\vspace{-1em}
+	\begin{columns}[t]
+		\column{0.65\textwidth}
+	
+	\begin{solve}
+		设矩形另一边长为 \(z\)，由勾股定理：
+		\[
+			x^2 + z^2 = 50^2 = 2500 \quad\Rightarrow\quad z = \sqrt{2500 - x^2}.
+		\]
+		所以面积为：
+		\[
+			y = x \cdot z = x\sqrt{2500 - x^2},\quad x \in (0, 50).
+		\]
+	\end{solve}
+	
+	\column{0.35\textwidth}
+	\begin{center}
+		
+	
+	\directlua{	
+	init_elements()
+	z.A = point(0,0)
+	z.B = point(3,0)
+	z.C = point(3,2)
+	z.D = point(0,2)
+	z.O = tkz.midpoint(z.A,z.C)	
+	}
+\begin{tikzpicture}[baseline=1cm]
+	\tkzGetNodes		
+	\tkzDrawCircle[thick,black,fill=orange!20](O,A)
+	\tkzDrawPolygons[thick,fill=orange!40!black!60](A,B,C,D)
+	\tkzDrawPoints[shape=circle,fill=black,size=0.2](O)	
+	\tkzDrawSegment[](O,C)
+	\tkzLabelSegment[sloped,above left=0pt](O,C){25cm}
+	\tkzLabelSegment(A,B){$x$}
+\end{tikzpicture}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{练习 2：画出 \(y = |x - 2|\) 的图象}
+	\begin{exercise}
+	画出函数 \(y = |x - 2|\) 的图象.
+	\end{exercise}
+	\pause
+	\begin{columns}[t]
+		\column{0.45\textwidth}
+	\begin{solve}
+		由绝对值的概念：
+		\[
+			y = \begin{cases} -(x-2) = 2-x, & x < 2, \\ x-2, & x \geqslant 2. \end{cases}
+		\]
+		图象是顶点在 \((2, 0)\) 的 V 形，开口向上.
+	\end{solve}
+	\column{0.45\textheight}
+	\begin{tikzpicture}[baseline=3.5cm]
+		\begin{axis}[
+			width=5cm, height=5cm,
+			axis lines=middle,
+			xlabel=$x$, ylabel=$y$,
+			xmin=-2.2, xmax=6.2, ymin=-1, ymax=5.2,
+			xtick={2},
+			ytick={2},
+			grid=major, grid style={gray!20},
+			samples=200,
+			]
+			\addplot[thick,blue,domain=-2:6] {abs(x-2)};
+			\addplot[mark=*,mark size=2pt,only marks] coordinates {(2,0)};
+%			\node[below right] at (axis cs:2,0) {$(2,0)$};
+		\end{axis}
+	\end{tikzpicture}
+	
+\end{columns}
+\end{frame}
+
+\begin{frame}{练习 3：\(m(x) = \min\{f(x), g(x)\}\)}
+	\vspace{-1em}
+	\begin{exercise}
+	给定函数 \(f(x) = -x + 1\)，\(g(x) = (x-1)^2\)，\(x \in \mathbf{R}\)，
+	\begin{enumerate}[(1)]
+		\item 画出函数 \(f(x)\)，\(g(x)\) 的图象；
+		\item \(\forall x \in \mathbf{R}\)，用 \(m(x)\) 表示 \(f(x)\)，\(g(x)\) 中的最小者，记为 \(m(x) = \min\{f(x), g(x)\}\)，请分别用图象法和解析法表示函数 \(m(x)\).
+	\end{enumerate}
+	\end{exercise}
+	\pause
+	\begin{summarybox-answer}
+		\textbf{提示：}先求交点 \(-x+1 = (x-1)^2\)，再分段讨论.
+		
+		\textbf{答案：}$m(x)=\begin{cases}
+			-x+1,& x \leqslant 0,\\
+			(x-1)^2,& 0 <x \leqslant 1,\\
+			-x+1,& x>1
+		\end{cases}$
+	\end{summarybox-answer}
+\end{frame}
+
+\begin{frame}{图像}
+	\begin{columns}
+		
+	\column{0.45\textwidth}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=6.5cm, height=6.5cm,
+			axis lines=middle,
+			xlabel=$x$, ylabel=$y$,
+			xmin=-2, xmax=4, ymin=-1, ymax=4,
+			xtick={-1,0,1,2,3},
+			ytick={1,2,3},
+			grid=major, grid style={gray!20},
+%			legend pos=outer north east,
+			samples=100,
+			]
+			\addplot[very thick,blue,domain=-2:4] {-x+1};
+			\addlegendentry{$f(x)=-x+1$}
+			\addplot[very thick,red,domain=-2:4] {(x-1)^2};
+			\addlegendentry{$g(x)=(x-1)^2$}
+			\addplot[only marks,mark=*,mark size=2pt] coordinates {(0,1)(1,0)};
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+	\column{0.45\textwidth}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=6.5cm, height=6.5cm,
+			axis lines=middle,
+			xlabel=$x$, ylabel=$y$,
+			xmin=-2, xmax=4, ymin=-1, ymax=4,
+			xtick={-1,0,1,2,3},
+			ytick={1,2,3},
+			grid=major, grid style={gray!20},
+			samples=100,
+			]
+			% x≤0段：m(x)=f(x)=-x+1
+			\addplot[very thick,blue,domain=-2:0] {-x+1};
+			% 0≤x≤1段：m(x)=g(x)=(x-1)²
+			\addplot[very thick,red,domain=0:1] {(x-1)^2};
+			% x≥1段：m(x)=f(x)=-x+1
+			\addplot[very thick,blue,domain=1:4] {-x+1};
+			% 分段点
+			\addplot[only marks,mark=*,mark size=2pt] coordinates {(0,1)(1,0)};
+			\node at (1,1) {$m(x)$};
+		\end{axis}
+	\end{tikzpicture}	
+\end{columns}
+\end{frame}
+
+\end{document}
