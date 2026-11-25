@@ -1,0 +1,296 @@
+%% =====================================================================
+%%  mybeamer2.sty  ——  高中数学 Beamer 课件主题
+%%  由 mybeamer.sty 重构修订而来（v2.0，2026/11/25）
+%%
+%%  用法：  \documentclass[10pt,aspectratio=169,t]{ctexbeamer}
+%%          \usepackage{mybeamer2}            % 默认：两端对齐、标题页不显页码
+%%
+%%  选项：  justify            正文两端对齐（默认）
+%%          ragged             正文左对齐（等价于 Beamer 原生效果）
+%%          boldtitle          帧标题加粗（默认不加粗）
+%%          firstpagenumber    标题页也显示“页码/总页数”（默认不显示）
+%%          parskip            加载 parskip 宏包（原版行为，段间距更松）
+%%          print              调色板改用 CMYK（印发讲义/送印刷厂）；默认 RGB（屏幕）
+%%
+%%  命令：  \usecmykcolors / \usergbcolors   导言区内随时切换色空间
+%%
+%%  编译：  xelatex 连续编译两次（总页数靠 .aux 传递）
+%%          推荐 latexmk -xelatex main.tex
+%% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mybeamer2}[2026/11/25 v2.0 Beamer theme for math courseware]
+
+% 整个宏包只在演示（presentation）模式下生效：article 笔记模式下
+% 不解包、不改版式，避免与普通文档的字体/版式冲突。
+\mode<presentation>
+
+% ---------------------------------------------------------------------
+% 0. 依赖宏包
+%    hyperref 由 beamer 文档类自动加载，此处只用 \hypersetup 配置，不再重复加载。
+% ---------------------------------------------------------------------
+\RequirePackage{etoolbox}        % 提供 \apptocmd、\AtBeginEnvironment，课件可自行打补丁
+\RequirePackage{xcolor}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}         % 已包含 amsfonts，无需再单独加载
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}        % 三线表 \toprule \midrule \bottomrule
+\RequirePackage{tabularx}        % 自动宽度表格
+\RequirePackage{multirow}        % 跨行合并单元格
+\RequirePackage{colortbl}        % 单元格着色
+\RequirePackage{multicol}        % 分栏（frame 内推荐用 columns 环境）
+\RequirePackage{ragged2e}        % \justifying
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{calligra}        % 西文手写体（仅拉丁字母，中文需另配字体）
+\RequirePackage{wrapfig}         % 图文绕排（在 frame 中易错位，慎用）
+
+% caption 宏包与 beamer 的 caption 模板体系相互重叠，本包不再加载；
+% 仍保留一个空壳 \captionsetup，使旧课件里的调用不会报错。
+\providecommand{\captionsetup}[2][]{}
+
+% ---------------------------------------------------------------------
+% 1. 选项
+% ---------------------------------------------------------------------
+\newif\ifmb@justify         \mb@justifytrue      % 正文两端对齐
+\newif\ifmb@boldtitle       \mb@boldtitlefalse     % 帧标题加粗
+\newif\ifmb@firstpagenumber \mb@firstpagenumberfalse % 标题页显示页码
+\newif\ifmb@parskip         \mb@parskipfalse       % 加载 parskip
+\newif\ifmb@cmyk            \mb@cmykfalse          % 印刷配色（CMYK）
+
+\DeclareOptionBeamer{justify}{\mb@justifytrue}
+\DeclareOptionBeamer{ragged}{\mb@justifyfalse}
+\DeclareOptionBeamer{boldtitle}{\mb@boldtitletrue}
+\DeclareOptionBeamer{firstpagenumber}{\mb@firstpagenumbertrue}
+\DeclareOptionBeamer{parskip}{\mb@parskiptrue}
+\DeclareOptionBeamer{print}{\mb@cmyktrue}
+% 注意：不要在这里用 plain 的 \DeclareOption*——它会让 LaTeX 认为仍处于
+% “选项段”，随后 \useoutertheme 等宏包加载会报 “RequirePackage in Options Section”。
+% beamer 的 \ProcessOptionsBeamer 基于 keyval，未知选项本就会被忽略。
+\ProcessOptionsBeamer
+
+\ifmb@parskip
+  \RequirePackage{parskip}
+\fi
+
+% ---------------------------------------------------------------------
+% 2. 调色板
+%    同一套颜色给两种色空间：
+%      · 默认 RGB（屏幕 / 投影）：XeLaTeX 会把 cmyk 原样写进 PDF（DeviceCMYK），
+%        屏幕上那个红由播放器现算，WPS／Adobe／手机各算各的；RGB 则所见即所得，
+%        且能与本来就是 RGB 的 accent、dotpink 对齐。
+%      · 印发讲义 / 送印刷厂时用 CMYK：导言区加 print 选项
+%        （\usepackage[print]{mybeamer2}），或随时调用 \usecmykcolors 切回。
+%    RGB 数值取自原 CMYK 定义在本机的实测渲染值（150 dpi 色卡取样），
+%    所以切换色空间后屏幕观感基本不变。
+% ---------------------------------------------------------------------
+% 两套定义共用：本身就是 RGB（或 Pantone 参考色），不参与切换
+\definecolor{pantone_gold}{RGB}{135,103,79}
+\definecolor{pantone_silver}{RGB}{138,141,143}
+\definecolor{dotpink}{RGB}{214,60,120}          % 装饰色，仅屏幕使用
+
+% 屏幕 / 投影配色（RGB）
+\newcommand{\mb@colors@rgb}{%
+  \definecolor{xyyg}{RGB}{146,15,20}%            % 原 cmyk 0,1,1,0.45
+  \definecolor{xyyg_gold}{RGB}{238,159,60}%      % 原 cmyk 0,0.35,0.75,0.05
+  \definecolor{xyyg_blue}{RGB}{71,92,135}%       % 原 cmyk 0.6,0.35,0,0.4
+  \definecolor{xyyg_darkblue}{RGB}{14,52,99}%    % 原 cmyk 1,0.6,0,0.5
+  \definecolor{xyyg_gray}{RGB}{134,131,122}%     % 原 cmyk 0,0,0.08,0.55
+  \definecolor{xyyg_dirt}{RGB}{186,149,112}%     % 原 cmyk 0,0.2,0.35,0.3
+  \definecolor{xyyg_orange}{RGB}{242,92,25}%     % 原 cmyk 0,0.7,1,0
+  \definecolor{xyyg_green}{RGB}{177,196,14}%     % 原 cmyk 0.2,0,1,0.15
+  \definecolor{xyyg_darkgreen}{RGB}{69,71,27}%   % 原 cmyk 0.6,0.5,1,0.45
+  \definecolor{WM_Gold}{RGB}{181,138,67}%        % 原 cmyk 0.09,0.29,0.66,0.24
+  \definecolor{accent}{RGB}{196,60,50}%          % 强调色（alert）
+}
+
+% 印刷配色（CMYK），与上面一一对应
+\newcommand{\mb@colors@cmyk}{%
+  \definecolor{xyyg}{cmyk}{0,1,1,0.45}%          % 总墨量 245%，常规胶印安全
+  \definecolor{xyyg_gold}{cmyk}{0,0.35,0.75,0.05}
+  \definecolor{xyyg_blue}{cmyk}{0.6,0.35,0.0,0.4}
+  \definecolor{xyyg_darkblue}{cmyk}{1.0,0.6,0.0,0.5}
+  \definecolor{xyyg_gray}{cmyk}{0.0,0.0,0.08,0.55}
+  \definecolor{xyyg_dirt}{cmyk}{0.0,0.2,0.35,0.3}
+  \definecolor{xyyg_orange}{cmyk}{0.0,0.7,1.0,0.0}
+  \definecolor{xyyg_green}{cmyk}{0.2,0.0,1.0,0.15}
+  \definecolor{xyyg_darkgreen}{cmyk}{0.6,0.5,1.0,0.45}
+  \definecolor{WM_Gold}{cmyk}{0.09,0.29,0.66,0.24}
+  \definecolor{accent}{cmyk}{0,0.69,0.75,0.23}%  % 原 RGB 196,60,50 的印刷近似
+}
+
+\ifmb@cmyk \mb@colors@cmyk \else \mb@colors@rgb \fi
+
+% 供导言区随时切换（在 \begin{document} 之前调用均可）
+\newcommand{\usecmykcolors}{\mb@colors@cmyk}
+\newcommand{\usergbcolors}{\mb@colors@rgb}
+
+% ---------------------------------------------------------------------
+% 3. 主题骨架
+%    smoothbars：顶部章节导航条；serif：正文衬线；circles：目录/章节球；
+%    spruce：色彩主题（随后由本包的颜色覆盖）。
+% ---------------------------------------------------------------------
+\useoutertheme[subsection=false]{smoothbars}
+\usefonttheme[stillsansseriflarge]{serif}
+\useinnertheme{circles}
+\usecolortheme{spruce}
+
+% ---------------------------------------------------------------------
+% 4. 中文字体（思源宋体/黑体），并做存在性检查与回退
+% ---------------------------------------------------------------------
+\providecommand{\IfFontExistsTF}[3]{#2}   % 若未加载 fontspec，退化为“假定存在”
+
+\ifdefined\setCJKmainfont
+  \IfFontExistsTF{Source Han Serif SC}{%
+    \setCJKmainfont{Source Han Serif SC}[BoldFont={Source Han Serif SC Bold}]%
+  }{%
+    \PackageWarningNoLine{mybeamer2}{未找到 Source Han Serif SC，回退 SimSun}%
+    \IfFontExistsTF{SimSun}{\setCJKmainfont{SimSun}[AutoFakeBold=2.5]}{}%
+  }%
+  \IfFontExistsTF{Source Han Sans SC}{%
+    \setCJKsansfont{Source Han Sans SC}[BoldFont={Source Han Sans SC Bold}]%
+  }{%
+    \PackageWarningNoLine{mybeamer2}{未找到 Source Han Sans SC，回退 SimHei}%
+    \IfFontExistsTF{SimHei}{\setCJKsansfont{SimHei}[AutoFakeBold=2.5]}{}%
+  }%
+\else
+  \PackageWarningNoLine{mybeamer2}{当前文档类未加载 xeCJK/ctex，已跳过中文字体设置}%
+\fi
+
+% ---------------------------------------------------------------------
+% 5. 排版参数
+% ---------------------------------------------------------------------
+\linespread{1.2}                 % 全文行距 1.2 倍
+\hypersetup{hidelinks,bookmarksnumbered=true}   % 去掉链接彩色方框（适合打印）
+
+%\setbeamertemplate{navigation symbols}{}         % 关闭右下角导航按钮（否则会压住页脚）
+\setbeamertemplate{caption}[numbered]           % 图/表自动编号
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\setbeamertemplate{theorems}[numbered]          % 定理、定义等统一编号
+\setbeamertemplate{itemize items}[ball]         % 列表项圆球
+\setbeamertemplate{enumerate items}[default]    % 编号列表用纯数字
+
+% 帧标题字体：默认沿用主题；boldtitle 选项下加粗
+\ifmb@boldtitle
+  \setbeamerfont{frametitle}{series=\bfseries}
+\fi
+
+% 正文两端对齐
+%   beamer 在每一帧开始时调用 \raggedright；把该命令就地换成 ragged2e 的
+%   \justifying，段落断行时就是两端对齐。原版用 \apptocmd{\frame}{}{\justifying}{}
+%   追加到 \frame 末尾，依赖 beamer 内部结构、且对溢出内容无效，故改用此法。
+\ifmb@justify
+  \renewcommand{\raggedright}{\justifying}
+\fi
+
+% ---------------------------------------------------------------------
+% 6. 尺寸变量（可在导言区用下列命令调整）
+% ---------------------------------------------------------------------
+\newlength{\mb@headheight}
+\newlength{\mb@footheight}
+\setlength{\mb@headheight}{11.6pt}   % 顶部导航条高度（10pt 字号下的校准值）
+\setlength{\mb@footheight}{16pt}    % 页脚条高度（容纳 \small 字号 + 上下留白）
+
+\newcommand{\setnavheight}[1]{\setlength{\mb@headheight}{#1}}
+\newcommand{\setfootheight}[1]{\setlength{\mb@footheight}{#1}}
+
+% ---------------------------------------------------------------------
+% 7. 颜色绑定
+% ---------------------------------------------------------------------
+\setbeamercolor{structure}{fg=xyyg}
+\setbeamercolor{frametitle}{bg=white,fg=xyyg}
+\setbeamercolor{title}{bg=xyyg,fg=white}
+\setbeamercolor{section in head/foot}{bg=xyyg,fg=white}
+\setbeamercolor{section in head/foot shaded}{bg=xyyg,fg=white!55!xyyg}
+\setbeamercolor{alerted text}{fg=accent}
+
+\setbeamercolor{footleft}{bg=xyyg,fg=white}
+\setbeamercolor{footmid}{bg=xyyg!60!xyyg_orange,fg=white}
+\setbeamercolor{footright}{bg=xyyg,fg=white}
+
+% Block 配色：普通块用主色；alert 块用强调色（原版 alert 块与普通块同色，看不出区别）
+\setbeamercolor{block title}{bg=xyyg,fg=white}
+\setbeamercolor{block body}{bg=xyyg!10,fg=black}
+\setbeamercolor{block title alerted}{bg=accent,fg=white}
+\setbeamercolor{block body alerted}{bg=accent!10,fg=black}
+
+% ---------------------------------------------------------------------
+% 8. 页脚：左 30% 作者 | 中 45% 短标题 | 右 25% 页码
+%    三段文字一律「水平居中 + 垂直居中」：
+%      · 水平：beamercolorbox 用 center 选项（leftskip/rightskip 各留 1fil），
+%        去掉原来的 .3cm 边距与 right/left 对齐；
+%      · 垂直：内容包进 \vbox to\mb@footheight{\vfil ... \vfil}，两个等量
+%        \vfil 把单行文字精确压到色条正中（不靠 ht/dp 猜基线位置）。
+%    \hbox to\paperwidth + 末尾 \hss：防止三块定宽之和的舍入误差溢出盒宽
+% ---------------------------------------------------------------------
+\newcommand{\mb@frameinfo}{%
+  \ifmb@firstpagenumber
+    \insertframenumber\,/\,\inserttotalframenumber
+  \else
+    \ifnum\value{framenumber}=1 \else
+      \insertframenumber\,/\,\inserttotalframenumber
+    \fi
+  \fi
+}
+
+% 页脚三处字号（原主题这里是 \tiny 级别的 7pt 左右，偏小）
+\setbeamerfont{author in head/foot}{size=\scriptsize}
+\setbeamerfont{title in head/foot}{size=\scriptsize}
+\setbeamerfont{frame number}{size=\scriptsize}
+
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox to\paperwidth{%
+    \begin{beamercolorbox}[wd=0.30\paperwidth,ht=\mb@footheight,dp=0pt,
+                          vmode]{footleft}%
+      \vbox to\mb@footheight{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{author in head/foot}\insertshortauthor\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.45\paperwidth,ht=\mb@footheight,dp=0pt,
+                          vmode]{footmid}%
+      \vbox to\mb@footheight{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{title in head/foot}\insertshorttitle\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.25\paperwidth,ht=\mb@footheight,dp=0pt,
+                          vmode]{footright}%
+      \vbox to\mb@footheight{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{frame number}\mb@frameinfo\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \hss
+  }%
+}
+
+% ---------------------------------------------------------------------
+% 9. 页眉：固定高度的章节导航条
+% ---------------------------------------------------------------------
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,colsep=0pt,ht=\mb@headheight,dp=0.5ex,
+                        vmode]{section in head/foot}%
+    \vbox to \mb@headheight{%
+      \vskip0.5pt
+      \insertnavigation{\paperwidth}%
+      \vss}%
+  \end{beamercolorbox}%
+}
+
+% ---------------------------------------------------------------------
+% 10. 帧标题：定高、白底、主色字，左侧留白 0.5em
+%     ht 取标题字体的 1em（随 frametitle 字号自动缩放）；dp 固定 2pt，
+%     不随标题中是否含下伸字母而变化，正文起始位置才能整册一致。
+% ---------------------------------------------------------------------
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \usebeamerfont*{frametitle}%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0ex,ht=1em,dp=2pt,
+                        leftskip=0.5em,rightskip=2em]{frametitle}%
+    \strut\insertframetitle
+  \end{beamercolorbox}%
+}
+
+\mode<all>

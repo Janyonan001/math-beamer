@@ -1,4 +1,4 @@
-\documentclass[10pt,aspectratio=169,serif]{beamer}
+\documentclass[10pt,aspectratio=169,serif,fleqn]{beamer}
 
 \usepackage[fontset=none, scheme=plain]{ctex}
 \IfFontExistsTF{Songti SC}{%
@@ -87,7 +87,7 @@
 \begin{frame}[t]{第3题：比较 m,n 的大小}
 \textbf{3.} 比较满足下列条件的 $m,n$ 的大小：
 \[
-(1)\ 2^{m}<2^{n};\qquad\qquad (2)\ 0.2^{m}<0.2^{n};
+(1)\ 2^{m}<2^{n};\qquad\qquad \quad \quad (2)\ 0.2^{m}<0.2^{n};
 \]
 \[
 (3)\ a^{m}<a^{n}\ (0<a<1);\qquad (4)\ a^{m}>a^{n}\ (a>1).
@@ -139,21 +139,47 @@ f(12)=f(11)(1+r)\approx 23.26\times 1.15\approx \alert{26.75}.
 
 % ========== 第5题 ==========
 \begin{frame}[t]{第5题：由数据或图象求解析式}
-\textbf{5.} 求下列函数可能的一个解析式：
-
-(1) 函数 $f(x)$ 的数据如下表：
-\[
-\begin{array}{c|ccc}
-x & 0 & 1 & 2\\ \hline
-f(x) & 3.50 & 4.20 & 5.04
-\end{array}
-\]
-
-(2) 函数 $g(x)$ 的图象过点 $(-1,8)$ 与 $(1,2)$，且在 $\mathbf{R}$ 上单调递减。
+\begin{columns}[T]
+	\column{0.6\textwidth}
+	\textbf{5.} 求下列函数可能的一个解析式：
+	
+	(1) 函数 $f(x)$ 的数据如下表：
+	\[
+	\begin{array}{c|ccc}
+		x & 0 & 1 & 2\\ \hline
+		f(x) & 3.50 & 4.20 & 5.04
+	\end{array}
+	\]
+	
+	(2) 函数 $g(x)$ 的图象过点 $(-1,8)$ 与 $(1,2)$，且在 $\mathbf{R}$ 上单调递减。
+	\column{0.3\textwidth}
+	\begin{tikzpicture}[scale=0.9,baseline=(current bounding box.north)]
+	\begin{axis}[
+		clip=false,
+		width=5cm, height=6cm,
+		axis lines=middle,
+		xlabel=$x$, ylabel=$y$,
+		xmin=-2, xmax=4, ymin=-2, ymax=10,
+		xtick=\empty,
+		ytick=\empty,
+		grid=major, grid style={gray!20},
+		xlabel style={below},
+		axis line style={thick},
+		]
+		\addplot[thick,blue,domain={2*ln(1.5)/ln(0.5)}:3.5,samples=100] {4*0.5^x};		
+		\addplot[only marks,mark=*,mark size=2pt,black,use as bounding box] coordinates {(1,2) (-1,8)};
+		\node[below right] at (axis cs:0,0) {$O$};
+		\node[below left] at (axis cs:-1,8) {$(-1,8)$};
+		\node[above right] at (axis cs:1,2) {$(1,2)$};
+		\node[above left] at (axis cs:-1,8) {$g(x)$};
+		\node[below] at (current bounding box.south) {第5(2)题};
+	\end{axis}
+	\end{tikzpicture}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{第5题 解答}
-\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解}]
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解},sidebyside,sidebyside align=top]
 \textbf{(1)} 观察相邻两项之比：
 \[
 \frac{4.20}{3.50}=1.2,\qquad \frac{5.04}{4.20}=1.2,
@@ -163,7 +189,8 @@ f(x) & 3.50 & 4.20 & 5.04
 \alert{f(x)=3.50\cdot 1.2^{x}}.
 \]
 
-\vspace{0.6em}
+
+\tcblower
 \textbf{(2)} 设 $g(x)=k a^{x}$。代入两点：
 \[
 ka^{-1}=8,\qquad ka=2.
@@ -179,12 +206,13 @@ ka^{-1}=8,\qquad ka=2.
 \begin{frame}[t]{第6题：比较大小}
 \textbf{6.} 比较下列各题中两个值的大小：
 \[
-(1)\ 3^{0.8},\ 3^{0.7};\qquad
-(2)\ 0.75^{-0.1},\ 0.75^{0.1};
-\]
-\[
-(3)\ 1.01^{2.7},\ 1.01^{3.5};\qquad
+\begin{array}{ll}
+(1)\ 3^{0.8},\ 3^{0.7};&
+(2)\ 0.75^{-0.1},\ 0.75^{0.1};\\
+ & \\
+(3)\ 1.01^{2.7},\ 1.01^{3.5};&
 (4)\ 0.99^{3.3},\ 0.99^{4.5}.
+\end{array}
 \]
 \end{frame}
 
@@ -261,8 +289,8 @@ y\approx 1000\times 1.1177=\alert{1117.7}\ \text{元}.
 (2) 判断该函数的奇偶性和单调性。
 \end{frame}
 
-\begin{frame}[t]{第9题 解答}
-\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(1)}]
+\begin{frame}[t]{第9题 解答}	
+\begin{tcolorbox}[colback=orange!10,colframe=orange,title=\textbf{解：(1)},before skip=5pt]
 图象过原点 $(0,0)$：
 \[
 0=a\left(\frac12\right)^{0}+b=a+b \quad\Rightarrow\quad b=-a.
@@ -279,7 +307,7 @@ b=2,\quad a=-2.
 \end{frame}
 
 \begin{frame}[t]{第9题 图象}
-\begin{center}
+\vspace{2em}\begin{center}
 \begin{tikzpicture}[scale=0.9]
 \begin{axis}[
     width=12cm, height=6.5cm,
@@ -293,7 +321,7 @@ b=2,\quad a=-2.
 \addplot[thick,blue,domain=0:4,samples=100] {2-2*0.5^x};
 \addplot[thick,blue,domain=-4:0,samples=100] {2-2*0.5^(-x)};
 \draw[dashed,red] (axis cs:-4,2)--(axis cs:4,2);
-\node[red,right] at (axis cs:3.5,2.05) {$y=2$};
+\node[red,right] at (axis cs:3,2.1) {$y=2$};
 \addplot[only marks,mark=*,mark size=2pt,black] coordinates {(0,0)};
 \node[below right] at (axis cs:0,0) {$(0,0)$};
 \end{axis}
@@ -349,13 +377,14 @@ a^{x}<\left(\frac1a\right)^{x}=a^{-x}.
 \end{frame}
 
 \begin{frame}[t]{第10题 图象示意}
+	\vspace{2em}
 \begin{center}
 \begin{tikzpicture}[scale=0.85]
 \begin{axis}[
     width=11cm, height=6.5cm,
     axis lines=middle,
     xlabel=$x$, ylabel=$y$,
-    xmin=-3, xmax=3, ymin=0, ymax=4,
+    xmin=-3, xmax=3, ymin=-1, ymax=4,
     xtick={-2,-1,0,1,2},
     ytick={1,2,3},
     grid=major, grid style={gray!20},
@@ -365,7 +394,8 @@ a^{x}<\left(\frac1a\right)^{x}=a^{-x}.
 \node[blue] at (axis cs:1.6,3.2) {$f(x)=a^{x}\ (a>1)$};
 \node[magenta] at (axis cs:-2.4,3.2) {$g(x)=\left(\frac1a\right)^{x}$};
 \addplot[only marks,mark=*,mark size=2pt,black] coordinates {(0,1)};
-\node[above right] at (axis cs:0,1) {$(0,1)$};
+\node[right=1em] at (axis cs:0,1) {$(0,1)$};
+\node[below right] at (axis cs:0,0) {$O$};
 \end{axis}
 \end{tikzpicture}
 \end{center}

@@ -46,7 +46,8 @@
 \definecolor{pantone_gold}{RGB}{135,103,79}
 \definecolor{pantone_silver}{RGB}{138,141,143}
 \definecolor{WM_Gold}{cmyk}{0.09,0.29,0.66,0.24}
-
+\definecolor{accent}{RGB}{196,60,50}
+\definecolor{dotpink}{RGB}{214,60,120}
 % =========设置footline==============
 \setbeamertemplate{footline}{%
 	\leavevmode%  <-- 【关键修复】强制进入水平模式，防止报错
@@ -116,14 +117,14 @@
 %\setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol,\insertframenavigationsymbol,%
 %\insertsubsectionnavigationsymbol,\insertsectionnavigationsymbol,\insertdocnavigationsymbol}
 \AtBeginDocument{
-	% 设置 alertblock 标题栏的颜色（fg=前景色，bg=背景色）
-	\setbeamercolor{block title alerted}{fg=white, bg=structure.fg!80}
-	% 设置 alertblock 正文区域的颜色
-	\setbeamercolor{block body alerted}{fg=black, bg=structure!10}	
-	\setbeamercolor{block title}{bg=xyyg,fg=white}
-	\setbeamercolor{block body}{bg=xyyg!10}	
-	\setbeamertemplate{enumerate items}[default]
-	\setbeamertemplate{itemize items}[ball]
+% 设置 alertblock 标题栏的颜色（fg=前景色，bg=背景色）
+\setbeamercolor{block title alerted}{fg=white, bg=structure.fg!80}
+% 设置 alertblock 正文区域的颜色
+\setbeamercolor{block body alerted}{fg=black, bg=structure!10}	
+\setbeamercolor{block title}{bg=xyyg,fg=white}
+\setbeamercolor{block body}{bg=xyyg!10}	
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[ball]
 }
 
 \author[好好学习，努力向上]{} 
@@ -138,7 +139,7 @@
 \end{frame}
 
 \section{第一节}
-\begin{frame}{这是颜色名称}	
+\begin{frame}{这是颜色名称}\vspace{-1em}	
 	\begin{tikzpicture}
 		\fill[xyyg](0,0) rectangle(2,2)node[below]at (current bounding box.south){xyyg};
 	\end{tikzpicture}
@@ -157,8 +158,8 @@
 	\begin{tikzpicture}
 		\fill[xyyg_gold](0,0) rectangle(2,2)node[below]at (current bounding box.south){xyyg\_gold};
 	\end{tikzpicture}
-
 	
+	\vspace{-1em}
 	\begin{tikzpicture}
 		\fill[xyyg_orange](0,0) rectangle(2,2)node[below]at (current bounding box.south){xyyg\_orange};
 	\end{tikzpicture}
@@ -178,36 +179,44 @@
 		\fill[WM_Gold](0,0) rectangle(2,2)node[below]at (current bounding box.south){WM\_Gold};
 	\end{tikzpicture}
 	
+	\vspace{-1em}
+	\begin{tikzpicture}
+		\fill[accent](0,0) rectangle(2,2)node[below]at (current bounding box.south){accent};
+	\end{tikzpicture}
+	\begin{tikzpicture}
+		\fill[dotpink](0,0) rectangle(2,2)node[below]at (current bounding box.south){dotpink};
+	\end{tikzpicture}
+	
 	
 \end{frame}	
+
+\section{第二节}
+\begin{frame}
+	内容...
 	
-	\section{第二节}
-	\begin{frame}
-		内容...
-		
-	\end{frame}	
-		\begin{frame}
-		内容...
-	\end{frame}	
-		\begin{frame}
-		内容...
-	\end{frame}	
-		\begin{frame}
-		内容...
-	\end{frame}	
-	
-	\section{第三节}
-	\begin{frame}{这是标题}
-		内容...
-	\end{frame}	
-	\begin{frame}
-		内容...
-	\end{frame}	
-	\begin{frame}
-		内容...
-	\end{frame}	
-	\begin{frame}
-		内容...
-	\end{frame}	
-	
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+
+\section{第三节}
+\begin{frame}{这是标题}
+	内容...
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+\begin{frame}
+	内容...
+\end{frame}	
+
 \end{document}

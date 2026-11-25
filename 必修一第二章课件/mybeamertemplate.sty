@@ -1,0 +1,146 @@
+%% =====================================================================
+%%  mybeamer0.sty  ——  极简个人版（无任何选项，设定全部写死）
+%%  依赖：xelatex + ctexbeamer + 思源宋体/黑体
+%%  用法：\documentclass[10pt,aspectratio=169,t]{ctexbeamer}
+%%        \usepackage{mybeamer0}
+%%  说明：这是 mybeamer2 的"减法版"，只保留日常上课要用的部分：
+%%        校红配色(RGB) / 两端对齐 / 章节导航条 / 三色页脚 / 定高帧标题 /
+%%        
+%% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mybeamer0}[2026/11/25 v0.1 minimal courseware theme]
+
+\mode<presentation>
+
+% 1. 依赖
+\RequirePackage{etoolbox}        % 提供 \apptocmd、\AtBeginEnvironment，课件可自行打补丁
+\RequirePackage{xcolor}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}         % 已包含 amsfonts，无需再单独加载
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}        % 三线表 \toprule \midrule \bottomrule
+\RequirePackage{tabularx}        % 自动宽度表格
+\RequirePackage{multirow}        % 跨行合并单元格
+\RequirePackage{colortbl}        % 单元格着色
+\RequirePackage{multicol}        % 分栏（frame 内推荐用 columns 环境）
+\RequirePackage{ragged2e}        % \justifying
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{calligra}        % 西文手写体（仅拉丁字母，中文需另配字体）
+
+% 2. 主题骨架
+\useoutertheme[subsection=false]{smoothbars}   % 顶部章节导航条
+\usefonttheme[stillsansseriflarge]{serif}
+\useinnertheme{circles}
+\usecolortheme{spruce}
+
+% 3. 中文字体
+\ifdefined\setCJKmainfont
+  \setCJKmainfont{Source Han Serif SC}[BoldFont={Source Han Serif SC Bold}]
+  \setCJKsansfont{Source Han Sans SC}[BoldFont={Source Han Sans SC Bold}]
+\fi
+
+% 4. 调色板（屏幕用 RGB，数值是原 CMYK 定义的实测渲染值）
+\definecolor{xyyg}{RGB}{146,15,20}          % 主色：导航条、标题条、页脚、块标题
+\definecolor{xyyg_orange}{RGB}{242,92,25}   % 页脚中段混色用
+\definecolor{xyyg_gold}{RGB}{238,159,60}
+\definecolor{xyyg_blue}{RGB}{71,92,135}
+\definecolor{xyyg_darkblue}{RGB}{14,52,99}
+\definecolor{xyyg_gray}{RGB}{134,131,122}
+\definecolor{xyyg_dirt}{RGB}{186,149,112}
+\definecolor{xyyg_green}{RGB}{177,196,14}
+\definecolor{xyyg_darkgreen}{RGB}{69,71,27}
+\definecolor{WM_Gold}{RGB}{181,138,67}
+\definecolor{accent}{RGB}{196,60,50}        % 强调色：\alert、alert 块
+\definecolor{dotpink}{RGB}{214,60,120}
+
+% 5. 配色绑定
+\setbeamercolor{structure}{fg=xyyg}
+\setbeamercolor{frametitle}{bg=white,fg=xyyg}
+\setbeamercolor{title}{bg=xyyg,fg=white}
+\setbeamercolor{section in head/foot}{bg=xyyg,fg=white}
+\setbeamercolor{section in head/foot shaded}{bg=xyyg,fg=white!55!xyyg}
+\setbeamercolor{alerted text}{fg=accent}
+\setbeamercolor{footleft}{bg=xyyg,fg=white}
+\setbeamercolor{footmid}{bg=xyyg!95!black,fg=white}
+\setbeamercolor{footright}{bg=xyyg,fg=white}
+\setbeamercolor{block title}{bg=xyyg,fg=white}
+\setbeamercolor{block body}{bg=xyyg!10,fg=black}
+\setbeamercolor{block title alerted}{bg=accent,fg=white}
+\setbeamercolor{block body alerted}{bg=accent!10,fg=black}
+
+% 6. 排版参数
+\linespread{1.2}
+\hypersetup{hidelinks,bookmarksnumbered}
+\renewcommand{\raggedright}{\justifying}   % 正文两端对齐
+\setbeamertemplate{caption}[numbered]
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{itemize items}[ball]
+\setbeamertemplate{enumerate items}[default]
+
+% 7. 页脚：左 30% 作者 | 中 40% 短标题 | 右 30% 日期，页码，三处都居中、\scriptsize 字号
+\setbeamerfont{author in head/foot}{size=\scriptsize}
+\setbeamerfont{title in head/foot}{size=\scriptsize}
+\setbeamerfont{frame number}{size=\scriptsize}
+\def\mb@pageinfo{%
+  \ifnum\value{framenumber}=1 \insertdate \else \hfil \insertdate \hfil \insertframenumber\,/\,\inserttotalframenumber\hfil \fi}
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox to\paperwidth{%
+    \begin{beamercolorbox}[wd=0.30\paperwidth,ht=16pt,dp=0pt,vmode]{footleft}%
+      \vbox to 16pt{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{author in head/foot}\insertshortauthor\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.40\paperwidth,ht=16pt,dp=0pt,vmode]{footmid}%
+      \vbox to 16pt{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{title in head/foot}\insertshorttitle\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.30\paperwidth,ht=16pt,dp=0pt,vmode]{footright}%
+      \vbox to 16pt{\vfil
+        \hbox to\hsize{\hss\usebeamerfont{frame number}\mb@pageinfo\hss}%
+      \vfil}%
+    \end{beamercolorbox}%
+    \hss
+  }%
+}
+
+% 8. 页眉：定高章节导航条
+\setbeamertemplate{headline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,colsep=0pt,ht=11.6pt,dp=0.5ex,
+                        vmode]{section in head/foot}%
+    \vbox to 11.6pt{\vskip0.5pt\insertnavigation{\paperwidth}\vss}%
+  \end{beamercolorbox}%
+}
+
+% 9. 帧标题：白底、主色字、定高（正文起始位置不抖）
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \usebeamerfont*{frametitle}%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0ex,ht=1em,dp=2pt,
+                        leftskip=0.5em,rightskip=2em]{frametitle}%
+    \strut\insertframetitle
+  \end{beamercolorbox}%
+}
+
+% 10.标题页设定
+\setbeamertemplate{title}{%
+	\centerline{%
+		\begin{beamercolorbox}[wd=0.85\textwidth,sep=8pt,center,rounded=true,shadow=true]{title}%
+			{\usebeamerfont{title}\inserttitle\par}%
+			\ifx\insertsubtitle\empty\else
+			\vskip0.25em{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			\fi
+\end{beamercolorbox}}}
+
+%\setbeamertemplate{navigation symbols}{}         % 关闭右下角导航按钮（否则会压住页脚）
+
+
+\mode<all>
+\endinput

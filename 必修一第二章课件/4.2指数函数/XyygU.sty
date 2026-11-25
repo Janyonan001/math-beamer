@@ -70,8 +70,8 @@
   \settoheight{\xyyg@titleht}{\insertframetitle}%
   \settodepth{\xyyg@titledp}{\insertframetitle}%
   \xyyg@logoheight=\dimexpr\xyyg@titleht+\xyyg@titledp\relax
-%  \settowidth{\xyyg@logowidth}{\includegraphics[height=\xyyg@logoheight]{Figures/xyyg-emblem-names.png}}%
-  \begin{beamercolorbox}[wd=\paperwidth,sep=0.3cm,%
+  \settowidth{\xyyg@logowidth}{\includegraphics[height=\xyyg@logoheight]{Figures/xyyg-emblem-names.png}}%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0.1cm,%
     rightskip=\dimexpr\xyyg@logowidth+0.4cm\relax]{frametitle}%
     \strut\insertframetitle
     \ifx\insertframesubtitle\@empty\else
@@ -80,14 +80,15 @@
   \end{beamercolorbox}%
   \nointerlineskip
   \xyyg@logoyshift=\xyyg@headheight
-  \addtolength{\xyyg@logoyshift}{0.3cm}%
+  \addtolength{\xyyg@logoyshift}{0.1cm}%
   \addtolength{\xyyg@logoyshift}{\ht\strutbox}%
   \addtolength{\xyyg@logoyshift}{-\xyyg@titleht}%
-%  \begin{tikzpicture}[remember picture,overlay]
-%    \node[anchor=north east,inner sep=0pt]
-%      at ([yshift=-\xyyg@logoyshift,xshift=-0.3cm]current page.north east)
-%      {\includegraphics[height=\xyyg@logoheight]{Figures/xyyg-emblem-names.png}};
-%  \end{tikzpicture}%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north east,inner sep=0pt]
+      at ([yshift=-\xyyg@logoyshift,xshift=-0.3cm]current page.north east)
+      {\includegraphics[height=\xyyg@logoheight]{Figures/xyyg-emblem-names.png}};
+  \end{tikzpicture}%
+  \addvspace{-1em}
 }
 \makeatother
 
@@ -120,10 +121,9 @@
 %\setbeamerfont{frametitle}{size=\large}
 \setbeamerfont{frametitle}{series=\bfseries,size=\large}%,parent=structure}
 \setbeamerfont{footline}{series=\bfseries}
-%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol\insertsectionnavigationsymbol\insertdocnavigationsymbol }
 \setbeamertemplate{bibliography item}[text]
 \setbeamertemplate{caption}[numbered]
-
 
 \beamertemplateshadingbackground{white!5}{white}
 
@@ -178,7 +178,7 @@
 \setbeamercolor{separation line}{}
 \setbeamercolor{sidebar}{bg=xyyg}
 \setbeamercolor{sidebar}{parent=palette primary}
-\setbeamercolor{structure}{bg=xyyg,fg=white}
+\setbeamercolor{structure}{fg=xyyg}
 \setbeamercolor{subsection in sidebar}{fg=brown}
 \setbeamercolor{subsection in sidebar shaded}{fg=grey}
 \AtBeginSection[]{
