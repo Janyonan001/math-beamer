@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{n次方根}{3}{0}{1}
-\beamer@sectionintoc {2}{分数指数幂}{15}{0}{2}

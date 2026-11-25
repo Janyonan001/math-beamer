@@ -1,5 +1,0 @@
-\beamer@sectionintoc {1}{区间的概念}{3}{0}{1}
-\beamer@sectionintoc {2}{无穷区间}{8}{0}{2}
-\beamer@sectionintoc {3}{函数的定义域}{13}{0}{3}
-\beamer@sectionintoc {4}{同一函数的判断}{20}{0}{4}
-\beamer@sectionintoc {5}{课堂练习}{31}{0}{5}

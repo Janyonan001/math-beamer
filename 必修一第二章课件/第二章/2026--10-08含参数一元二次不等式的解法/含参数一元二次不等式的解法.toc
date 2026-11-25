@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{前情回顾}{3}{0}{1}
-\beamer@sectionintoc {2}{例题分析}{6}{0}{2}

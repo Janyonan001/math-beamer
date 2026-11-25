@@ -12,7 +12,7 @@
 \usepackage{caption}
 \captionsetup[figure]{name=图}
 \setbeamertemplate{caption}[numbered] % 图形自动编号
-
+\linespread{1.2}% 修改全文行距
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
@@ -44,25 +44,6 @@
 	\setbeamercolor{block body}{bg=xyyg!10}
 }
 
-% 散点 + 趋势线通用样式（x 为距 2001 年的偏移年，刻度映射回年份）
-\pgfplotsset{
-  scenic/.style={
-  	clip=false,
-    width=8cm, height=6cm,
-    xmin=0, xmax=14.7, ymin=100, ymax=1600,
-    xtick={0,2,4,6,8,10,12,14},
-    xticklabels={2001,2003,2005,2007,2009,2011,2013,2015},
-    ytick={300,500,700,900,1100,1300},
-    xlabel={年份}, ylabel={人次/万次},
-    axis lines=center,
-    label style={font=\small},
-%    ylabel style={left},
-	xlabel style={above},
-    tick label style={font=\footnotesize, /pgf/number format/1000 sep={}},
-    xticklabel style={rotate=30, anchor=east,xshift=5pt,yshift=-3pt},
-%    enlargelimits=0.03,
-  },
-}
 
 %\useoutertheme[subsection=false]{smoothbars}
 \usetheme{Boadilla}
@@ -94,6 +75,26 @@
 \setbeamertemplate{itemize items}[ball]
 }
 
+
+% 散点 + 趋势线通用样式（x 为距 2001 年的偏移年，刻度映射回年份）
+\pgfplotsset{
+	scenic/.style={
+		clip=false,
+		width=8cm, height=6cm,
+		xmin=0, xmax=14.7, ymin=100, ymax=1600,
+		xtick={0,2,4,6,8,10,12,14},
+		xticklabels={2001,2003,2005,2007,2009,2011,2013,2015},
+		ytick={300,500,700,900,1100,1300},
+		xlabel={年份}, ylabel={人次/万次},
+		axis lines=center,
+		label style={font=\small},
+		%    ylabel style={left},
+		xlabel style={above},
+		tick label style={font=\footnotesize, /pgf/number format/1000 sep={}},
+		xticklabel style={rotate=30, anchor=east,xshift=5pt,yshift=-3pt},
+		%    enlargelimits=0.03,
+	},
+}
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{,}
 \newtcolorbox{summarybox}[1][]{
@@ -358,7 +359,7 @@
 \end{frame}
 
 % ============ 例 2 ============
-\begin{frame}{}
+\begin{frame}{}\vspace{-1em}
 \begin{instance}
   \begin{enumerate}[(\arabic*)]
     \item 在问题 $1$ 中，如果平均每位游客出游一次可给当地带来 $1\,000$ 元门票之外的收入，A 地景区的门票价格为 $150$ 元，比较这 $15$ 年间 A、B 两地旅游收入变化情况。
@@ -493,7 +494,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[t]{4.2.1 练习 第1题 解答}
+\begin{frame}[t]{4.2.1 练习 第1题 解答}\vspace{-1em}
 	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解}]
 		指数函数 $y=a^{x}\ (a>0,a\ne 1)$ 必满足：
 		\begin{itemize}
@@ -524,7 +525,7 @@
   \end{enumerate}
 \end{frame}
 
-\begin{frame}[t]{4.2.1 练习 第2题 解答}
+\begin{frame}[t]{4.2.1 练习 第2题 解答}\vspace{-1em}
 	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解:}]
 		由题意，自变量每增加 $0.5$，函数值就变为原来的 $2$ 倍，即
 		\[
@@ -536,18 +537,17 @@
 		\]
 		故 $a^{0.5}=2$，解得 $a=4$。
 		
-		\vspace{0.6em}
 		所以
-		\[
+		$
 		\alert{f(x)=3\cdot 4^{x}=3\cdot 2^{2x}}.
-		\]
+		$
 		
-		\vspace{0.4em}
 		\small（验证：$f(0)=3,\ f(0.5)=3\cdot 2=6,\ f(1)=12$，相邻两项之比均为 $2$，符合题意。）
 	\end{tcolorbox}
 \end{frame}
 
-\begin{frame}[t]{4.2.1 练习 第3题 解答}\vspace{-1em}
+\begin{frame}[t]{4.2.1 练习 第3题 解答}\vspace{-1em}\vspace{-0.5em}
+	\linespread{1.0}\selectfont
 	\begin{tcolorbox}[colback=xyyg!10,colframe=xyyg!90,title=\textbf{解}]
 		设原有蓝藻量为 $N_{0}$，经过 $x$ 天后蓝藻量为
 		\[

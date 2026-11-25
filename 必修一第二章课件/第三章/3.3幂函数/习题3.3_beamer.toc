@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{练习}{2}{0}{1}
-\beamer@sectionintoc {2}{习题3.3}{7}{0}{2}

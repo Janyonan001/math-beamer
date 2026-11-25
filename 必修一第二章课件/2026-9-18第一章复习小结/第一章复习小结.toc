@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{集合及其运算}{2}{0}{1}
-\beamer@sectionintoc {2}{充分条件与必要条件}{14}{0}{2}
-\beamer@sectionintoc {3}{全称量词与存在量词}{16}{0}{3}
-\beamer@sectionintoc {4}{例习题}{18}{0}{4}

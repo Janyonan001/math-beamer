@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{最大(小)值}{3}{0}{1}
-\beamer@sectionintoc {2}{课堂练习}{17}{0}{2}
